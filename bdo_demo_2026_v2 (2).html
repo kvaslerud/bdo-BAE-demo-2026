@@ -3656,7 +3656,7 @@ main > .section:first-of-type {
   left: 0;
   width: 1px;
   height: 0;
-  background: rgba(227, 6, 19, 0.30);
+  background: rgba(227, 6, 19, 0.18);
   transition: height 320ms var(--interactive-ease);
 }
 #nav-indicator .nav-dot-track {
@@ -3671,7 +3671,7 @@ main > .section:first-of-type {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
   border: none;
   padding: 0;
   cursor: pointer;
@@ -5413,7 +5413,7 @@ body.presentation-mode #pres-badge { display: block; }
 
       <div class="landing-signature">
         <span>Bygget av Tobias Mørland Kvaslerud + Claude</span>
-        <span>[8] timer · BDO Norge · 2026</span>
+        <span>Tobias Mørland Kvaslerud · BDO Norge · 2026</span>
       </div>
     </div>
   </div>
@@ -7876,9 +7876,9 @@ console.log('Bygget av Tobias Mørland Kvaslerud + Claude. Trykk P for projeksjo
     } else if (k === 'End') {
       scrollToSection(sections.length - 1);
       e.preventDefault();
-    } else if (k === 'p' || k === 'P') {
+    } else if (k === 'f' || k === 'F') {
       togglePresentationMode();
-      // Do not preventDefault: existing handler also listens for P.
+      e.preventDefault();
     } else if (k === 'm' || k === 'M') {
       toggleOverview();
       e.preventDefault();
@@ -8048,7 +8048,8 @@ console.log('Bygget av Tobias Mørland Kvaslerud + Claude. Trykk P for projeksjo
         <li><span><kbd>←</kbd> <kbd>↑</kbd></span><span>Forrige seksjon</span></li>
         <li><span><kbd>Home</kbd></span><span>Til toppen</span></li>
         <li><span><kbd>End</kbd></span><span>Til bunn</span></li>
-        <li><span><kbd>P</kbd></span><span>Presentation mode</span></li>
+        <li><span><kbd>F</kbd></span><span>Fokusmodus</span></li>
+        <li><span><kbd>P</kbd></span><span>Projeksjons-modus</span></li>
         <li><span><kbd>M</kbd></span><span>Oversikt</span></li>
         <li><span><kbd>?</kbd></span><span>Denne hjelpen</span></li>
         <li><span><kbd>Esc</kbd></span><span>Lukk overlay</span></li>
