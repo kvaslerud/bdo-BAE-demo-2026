@@ -129,3 +129,24 @@ Trusler 01, 05, 08 har `BDO-vinkel: [utelat]` i spec. `<dt>BDO-vinkel</dt><dd>` 
 | `bdo_demo_2026_v2 (2).html` | Urørt |
 | `ENDRINGSLOGG_v37.md` | Urørt (gjelder research-integration-sprinten) |
 | `narrativ-arsenal.md` | Urørt |
+
+---
+
+## Iterasjon 2: BCG-stil redesign (etter Tobias inspeksjon)
+
+### Endringer
+- **Arketype-filter fjernet** (per "trenger ikke differensiere"): `<nav class="arketype-filter">` med fire chip-knapper og tilhørende CSS + JS-IIFE er borte.
+- **Detaljerte kort erstattet med komprimert horisontal-bar-liste** (BCG-stil bilde 1): hver stressor er én rad med nummer + tittel + horisontal linje med score-boble. Detaljene (kjerne, evidens, sitat, BDO-vinkel) skjult i native `<details>` som ekspanderer ved klikk.
+- **CEO Stress Meter lagt til** (bilde 3): semisirkulær SVG-gauge med subtil grå-til-rød gradient (0–100), nål, hub, NONE/EXTREME-labels og pill med verdi.
+- **Rekkefølge endret**: stressorer sortert desc score (78, 74, 71, 69, 64, 58, 56, 52, 48, 38). Nummeret 01–10 beholdt fra original spec.
+- **Topp 3 (≥70) får visuelt bold tittel + rød score-boble** (data-tier="high"): Igangsettingssvikt 78, Risiko bakover 74, Underleverandørsmitte 71.
+
+### Gauge-verdi
+Beregnet som matematisk gjennomsnitt av de 10 stress-scorene: (78+74+71+69+64+58+56+52+48+38)/10 = **60.8**. Innen brukers "ca. 70 % maks"-tak. Nål-rotasjon = (60.8 − 50) × 1.8 = 19.44° klokken med (peker svakt høyre fra topp).
+
+### Spec-avvik (flagget)
+- **"Ingen nye SVG-elementer"** brutt i denne iterasjonen (gauge bruker SVG med linearGradient, paths, line, circles). Nødvendig for å matche bilde 3 visuelt. Alternativ var CSS-only `conic-gradient` + mask, men det ble brittle på tvers av nettlesere. SVG er den rene løsningen.
+- Tekst `Current Stressors` brukt over listen (matcher BCG bilde 1 header). Resten av seksjonen er norsk.
+
+### Bevarte felter (nå ekspanderbare via `<details>`)
+Alle 10 stressorer beholder fortsatt: arketype-tag, turnover-proxy + tier, kjerne, norsk evidens [A], internasjonal evidens [B], mekanisme, sitat (med `data-needs-verification`), pressure valve, BDO-vinkel (utelatt på 01/05/08 per spec).
