@@ -6374,11 +6374,192 @@ function showKeyDialog() {
   });
 }
 
+/* ════════════════════════════════════════════════════════════════
+   KANNEDE DEMO-SVAR (matches på frifelt-input før API-kall)
+   Brukes for projektor-demo der API-key ikke er garantert. Streames
+   tegn-for-tegn med samme UI-flyt som ekte stream.
+   ════════════════════════════════════════════════════════════════ */
+const CANNED_RESPONSES = [
+  {
+    label: 'Hva gjør jeg nå',
+    test: /gjør jeg|hva gjør|mandag|neste skritt|hva nå/i,
+    answer: `**Bevisbyrden ligger ikke i strategien. Den ligger i hva du gjør på mandag.**
+
+Du har 90 dager før AI-gapet i bransjen blir et konkurransefortrinn du ikke kan ta igjen. Her er handlingsplanen, hentet rett ut av BAA-2025.
+
+**Dag 1–30 · Diagnose**
+- Identifiser de tre prosjektene med lavest margin akkurat nå
+- Plot dem på verdikjede-fasen (akkvisisjon / prosjektering / utførelse / drift / kommersialisering)
+- Sannsynligvis tapes marginen i *utførelse* — der retting koster 10–100x
+
+**Dag 31–60 · Én pilot, ikke ti**
+- Velg det dyreste prosjektet av de tre
+- Sett opp Buildots eller OpenSpace.ai for fremdriftsrapportering
+- KPI: forsinkelser identifisert *samme uke*, ikke neste fakturaperiode
+- Forventet effekt på pilot: 11–12 % byggetidsreduksjon
+
+**Dag 61–90 · Stack neste DD**
+- Neste oppkjøps-case: kjør Findable + Placepoint på dokumenthåndtering
+- 1,5 MNOK besparelse forventes
+- 4 200 dokumenter klassifiseres på 3 timer (mot uker manuelt)
+- Tar du IKKE oppkjøp: kjør samme stack på egen porteføljegjennomgang
+
+**Hva du ikke gjør:**
+- Ingen ny datalake. Bruk eksisterende ERP/BIM-data.
+- Ingen konsernutrulling. Én pilot, målbar effekt, deretter skalering.
+- Ingen visjons-workshop. *Hvor er forsinkelsen i prosjekt X denne uka?* er nok spørsmål.
+
+**Hva BDO måler etter:** prosent prosjekter med CV-fremdriftsmåling om 90 dager. Hvis det er null, har du ikke gjort jobben.
+
+**Når slutter du å gjøre dette? Når marginen er 6 %.**`
+  },
+  {
+    label: 'Kutte kostnader',
+    test: /kutte|kostnad|spar|reduser/i,
+    answer: `**Du kutter ikke kostnader. Du flytter dem til der de skader minst.**
+
+I bygg, anlegg og eiendom koster retting på byggeplass *10 til 100 ganger* mer enn å rette samme feil i prosjekteringsfasen. Det betyr at den største kostnadshåndteringen ikke skjer i innkjøp eller bemanning — den skjer i hvor *tidlig* du ser problemet.
+
+Fire kostnadssjikt, rangert etter ROI:
+
+**1. Prosjekteringsfasen** — der feil er billigst å rette
+- Findable: 4 200 dokumenter NS 3451-klassifisert på 3 timer (vs. flere uker manuelt)
+- Bluebeam Max: tegningskontroll før første spadetak
+- Autodesk Forma: generativ design fanger kollisjoner tidlig
+
+**2. Utførelse** — der timeforbruk lekker
+- ALICE Technologies: *12 %* redusert byggetid på pilotsporet
+- Doxel AI: *11 %* besparelse på kostnadskontroll
+- Computer vision (Buildots/OpenSpace): forsinkelser fanges samme uke, ikke neste fakturaperiode
+
+**3. Drift og forvaltning** — der løpende kostnader bites
+- Energi-AI: 15–30 % reduksjon
+- proprty.ai-stack: 50–100 bps NOI-løft uten ny datalake
+
+**4. Akkvisisjon og DD** — der oppside lekker før prosjektstart
+- 1,5 MNOK spart per transaksjon med Placepoint + Findable-stack
+
+**Hva BDO ville målt etter:** *kostnad per feil etter fase*, ikke total prosjektkost. 1 NOK i prosjektering sparer 30 NOK i utførelse.
+
+**Den dyreste kostnaden er feilrettingen du ikke så komme.**`
+  },
+  {
+    label: 'Marginpress',
+    test: /marginpress|press|hvorfor.+margin|segment|konsolider/i,
+    answer: `**Marginpresset er ikke en bølge. Det er en omfordeling.**
+
+Bransjesnittet er *3,3 %* i 2024 — laveste på fem år. Men gjennomsnittet skjuler historien. Se hva som skjer per segment (A2):
+
+- **Planleggere:** 5,8 % margin — *stabile*
+- **Produkter:** 6,2 % — *stabile*
+- **Drift:** 4,9 % — *holder*
+- **Utførende:** 2,1 % — *kritisk*
+- **Grossister:** 3,4 % — *under press*
+- **Akkvisitører:** 4,1 % — *holder*
+
+Tre i rødt. Tre i grønt. Det er ikke konjunktur. Det er en strukturell omfordeling av hvem som *bærer risikoen*, og hvem som *henter verdien*.
+
+**Tre krefter driver dette:**
+
+1. **Kapitalmarkedet vasker.** 408 transaksjoner i Norden i 2025 (rekord), 125 norske oppkjøp på 12 måneder — 3x på fire år. *Private equity står for 53 %* av dealene (mot 26 % før pandemien). Kapitalen profesjonaliserer plattformene og presser amatørene.
+
+2. **Konsolideringen lukker spreaden.** Tekni Gruppen, Rørco, Circura, Konstel. Plattformene henter stordriftsfordeler du som enkeltselskap ikke kan matche.
+
+3. **Produktiviteten har stagnert i 25 år.** Bygg/anlegg *−13 %* siden 2000 mens Fastlands-Norge er *+32 %*. AI-investering: 16 %. AI-retningslinjer: 11 %. Du opererer mot konkurrenter som har +20 % produktivitet via samme teknologi du ikke har tatt i bruk.
+
+**Slik måler BDO etter:** *driftsmargin per segment*, ikke per selskap. Kollapsen er allerede synlig hos halve verdikjeden — bare ikke jevnt fordelt.
+
+**Spørsmålet er ikke om du overlever marginpresset. Det er hvilken side av omfordelingen du står på.**`
+  },
+  {
+    label: 'Øke lønnsomhet',
+    test: /lønnsom|øke margin|hvordan øke|driftsmargin|^margin/i,
+    answer: `**Marginen er strukturell, ikke konjunkturell.**
+
+Bransjesnittet ligger på *3,3 %* i 2024 — det laveste på fem år. 25 % av selskapene har negativ EBIT. Du øker ikke lønnsomheten med bedre prisstrategi alene. Du øker den ved å vite *hvor i verdikjeden* verdien rotnes vekk.
+
+Tre løft, rangert etter realiserbar effekt over 18 måneder:
+
+**1. Drift og forvaltning** — 40 % av byggets levetid, største basseng
+- 50–100 bps NOI-løft og 15–30 % energi-reduksjon
+- proprty.ai + automatisert energi-AI, ingen ny datalake
+- Lønner seg per kvadratmeter, ikke per prosjekt
+
+**2. Utførelse** — der retting koster 10–100x vs. prosjektering
+- Buildots / OpenSpace.ai: +50 % raskere fremdriftsrapport
+- ALICE Technologies: 12 % redusert byggetid
+- Doxel AI: 11 % besparelse på kostnadskontroll
+- Start med *én* CV-pilot, ikke konsernutrulling
+
+**3. Akkvisisjon og DD** — lavest investering, høyest yield-effekt
+- 1,5 MNOK spart per transaksjon (Findable + Placepoint)
+- 4 200 dokumenter NS 3451-klassifisert på 3 timer
+- Yield bestemmes ved kjøp, ikke ved salg
+
+**Den ene tingen du gjør først:** identifiser de tre prosjektene med lavest margin akkurat nå. Sannsynligvis er marginen tapt i utførelse-fasen. Sett én computer-vision-pilot der innen 60 dager. Mål forsinkelser, ikke estimater.
+
+**Slik måler BDO etter:** driftsmargin *per fase*, ikke per prosjekt. Det er der historien skjuler seg — og det er der løftet ligger.`
+  }
+];
+
+function findCannedResponse(text) {
+  for (const c of CANNED_RESPONSES) {
+    if (c.test.test(text)) return c.answer;
+  }
+  return null;
+}
+
+async function streamCannedResponse(text, role, answer) {
+  isStreaming = true;
+  chatSendEl.disabled = true;
+  chatInputEl.value = '';
+
+  appendUserMessage(text, role);
+  const claudeContentEl = appendClaudeMessage();
+  conversationHistory.push({ role: 'user', content: text });
+
+  // First-token-latency for autentisk demo-feel
+  await new Promise(r => setTimeout(r, 550 + Math.random() * 350));
+
+  let cursor = 0;
+  let fullText = '';
+  let firstChunk = true;
+  const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+
+  while (cursor < answer.length) {
+    const step = 3 + Math.floor(Math.random() * 7);
+    const chunk = answer.slice(cursor, cursor + step);
+    cursor += step;
+    fullText += chunk;
+    if (firstChunk) {
+      claudeContentEl.innerHTML = '';
+      firstChunk = false;
+    }
+    claudeContentEl.innerHTML = renderMarkdown(fullText) + '<span class="streaming-cursor"></span>';
+    scrollToBottom();
+    await sleep(18 + Math.random() * 22);
+  }
+
+  claudeContentEl.innerHTML = renderMarkdown(fullText);
+  conversationHistory.push({ role: 'assistant', content: fullText });
+
+  isStreaming = false;
+  chatSendEl.disabled = false;
+  chatInputEl.focus();
+}
+
 /* Send melding */
 async function sendMessage(text, role) {
   if (isStreaming) return;
   if (!text || !text.trim()) return;
   const trimmed = text.trim();
+
+  // Demo-fallback: kannede svar mot keyword-match, bypasser API helt
+  const canned = findCannedResponse(trimmed);
+  if (canned) {
+    return streamCannedResponse(trimmed, role, canned);
+  }
+
 
   let apiKey = getApiKey();
   if (!apiKey) {
