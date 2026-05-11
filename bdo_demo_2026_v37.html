@@ -534,6 +534,301 @@ main > .section:first-of-type {
   font-size: 12px;
 }
 
+/* ═══ BAE-CEO Trusselmatrise (10 stressors) ═══ */
+#section-trusselmatrise .trussel-header {
+  max-width: 720px;
+  margin-bottom: 96px;
+}
+#section-trusselmatrise .kicker {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+#section-trusselmatrise .display {
+  font-family: 'Instrument Serif', var(--font-display), serif;
+  font-style: italic;
+  font-size: 72px;
+  line-height: 1.05;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+#section-trusselmatrise .lede {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 640px;
+}
+
+#section-trusselmatrise .arketype-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 80px;
+}
+#section-trusselmatrise .chip {
+  background: transparent;
+  border: 0.5px solid var(--hairline-strong);
+  color: var(--text-secondary);
+  padding: 8px 16px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: color 200ms ease-out, border-color 200ms ease-out, background 200ms ease-out;
+  text-transform: uppercase;
+}
+#section-trusselmatrise .chip:hover {
+  border-color: var(--hairline-interactive);
+  color: var(--text-primary);
+}
+#section-trusselmatrise .chip-active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--text-primary);
+}
+
+#section-trusselmatrise .trussel-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 96px;
+  max-width: 800px;
+}
+#section-trusselmatrise .trussel-kort {
+  padding-top: 48px;
+  border-top: 0.5px solid var(--hairline);
+}
+#section-trusselmatrise .trussel-meta {
+  display: flex;
+  gap: 24px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+#section-trusselmatrise .trussel-nummer {
+  color: var(--text-primary);
+}
+#section-trusselmatrise .trussel-tittel {
+  font-family: 'Instrument Serif', var(--font-display), serif;
+  font-style: italic;
+  font-size: 40px;
+  line-height: 1.1;
+  color: var(--text-primary);
+  margin: 0 0 32px 0;
+  letter-spacing: -0.01em;
+}
+
+#section-trusselmatrise .trussel-score-row {
+  display: flex;
+  align-items: baseline;
+  gap: 64px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+#section-trusselmatrise .score-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+#section-trusselmatrise .score-primary .score-value {
+  font-family: 'Instrument Serif', var(--font-display), serif;
+  font-style: italic;
+  font-size: 96px;
+  line-height: 1;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+#section-trusselmatrise .trussel-kort[data-score-high="true"] .score-primary .score-value {
+  color: var(--accent);
+}
+#section-trusselmatrise .score-value-small {
+  font-family: 'Instrument Serif', var(--font-display), serif;
+  font-style: italic;
+  font-size: 32px;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+#section-trusselmatrise .score-tier {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+  margin-left: 8px;
+  text-transform: uppercase;
+}
+
+#section-trusselmatrise .trussel-kjerne {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  margin: 0 0 32px 0;
+  max-width: 640px;
+}
+#section-trusselmatrise .trussel-felter {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 16px 32px;
+  margin: 0;
+}
+#section-trusselmatrise .trussel-felter dt {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+  padding-top: 4px;
+  text-transform: uppercase;
+}
+#section-trusselmatrise .trussel-felter dd {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  margin: 0;
+}
+#section-trusselmatrise .trussel-felter dd.sitat {
+  font-family: 'Instrument Serif', var(--font-display), serif;
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1.4;
+  color: var(--text-primary);
+  border-left: 2px solid var(--accent);
+  padding-left: 24px;
+}
+
+#section-trusselmatrise .blind-spots {
+  margin-top: 160px;
+  padding: 48px;
+  background: var(--bg-elevated);
+}
+#section-trusselmatrise .blind-spots h3 {
+  font-family: 'Instrument Serif', var(--font-display), serif;
+  font-style: italic;
+  font-size: 32px;
+  color: var(--text-primary);
+  margin: 0 0 16px 0;
+  letter-spacing: -0.01em;
+}
+#section-trusselmatrise .blind-spots-lede {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0 0 32px 0;
+  max-width: 640px;
+}
+#section-trusselmatrise .blind-spot-item {
+  border-left: 1px solid var(--accent);
+  padding-left: 24px;
+  margin-bottom: 24px;
+}
+#section-trusselmatrise .blind-spot-num {
+  font-family: 'Instrument Serif', var(--font-display), serif;
+  font-style: italic;
+  font-size: 22px;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+#section-trusselmatrise .blind-spot-stats {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+#section-trusselmatrise .blind-spot-item p {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+#section-trusselmatrise .stakeholder-rangering {
+  margin-top: 96px;
+}
+#section-trusselmatrise .stakeholder-rangering h3 {
+  font-family: 'Instrument Serif', var(--font-display), serif;
+  font-style: italic;
+  font-size: 32px;
+  color: var(--text-primary);
+  margin: 0 0 16px 0;
+  letter-spacing: -0.01em;
+}
+#section-trusselmatrise .stakeholder-lede {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0 0 32px 0;
+  max-width: 640px;
+}
+#section-trusselmatrise .stakeholder-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+#section-trusselmatrise .stakeholder-bar {
+  display: grid;
+  grid-template-columns: 240px 60px 1fr;
+  align-items: center;
+  gap: 24px;
+}
+#section-trusselmatrise .stakeholder-bar .label {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-primary);
+}
+#section-trusselmatrise .stakeholder-bar .value {
+  font-family: 'Instrument Serif', var(--font-display), serif;
+  font-style: italic;
+  font-size: 24px;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+#section-trusselmatrise .stakeholder-bar .bar {
+  height: 4px;
+  background: var(--hairline);
+  position: relative;
+  display: block;
+}
+#section-trusselmatrise .stakeholder-bar .bar-fill {
+  height: 100%;
+  background: var(--accent);
+  display: block;
+}
+
+@media (max-width: 768px) {
+  #section-trusselmatrise .display { font-size: 40px; }
+  #section-trusselmatrise .trussel-tittel { font-size: 28px; }
+  #section-trusselmatrise .score-primary .score-value { font-size: 64px; }
+  #section-trusselmatrise .trussel-score-row { gap: 32px; }
+  #section-trusselmatrise .trussel-felter { grid-template-columns: 1fr; }
+  #section-trusselmatrise .trussel-felter dt { padding-top: 16px; }
+  #section-trusselmatrise .blind-spots { padding: 32px 24px; margin-top: 96px; }
+  #section-trusselmatrise .stakeholder-bar { grid-template-columns: 1fr 60px; }
+  #section-trusselmatrise .stakeholder-bar .bar { grid-column: 1 / -1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #section-trusselmatrise .chip { transition: none; }
+}
+
 /* ═══ HERO ═══ */
 
 .hero {
@@ -5168,6 +5463,406 @@ body.presentation-mode #pres-badge { display: block; }
   </div>
 </section>
 
+<!-- ════════════════════════════════════════════════════════════════
+     BAE-CEO Trusselmatrise (10 stressors, tre arketyper)
+     BAE-versjon av BCGs CEO Insomnia Index (april 2026)
+     ════════════════════════════════════════════════════════════════ -->
+<section class="section" id="section-trusselmatrise" data-type="analyse">
+  <div class="container">
+    <header class="trussel-header">
+      <p class="kicker">10 STRESSORS · TRE ARKETYPER</p>
+      <h2 class="display">Hva holder BAE-lederen våken</h2>
+      <p class="lede">Kalibrert mot norsk bygg, anlegg og eiendom 2026. Inspirert av BCGs CEO Insomnia Index (april 2026), men reforankret i BAA-2025, SSB, Norges Bank og NHO Byggenæringen.</p>
+    </header>
+
+    <nav class="arketype-filter" aria-label="Filtrer etter arketype">
+      <button type="button" data-arketype="alle" class="chip chip-active">Alle 10</button>
+      <button type="button" data-arketype="B" class="chip">B · Boligutvikler</button>
+      <button type="button" data-arketype="E" class="chip">E · Entreprenør</button>
+      <button type="button" data-arketype="R" class="chip">R · Rådgivende</button>
+    </nav>
+
+    <ol class="trussel-grid">
+
+      <li class="trussel-kort" data-arketype="B,E" data-score-high="true">
+        <div class="trussel-meta">
+          <span class="trussel-nummer">01</span>
+          <span class="trussel-arketype">B · E</span>
+        </div>
+        <h3 class="trussel-tittel">Igangsettingssvikt</h3>
+        <div class="trussel-score-row">
+          <div class="score-primary">
+            <span class="score-label">Stress-score</span>
+            <span class="score-value">78</span>
+          </div>
+          <div class="score-secondary">
+            <span class="score-label">Turnover-proxy</span>
+            <span class="score-value-small">20–30 %</span>
+            <span class="score-tier">[Tier B]</span>
+          </div>
+        </div>
+        <p class="trussel-kjerne">Nybyggsalg og igangsetting kommer ikke raskt nok opp til å fylle ordrebøkene før faste kostnader og gjeld spiser handlingsrommet.</p>
+        <dl class="trussel-felter">
+          <dt>Norsk evidens [A]</dt>
+          <dd>Boligprodusentenes Forening meldte 17 % lavere salg og 20 % lavere igangsetting i Q1 2026 mot året før. Siste tolvmåneders igangsetting lå 44 % under beregnet boligbehov. SSB registrerte 20 184 igangsettingstillatelser i 2025 og 19 498 fullførte boliger, laveste siden post-finanskrisen.</dd>
+          <dt>Internasjonal evidens [B]</dt>
+          <dd>McKinsey Global Institute, housing supply 2025: vedvarende underleveranse på utviklede markeder driver pris- og finansieringsrisiko opp.</dd>
+          <dt>Mekanisme</dt>
+          <dd>Kapasitet kuttet før etterspørselen er tilbake gir marginfall, permitteringer og tap av nøkkelkompetanse.</dd>
+          <dt>CEO-sitat</dt>
+          <dd class="sitat" data-needs-verification="tobias-utvikler">"Alle sier at bunnen er passert. Det hjelper lite hvis ordreboka fortsatt er tynnere enn kostnadsbasen min."</dd>
+          <dt>Pressure valve</dt>
+          <dd>Stans anbudsprising i segmenter som ikke kan dekke indirekte kostnader innen to kvartaler.</dd>
+        </dl>
+      </li>
+
+      <li class="trussel-kort" data-arketype="E" data-score-high="true">
+        <div class="trussel-meta">
+          <span class="trussel-nummer">02</span>
+          <span class="trussel-arketype">E</span>
+        </div>
+        <h3 class="trussel-tittel">Risiko bakover</h3>
+        <div class="trussel-score-row">
+          <div class="score-primary">
+            <span class="score-label">Stress-score</span>
+            <span class="score-value">74</span>
+          </div>
+          <div class="score-secondary">
+            <span class="score-label">Turnover-proxy</span>
+            <span class="score-value-small">67 %</span>
+            <span class="score-tier">[GJETT]</span>
+          </div>
+        </div>
+        <p class="trussel-kjerne">Kunder skyver pris-, fremdrifts- og dokumentasjonsrisiko bakover i kjeden, mens lønns- og materialkostnader fortsatt går opp.</p>
+        <dl class="trussel-felter">
+          <dt>Norsk evidens [A]</dt>
+          <dd>BAA-2025 (BDO/Dalsegg, 4 000+ selskaper): driftsmargin 3,3 %, laveste på fem år. SSB byggekostnadsindeks bolig +3,8 % des 2023 til des 2024, materialer +4,9 %. Tariff byggfag 2026: økonomisk ramme 4,4 %.</dd>
+          <dt>Internasjonal evidens [B]</dt>
+          <dd>Deloitte 2026 Engineering and Construction Industry Outlook: fastpris-eksponering og risiko-skyving er topp-3 lederbekymring i E&amp;C globalt.</dd>
+          <dt>Mekanisme</dt>
+          <dd>Når 3,3 % snittmargin er normalen, blir reprising-disiplin det som skiller overlevende fra ofre.</dd>
+          <dt>CEO-sitat</dt>
+          <dd class="sitat" data-needs-verification="tobias-entreprenor">"Fastpris er greit når verden er rolig. Nå signerer du ofte usikkerhet før du signerer margin."</dd>
+          <dt>Pressure valve</dt>
+          <dd>Obligatorisk reprising eller eksplisitt usikkerhetsavsetning før kontrakter med svak endringsmekanikk signeres.</dd>
+          <dt>BDO-vinkel</dt>
+          <dd>BDO arbeider med kontraktsrisiko før signering. De fleste konkurrentene kommer inn først ved første røde prosjektmøte.</dd>
+        </dl>
+      </li>
+
+      <li class="trussel-kort" data-arketype="B,E">
+        <div class="trussel-meta">
+          <span class="trussel-nummer">03</span>
+          <span class="trussel-arketype">B · E</span>
+        </div>
+        <h3 class="trussel-tittel">Refinansieringsklem</h3>
+        <div class="trussel-score-row">
+          <div class="score-primary">
+            <span class="score-label">Stress-score</span>
+            <span class="score-value">69</span>
+          </div>
+          <div class="score-secondary">
+            <span class="score-label">Turnover-proxy</span>
+            <span class="score-value-small">76 %</span>
+            <span class="score-tier">[GJETT]</span>
+          </div>
+        </div>
+        <p class="trussel-kjerne">For utviklere er rentesjokket blitt et finansierings- og covenantproblem, ikke bare et salgsproblem.</p>
+        <dl class="trussel-felter">
+          <dt>Norsk evidens [A]</dt>
+          <dd>Norges Bank Finansiell Stabilitet 2025: konkurser innen eiendomsutvikling har steget markert. Halvparten av bankene rapporterte økt risiko for brudd på lånevilkår og mislighold. Noe økte tap ventet neste år. BAA-2025: høye kapitalkostnader er kjerneproblem i 2025-markedet.</dd>
+          <dt>Internasjonal evidens [B]</dt>
+          <dd>Deloitte 2026 E&amp;C Outlook: finansiell smidighet, gjeldsstyring og likviditet er sentralt for håndtering av markedsvolatilitet.</dd>
+          <dt>Mekanisme</dt>
+          <dd>Når salg, byggelån og egenkapitalplan ikke lenger henger sammen, blir styrets første spørsmål hvem som skal rydde opp.</dd>
+          <dt>CEO-sitat</dt>
+          <dd class="sitat" data-needs-verification="tobias-utvikler-cfo">"Jeg kan leve med svakere salg. Det som holder meg våken er hva banken mener om svakere salg."</dd>
+          <dt>Pressure valve</dt>
+          <dd>Re-underwrite hele prosjektbanken månedlig med faktisk salgsfart, dagens rente og realistisk byggestart.</dd>
+          <dt>BDO-vinkel</dt>
+          <dd>Stresstest covenants før styremøtet, ikke etter. Banken har allerede gjort det.</dd>
+        </dl>
+      </li>
+
+      <li class="trussel-kort" data-arketype="E" data-score-high="true">
+        <div class="trussel-meta">
+          <span class="trussel-nummer">04</span>
+          <span class="trussel-arketype">E</span>
+        </div>
+        <h3 class="trussel-tittel">Underleverandørsmitte</h3>
+        <div class="trussel-score-row">
+          <div class="score-primary">
+            <span class="score-label">Stress-score</span>
+            <span class="score-value">71</span>
+          </div>
+          <div class="score-secondary">
+            <span class="score-label">Turnover-proxy</span>
+            <span class="score-value-small">70 %</span>
+            <span class="score-tier">[GJETT]</span>
+          </div>
+        </div>
+        <p class="trussel-kjerne">Konkursnivået er ikke lenger et volumproblem. Det er et ringvirkningsproblem.</p>
+        <dl class="trussel-felter">
+          <dt>Norsk evidens [A]</dt>
+          <dd>BAA-2025: konkursene i 2025 rammet i økende grad mellomstore og etablerte selskaper med komplekse leverandørkjeder, med forsinkelser, permitteringer og økonomiske konsekvenser. Bygg og anlegg sto for nær en tredjedel av alle norske konkurser i 2024.</dd>
+          <dt>Internasjonal evidens [B]</dt>
+          <dd>WEF Infrastructure Outlook 2025: forsyningskjedebrudd er nå strukturelt og krever aktive solvensgjennomganger blant tier 1- og tier 2-leverandører.</dd>
+          <dt>Mekanisme</dt>
+          <dd>Når én nøkkelleverandør faller ut, forsvinner ikke bare fremdrift. Du mister garantiansvar, montasjelogikk og lokal relasjonskapital.</dd>
+          <dt>CEO-sitat</dt>
+          <dd class="sitat" data-needs-verification="gjett">"Det er ikke min konkurs, men det er mitt prosjekt som stopper."</dd>
+          <dt>Pressure valve</dt>
+          <dd>Ukentlig solvabilitetsliste over de 20 mest kritiske kontraktspartene, med gul og rød status.</dd>
+          <dt>BDO-vinkel</dt>
+          <dd>BDO har solvensanalyse-modeller med data fra over 4 000 BAE-selskaper. Et lokalt regnskapsbyrå har ikke den horisonten.</dd>
+        </dl>
+      </li>
+
+      <li class="trussel-kort" data-arketype="E,R">
+        <div class="trussel-meta">
+          <span class="trussel-nummer">05</span>
+          <span class="trussel-arketype">E · R</span>
+        </div>
+        <h3 class="trussel-tittel">Produktivitetsgapet</h3>
+        <div class="trussel-score-row">
+          <div class="score-primary">
+            <span class="score-label">Stress-score</span>
+            <span class="score-value">64</span>
+          </div>
+          <div class="score-secondary">
+            <span class="score-label">Turnover-proxy</span>
+            <span class="score-value-small">58 %</span>
+            <span class="score-tier">[GJETT]</span>
+          </div>
+        </div>
+        <p class="trussel-kjerne">Bransjen jobber fortsatt for prosjektvis, for manuelt og for lite standardisert til å bære dagens kravbilde.</p>
+        <dl class="trussel-felter">
+          <dt>Norsk evidens [A]</dt>
+          <dd>BAA-2025: produktiviteten i bygg og anlegg har falt 13 % siden 2000, mens resten av fastlandsøkonomien har vokst. Bare 16 % har investert i AI. SSB: bruttoprodukt i bygg og anlegg falt 2,1 % fra 2024 til 2025. Produksjonsindeks samlet −6,1 % fra 2022 til 2025.</dd>
+          <dt>Internasjonal evidens [B]</dt>
+          <dd>McKinsey Reinventing Construction (oppdatering 2025): konstruksjon henger 30 til 50 prosentpoeng etter manufacturing i produktivitetsutvikling siden 1995.</dd>
+          <dt>Mekanisme</dt>
+          <dd>Når dokumentasjon og samordning øker raskere enn produksjonen, blir merarbeid til overhead i stedet for verdi.</dd>
+          <dt>CEO-sitat</dt>
+          <dd class="sitat" data-needs-verification="gjett">"Vi løper fortere enn før, men vi får ikke flere gode timer ut av uka."</dd>
+          <dt>Pressure valve</dt>
+          <dd>Velg én repetitiv pakke, standardiser den, mål faktisk timegevinst innen 90 dager.</dd>
+        </dl>
+      </li>
+
+      <li class="trussel-kort" data-arketype="E,R">
+        <div class="trussel-meta">
+          <span class="trussel-nummer">06</span>
+          <span class="trussel-arketype">E · R</span>
+        </div>
+        <h3 class="trussel-tittel">Konsolideringspress</h3>
+        <div class="trussel-score-row">
+          <div class="score-primary">
+            <span class="score-label">Stress-score</span>
+            <span class="score-value">38</span>
+          </div>
+          <div class="score-secondary">
+            <span class="score-label">Turnover-proxy</span>
+            <span class="score-value-small">61 %</span>
+            <span class="score-tier">[GJETT]</span>
+          </div>
+        </div>
+        <p class="trussel-kjerne">Bransjestrukturen endres raskere enn mange uavhengige selskaper er rigget for.</p>
+        <dl class="trussel-felter">
+          <dt>Norsk evidens [A]</dt>
+          <dd>BAA-2025: 129 transaksjoner i Norge og 426 i Norden i 2025, all-time high. Teknisk installasjon og rådgivende ingeniører blant mest aktive segmenter. PE-andelen øker inn i 2026. Tolvmåneders frem til Q1 2025: 54 PE-oppkjøp av norske målselskaper mot 44 strategiske.</dd>
+          <dt>Internasjonal evidens [B]</dt>
+          <dd>BCG, Construction's Big Growth Spurt: E&amp;C M&amp;A akselererer globalt, men 70 % av dealene leverer ikke som planlagt.</dd>
+          <dt>Mekanisme</dt>
+          <dd>Større plattformer får bedre prising, sterkere kundegrensesnitt og mer strukturert prosjektstyring. Den som står alene må være tydeligere enn før på hvor den faktisk skal vinne.</dd>
+          <dt>CEO-sitat</dt>
+          <dd class="sitat" data-needs-verification="tobias-radgiver-installasjon-ceo">"Det er ikke sikkert jeg må selge. Men jeg må vite hvorfor jeg skal stå alene."</dd>
+          <dt>Pressure valve</dt>
+          <dd>Velg én av tre veier nå (kjøpe, selge, stå smalt og uavhengig) og bygg styringsmodellen rundt det valget.</dd>
+          <dt>BDO-vinkel</dt>
+          <dd>BDO sitter med både kjøper- og selgersiden i transaksjonsmarkedet. Det gir kalibrering ingen aktør med bare ett mandat kan matche.</dd>
+        </dl>
+      </li>
+
+      <li class="trussel-kort" data-arketype="B,E,R">
+        <div class="trussel-meta">
+          <span class="trussel-nummer">07</span>
+          <span class="trussel-arketype">B · E · R</span>
+        </div>
+        <h3 class="trussel-tittel">Klima og beviskrav</h3>
+        <div class="trussel-score-row">
+          <div class="score-primary">
+            <span class="score-label">Stress-score</span>
+            <span class="score-value">58</span>
+          </div>
+          <div class="score-secondary">
+            <span class="score-label">Turnover-proxy</span>
+            <span class="score-value-small">63 %</span>
+            <span class="score-tier">[GJETT]</span>
+          </div>
+        </div>
+        <p class="trussel-kjerne">Klimakrav er blitt anbuds-, finansierings- og materialdokumentasjonskrav, ikke et kommunikasjonskrav.</p>
+        <dl class="trussel-felter">
+          <dt>Norsk evidens [A]</dt>
+          <dd>Direktoratet for byggkvalitet krever klimagassregnskap ved oppføring og hovedombygging av boligblokker og yrkesbygg. DFØ: klima- og miljøhensyn vektes normalt minimum 30 % i offentlige anskaffelser. Rundt 77 % av anskaffelsene i 2025 fulgte hovedregelen eller stilte miljøkrav. Statsbygg bruker prosjektspesifikke EPD-er i som-bygget-regnskap. Finansdepartementet bruker EU-taksonomien for å vurdere investeringer mot klimamål.</dd>
+          <dt>Internasjonal evidens [B]</dt>
+          <dd>WEF Infrastructure Outlook 2025: bærekraftsdokumentasjon er nå konkurransekraft, ikke compliance.</dd>
+          <dt>Mekanisme</dt>
+          <dd>Hvis dataene er svake, taper du først på kvalifisering og finansiering, deretter på pris.</dd>
+          <dt>CEO-sitat</dt>
+          <dd class="sitat" data-needs-verification="gjett">"Jeg er ikke mest redd for klimaambisjonen. Jeg er mest redd for å tape prosjektet fordi vi ikke kan bevise det vi sier."</dd>
+          <dt>Pressure valve</dt>
+          <dd>Gi én navngitt person ansvar for materialdata og EPD-kvalitet i alle tilbud over en fast terskel.</dd>
+          <dt>BDO-vinkel</dt>
+          <dd>BDO reviderer klimagassregnskap mot finansiell rapportering. De fleste bærekraftsrådgivere reviderer ikke.</dd>
+        </dl>
+      </li>
+
+      <li class="trussel-kort" data-arketype="B">
+        <div class="trussel-meta">
+          <span class="trussel-nummer">08</span>
+          <span class="trussel-arketype">B</span>
+        </div>
+        <h3 class="trussel-tittel">Planstopp lokalt</h3>
+        <div class="trussel-score-row">
+          <div class="score-primary">
+            <span class="score-label">Stress-score</span>
+            <span class="score-value">52</span>
+          </div>
+          <div class="score-secondary">
+            <span class="score-label">Turnover-proxy</span>
+            <span class="score-value-small">68 %</span>
+            <span class="score-tier">[GJETT]</span>
+          </div>
+        </div>
+        <p class="trussel-kjerne">Mange ledere behandler planfriksjon som støy helt til måneder blir til år.</p>
+        <dl class="trussel-felter">
+          <dt>Norsk evidens [A]</dt>
+          <dd>Regjeringen 2025: gjennomsnittlig saksbehandlingstid fra oppstart av reguleringsplan til kommunalt vedtak økte fra 577 dager i 2016 til 890 dager i 2023. Lovendringer foreslått fordi fristen i byggesaker i praksis kunne starte på nytt ved mangelfulle søknader. Bransjen krever reell 12 ukers byggesaksbehandling og bedre samordning av innsigelser.</dd>
+          <dt>Internasjonal evidens [B]</dt>
+          <dd>WEF Infrastructure Outlook 2025: uten tidlig og inkluderende planlegging kan lokal motstand gi kostbare prosjektforsinkelser.</dd>
+          <dt>Mekanisme</dt>
+          <dd>Forsinket planavklaring ødelegger tomtebanklogikk, flytter finansieringsdatoer og tørker opp prosjekteringspipen lenge før kranen skulle opp.</dd>
+          <dt>CEO-sitat</dt>
+          <dd class="sitat" data-needs-verification="tobias-utvikler">"Det farlige er ikke én klage. Det farlige er ett år til med venting som ingen vil eie."</dd>
+          <dt>Pressure valve</dt>
+          <dd>Kjør interessentkart og konfliktlogg før planoppstart, ikke etter første nabobrev.</dd>
+        </dl>
+      </li>
+
+      <li class="trussel-kort" data-arketype="E">
+        <div class="trussel-meta">
+          <span class="trussel-nummer">09</span>
+          <span class="trussel-arketype">E</span>
+        </div>
+        <h3 class="trussel-tittel">Fagfolk ut av bransjen</h3>
+        <div class="trussel-score-row">
+          <div class="score-primary">
+            <span class="score-label">Stress-score</span>
+            <span class="score-value">56</span>
+          </div>
+          <div class="score-secondary">
+            <span class="score-label">Turnover-proxy</span>
+            <span class="score-value-small">55 %</span>
+            <span class="score-tier">[GJETT]</span>
+          </div>
+        </div>
+        <p class="trussel-kjerne">Bedrifter kutter for å overleve nå, men vet at fagarbeidere, prosjektledere og tekniske spesialister ikke kan trylles tilbake.</p>
+        <dl class="trussel-felter">
+          <dt>Norsk evidens [A]</dt>
+          <dd>NHO Byggenæringen: 64 % har udekket kompetansebehov. 64 % mangler særlig håndverksfag. 52 % mangler ingeniør- og tekniske fag. Desember 2025: byggenæringen har allerede mistet over 17 000 fagfolk. SSB: 21 500 utenlandske pendlere i bygg og anlegg i Q4 2025, 57 % av pendlerne fra nye EU-land etter 2004 var polske lønnstakere.</dd>
+          <dt>Internasjonal evidens [B]</dt>
+          <dd>McKinsey Reinventing Construction (2025): talent og kompetanse er øverst på risiko-listen for E&amp;C globalt.</dd>
+          <dt>Mekanisme</dt>
+          <dd>Når aktiviteten tar seg opp, kommer ordrene fortere tilbake enn erfarne folk gjør.</dd>
+          <dt>CEO-sitat</dt>
+          <dd class="sitat" data-needs-verification="gjett">"Jeg er redd for å kutte de riktige folkene av de gale grunnene."</dd>
+          <dt>Pressure valve</dt>
+          <dd>Beskytt anleggsledere, prosjektledere og kalkulatører før du kutter støttefunksjoner med lavere gjenanskaffelseskost.</dd>
+          <dt>BDO-vinkel</dt>
+          <dd>Bemanningsdesign mot nedtur og oppgangsbeskyttelse samtidig krever begge linjer i samme analyse. Ofte ligger de hos hver sin rådgiver.</dd>
+        </dl>
+      </li>
+
+      <li class="trussel-kort" data-arketype="R">
+        <div class="trussel-meta">
+          <span class="trussel-nummer">10</span>
+          <span class="trussel-arketype">R</span>
+        </div>
+        <h3 class="trussel-tittel">AI presser timefag</h3>
+        <div class="trussel-score-row">
+          <div class="score-primary">
+            <span class="score-label">Stress-score</span>
+            <span class="score-value">48</span>
+          </div>
+          <div class="score-secondary">
+            <span class="score-label">Turnover-proxy</span>
+            <span class="score-value-small">66 %</span>
+            <span class="score-tier">[GJETT]</span>
+          </div>
+        </div>
+        <p class="trussel-kjerne">For rådgivende ingeniører og arkitekter er AI ennå ikke høyest på stresslisten, men allerede tett på å bli en forretningsmodelltrussel.</p>
+        <dl class="trussel-felter">
+          <dt>Norsk evidens [A]</dt>
+          <dd>BAA-2025: bare 16 % i bygg og anlegg har investert i AI. NHO Byggenæringen: 52 % av bedriftene mangler ingeniør- og tekniske fag. Sektoren møter AI med både lav modenhet og høy avhengighet av spisskompetanse.</dd>
+          <dt>Internasjonal evidens [B]</dt>
+          <dd>BCG CEO Insomnia Index (april 2026): AI ligger utenfor topp fem stressors globalt, men hver AI-satsing øker forventningen om målbar effekt. WEF Infrastructure Outlook 2025: AI optimaliserer allerede strukturdetaljering og fremdriftsplaner i ledende E&amp;C-selskaper.</dd>
+          <dt>Mekanisme</dt>
+          <dd>Når kunden ser at samme leveranse kan produseres raskere hos en AI-assistert konkurrent, kommer presset først på timeprisen og deretter på bemanningsmodellen.</dd>
+          <dt>CEO-sitat</dt>
+          <dd class="sitat" data-needs-verification="tobias-radgiver-ceo">"Det som skremmer meg er ikke teknologien. Det er at kunden snart kan mene at halve laget mitt er overhead."</dd>
+          <dt>Pressure valve</dt>
+          <dd>Produktiser én gjentakende design- eller rapportprosess og pris den på leveranse, ikke bare på timer.</dd>
+          <dt>BDO-vinkel</dt>
+          <dd>BDO er selv et timefag som omstiller fra time- til leveransepris med AI. Vi vurderer fra innsiden, ikke utenfra.</dd>
+        </dl>
+      </li>
+
+    </ol>
+
+    <aside class="blind-spots">
+      <h3>Blind spots</h3>
+      <p class="blind-spots-lede">Trusler med moderat stress-score men høy turnover-proxy. Dette er der lederen ofte ikke ser faren før den er der.</p>
+      <div class="blind-spot-item">
+        <div class="blind-spot-num">Planstopp lokalt</div>
+        <div class="blind-spot-stats">Stress 52 · Turnover-proxy 68</div>
+        <p>Stresset oppleves moderat i hverdagen. Forsinket regulering treffer tomtebank, finansiering og pipeline samtidig.</p>
+      </div>
+      <div class="blind-spot-item">
+        <div class="blind-spot-num">AI presser timefag</div>
+        <div class="blind-spot-stats">Stress 48 · Turnover-proxy 66</div>
+        <p>Lederne kjenner ennå ikke samme akutte smerte som i entreprenørleddet. Jobbsikkerheten svekkes raskt hvis betalingsmodellen blir utdatert før egen organisasjon er omrigget.</p>
+      </div>
+      <div class="blind-spot-item">
+        <div class="blind-spot-num">Konsolideringspress</div>
+        <div class="blind-spot-stats">Stress 38 · Turnover-proxy 61</div>
+        <p>Føles strategisk og fjernt. Verdsettelse, talent og markedsmakt kan ha flyttet seg før styret erkjenner at handlingsrommet er borte.</p>
+      </div>
+    </aside>
+
+    <aside class="stakeholder-rangering">
+      <h3>Stakeholders rangert (BAE-versjon)</h3>
+      <p class="stakeholder-lede">I norsk BAE er kunder og byggherrer den tøffeste relasjonen, ikke styret slik BCG fant globalt. Aktivist-press betyr her primært naboer, lokale aksjoner og miljøinnsigelser, ikke shareholder activists.</p>
+      <div class="stakeholder-list">
+        <div class="stakeholder-bar"><span class="label">Kunder og byggherrer</span><span class="value">74</span><span class="bar"><span class="bar-fill" style="width:74%"></span></span></div>
+        <div class="stakeholder-bar"><span class="label">Finansiering og bank</span><span class="value">70</span><span class="bar"><span class="bar-fill" style="width:70%"></span></span></div>
+        <div class="stakeholder-bar"><span class="label">Styre</span><span class="value">66</span><span class="bar"><span class="bar-fill" style="width:66%"></span></span></div>
+        <div class="stakeholder-bar"><span class="label">Ansatte og nøkkelpersoner</span><span class="value">62</span><span class="bar"><span class="bar-fill" style="width:62%"></span></span></div>
+        <div class="stakeholder-bar"><span class="label">Kommune og myndigheter</span><span class="value">58</span><span class="bar"><span class="bar-fill" style="width:58%"></span></span></div>
+        <div class="stakeholder-bar"><span class="label">Eiere</span><span class="value">54</span><span class="bar"><span class="bar-fill" style="width:54%"></span></span></div>
+        <div class="stakeholder-bar"><span class="label">Presse og lokalsamfunn</span><span class="value">41</span><span class="bar"><span class="bar-fill" style="width:41%"></span></span></div>
+      </div>
+    </aside>
+
+    <div class="source-line">
+      <span>Kilde: BAA-2025, SSB, Norges Bank Finansiell Stabilitet 2025, Boligprodusentenes Forening (Q1 2026), NHO Byggenæringen (des 2025), Regjeringen (2025), Direktoratet for byggkvalitet, DFØ, McKinsey, Deloitte, WEF, BCG.</span>
+      <span class="progress"><span class="current">08</span> / 14 · BESLUTNINGSSPOR</span>
+      <span class="seg-tag">TM · Trusselmatrise</span>
+    </div>
+
+  </div>
+</section>
+
 <div class="thread-line" aria-hidden="true"><span class="knot"></span></div>
 
 <!-- ════════════════════════════════════════════════════════════════
@@ -8158,6 +8853,35 @@ init();
 
 console.log('%cBDO BAA 2026 · LEVENDE RAPPORT · FINAL', 'font-family: serif; font-style: italic; font-size: 22px; color: #e81a3b');
 console.log('Bygget av Tobias Mørland Kvaslerud + Claude. Trykk P for projeksjons-modus.');
+
+
+/* ════════════════════════════════════════════════════════════════
+   BAE-CEO Trusselmatrise · arketype-filter
+   IIFE-scopet, ingen globale variabler, ingen console.log.
+   ════════════════════════════════════════════════════════════════ */
+(function initTrusselmatriseFilter() {
+  const root = document.getElementById('section-trusselmatrise');
+  if (!root) return;
+  const filterButtons = root.querySelectorAll('.arketype-filter button');
+  const kort = root.querySelectorAll('.trussel-kort');
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const valgt = btn.dataset.arketype;
+      filterButtons.forEach(b => b.classList.remove('chip-active'));
+      btn.classList.add('chip-active');
+
+      kort.forEach(k => {
+        const arketyper = (k.dataset.arketype || '').split(',');
+        if (valgt === 'alle' || arketyper.includes(valgt)) {
+          k.style.display = '';
+        } else {
+          k.style.display = 'none';
+        }
+      });
+    });
+  });
+})();
 
 
 // ════════════════════════════════════════════════════════════════
