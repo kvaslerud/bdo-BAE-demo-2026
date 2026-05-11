@@ -12,7 +12,6 @@
   Eier: Tobias Mørland Kvaslerud
   Mottaker: Martin Aasen, Managing Director BDO Norge
   Format: 8-min projeksjons-demo + delt link til laptop
-  Bygget på {N} timer av én operatør og Claude.
   ═══════════════════════════════════════════════════════════════
   Sammensying: V35 (C8 KOMPOSISJON FINAL)
   Byggeklosser: foundation v2 + del1 v2 + innholdsfortegnelse v2
@@ -22,9 +21,8 @@
   Projeksjon: ?demo=projection eller P-tast for høyere kontrast
   ═══════════════════════════════════════════════════════════════
   TIL TOBIAS før demo:
-    1. Erstatt {N} på linje med faktisk timetall (søk: {N})
-    2. Legg inn API-key for chat: ?apiKey=sk-ant-... eller bruk dialog
-    3. Test projeksjons-modus med P-tast i lyseslukket rom
+    1. Legg inn API-key for chat: ?apiKey=sk-ant-... eller bruk dialog
+    2. Test projeksjons-modus med P-tast i lyseslukket rom
   ═══════════════════════════════════════════════════════════════
 -->
 
@@ -77,6 +75,17 @@
   --lh-tight: 1.05;
   --lh-snug: 1.2;
   --lh-base: 1.6;
+  --lh-h1: 0.95;
+  --lh-h2: 1.05;
+  --lh-h3: 1.3;
+  --lh-body: 1.55;
+
+  --ls-h1: -0.02em;
+  --ls-h2: -0.015em;
+  --ls-h3: 0;
+  --ls-meta: 0.08em;
+
+  --fw-h3: 500;
 
   --space-1: 8px;
   --space-2: 16px;
@@ -97,6 +106,9 @@
   --reveal-ease: cubic-bezier(0.16, 1, 0.3, 1);
   --hover-dur: 200ms;
   --hover-ease: ease-out;
+  --interactive-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --focus-ring: 0 0 0 2px rgba(227, 6, 19, 0.4);
+  --hover-card-border: rgba(255, 255, 255, 0.16);
   --filter-dur: 600ms;
   --filter-ease: cubic-bezier(0.22, 1, 0.36, 1);
   --stagger: 80ms;
@@ -124,7 +136,7 @@ body {
   color: var(--text-primary);
   font-family: var(--font-body);
   font-size: calc(var(--fs-body) * var(--scale));
-  line-height: var(--lh-base);
+  line-height: var(--lh-body);
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -138,7 +150,43 @@ a { color: inherit; text-decoration: none; }
 button { background: none; border: none; color: inherit; font: inherit; cursor: pointer; }
 input, select, textarea { background: none; border: none; color: inherit; font: inherit; outline: none; }
 
-::selection { background: var(--accent); color: var(--bg-primary); }
+::selection { background: rgba(227, 6, 19, 0.3); color: inherit; }
+
+/* ════════════════════════════════════════════════════════════════
+   INTERAKTIVE TILSTANDER
+   Hover-lift, fokus-ring, tabulære tall.
+   ════════════════════════════════════════════════════════════════ */
+.chip, .seg-chip, .q-opt, .btn-reset, .btn-close, .key-dialog-btn,
+.spider-reset, .chat-send, .contact-email {
+  transition: transform 200ms var(--interactive-ease),
+              background 200ms var(--interactive-ease),
+              border-color 200ms var(--interactive-ease),
+              color 200ms var(--interactive-ease);
+}
+.chip:hover, .seg-chip:hover, .q-opt:hover, .btn-reset:hover,
+.btn-close:hover, .key-dialog-btn:hover, .spider-reset:hover,
+.chat-send:not(:disabled):hover, .contact-email:hover {
+  transform: translateY(-1px);
+}
+
+.toc-card:hover { border-bottom-color: var(--hover-card-border); }
+.i4-cell:hover, .contact-card:hover, .spider-card:hover,
+.chart-area:hover, .detail-panel:hover, .q-item:hover {
+  border-color: var(--hover-card-border);
+}
+
+button:focus-visible, a:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  transition: box-shadow 150ms var(--interactive-ease);
+}
+
+.stat-num, .stat-num *, .num, .sub-num, .a1-stat .num,
+.a2-margin, .a2-summary-tall, .a3-stat-num, .drill-stat-num,
+.pct-num, .spider-tier, [data-counter], table td {
+  font-variant-numeric: tabular-nums;
+}
 
 /* ════════════════════════════════════════════════════════════════
    FRAUNCES TUNING (variabel font: opsz, SOFT, WONK)
@@ -216,7 +264,7 @@ body[data-mode="projection"] .proj-indicator { display: inline-block; }
 .section {
   position: relative;
   padding: var(--space-20) 0;
-  border-top: 1px solid var(--hairline);
+  border-top: 0.5px solid var(--hairline);
 }
 .section[data-type="interaktiv"] {
   border-top: 1px solid var(--hairline-interactive);
@@ -249,9 +297,9 @@ body[data-mode="projection"] .proj-indicator { display: inline-block; }
   font-family: var(--font-display);
   font-weight: 400;
   font-size: calc(var(--fs-h2) * var(--scale));
-  line-height: var(--lh-snug);
+  line-height: var(--lh-h2);
   color: var(--text-primary);
-  letter-spacing: -0.02em;
+  letter-spacing: var(--ls-h2);
   max-width: 900px;
 }
 .section-title em { font-style: italic; }
@@ -270,12 +318,6 @@ main > .section:first-of-type {
   border-top: none;
   padding-top: var(--space-12);
 }
-main > section.del1:first-of-type,
-main > .del1.section:first-of-type,
-section.del1.container {
-  border-top: none;
-}
-
 /* Reveal-pattern */
 .reveal {
   opacity: 0;
@@ -288,7 +330,7 @@ section.del1.container {
 .source-line {
   margin-top: var(--space-8);
   padding-top: var(--space-3);
-  border-top: 1px solid var(--hairline);
+  border-top: 0.5px solid var(--hairline);
   display: flex;
   justify-content: space-between;
   font-family: var(--font-mono);
@@ -390,9 +432,9 @@ section.del1.container {
   font-family: var(--font-display);
   font-weight: 400;
   font-size: calc(var(--fs-h1) * var(--scale));
-  line-height: 1.0;
+  line-height: var(--lh-h1);
   color: var(--text-primary);
-  letter-spacing: -0.02em;
+  letter-spacing: var(--ls-h1);
   opacity: 0;
   animation: fade-in 800ms var(--reveal-ease) 600ms forwards;
 }
@@ -463,635 +505,10 @@ section.del1.container {
   margin: var(--space-2) auto 0;
 }
 
-@keyframes fade-in {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
 @keyframes scroll-pulse {
   0%, 100% { opacity: 0.5; }
   50% { opacity: 1; }
 }
-
-
-
-/* DEL 1 padding-fix: behold gutter når brukt med .container */
-section.del1.container {
-  padding: var(--space-20) var(--gutter) var(--space-16);
-}
-@media (max-width: 900px) {
-  section.del1.container {
-    padding: var(--space-12) var(--gutter) var(--space-8);
-  }
-}
-
-/* ════════════════════════════════════════════════════════════════
-   DEL 1 · PROMPT-STRATEGI
-   ════════════════════════════════════════════════════════════════ */
-
-.del1 {
-  position: relative;
-  padding: var(--space-20) 0 var(--space-16);
-  min-height: 100vh;
-}
-
-.del1-meta {
-  font-family: var(--font-mono);
-  font-size: calc(var(--fs-meta) * var(--scale));
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--text-secondary);
-  margin-bottom: var(--space-6);
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  opacity: 0;
-  animation: fade-in 800ms var(--reveal-ease) 100ms forwards;
-}
-.del1-meta::before {
-  content: '';
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  background: var(--accent);
-  border-radius: 50%;
-}
-
-.del1-headline {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: calc(var(--fs-h1) * var(--scale));
-  line-height: var(--lh-tight);
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
-  max-width: 1100px;
-  margin-bottom: var(--space-3);
-  opacity: 0;
-  animation: fade-in 800ms var(--reveal-ease) 300ms forwards;
-}
-.del1-headline em {
-  font-style: italic;
-  color: var(--accent);
-}
-
-.del1-sub {
-  font-family: var(--font-body);
-  font-size: calc(var(--fs-lead) * var(--scale));
-  line-height: 1.5;
-  color: var(--text-secondary);
-  max-width: var(--content-max);
-  margin-top: var(--space-4);
-  opacity: 0;
-  animation: fade-in 800ms var(--reveal-ease) 500ms forwards;
-}
-
-/* ════════════════════════════════════════════════════════════════
-   PROMPT-BLOKKER
-   ════════════════════════════════════════════════════════════════ */
-.prompt-list {
-  margin-top: var(--space-20);
-  border-top: 1px solid var(--hairline);
-}
-
-.prompt-block {
-  display: grid;
-  grid-template-columns: 5fr 7fr;
-  gap: var(--space-12);
-  padding: var(--space-12) 0;
-  border-bottom: 1px solid var(--hairline);
-  position: relative;
-}
-
-.prompt-block::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 32px;
-  height: 1px;
-  background: var(--accent);
-}
-
-.prompt-side {
-  position: relative;
-}
-
-.prompt-num {
-  font-family: var(--font-mono);
-  font-size: calc(var(--fs-meta) * var(--scale));
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--text-tertiary);
-  margin-bottom: var(--space-2);
-}
-
-.prompt-cmd {
-  font-family: var(--font-mono);
-  font-size: calc(13px * var(--scale));
-  font-weight: 500;
-  color: var(--accent);
-  letter-spacing: 0.12em;
-  border-left: 2px solid var(--accent);
-  padding-left: var(--space-2);
-  margin-bottom: var(--space-4);
-  text-transform: lowercase;
-}
-
-.prompt-shell {
-  font-family: var(--font-mono);
-  font-size: calc(15px * var(--scale));
-  line-height: 1.7;
-  color: var(--text-primary);
-  background: var(--bg-elevated);
-  border: 1px solid var(--hairline-strong);
-  padding: var(--space-3) var(--space-4);
-  position: relative;
-  border-radius: 2px;
-}
-.prompt-shell::before {
-  content: '$';
-  position: absolute;
-  left: var(--space-2);
-  top: var(--space-3);
-  color: var(--text-tertiary);
-  font-weight: 500;
-}
-.prompt-text {
-  display: block;
-  padding-left: var(--space-3);
-  min-height: 1.7em;
-  white-space: pre-wrap;
-}
-.prompt-cursor {
-  display: inline-block;
-  width: 7px;
-  height: 1.05em;
-  background: var(--accent);
-  vertical-align: text-bottom;
-  margin-left: 2px;
-  transform: translateY(2px);
-  animation: cursor-blink 700ms steps(2) infinite;
-  transition: opacity 400ms ease-out;
-}
-.prompt-cursor.done {
-  animation: none;
-  opacity: 0;
-}
-
-@keyframes cursor-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-.prompt-meta {
-  font-family: var(--font-mono);
-  font-size: calc(var(--fs-meta) * var(--scale));
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--text-tertiary);
-  margin-top: var(--space-3);
-}
-
-/* Output-side */
-.output-side {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
-  position: relative;
-}
-
-.output-divider {
-  position: absolute;
-  left: calc(-0.5 * var(--space-12));
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: var(--hairline);
-}
-
-.output-block {
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 600ms var(--reveal-ease), transform 600ms var(--reveal-ease);
-}
-.output-block.revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.output-label {
-  font-family: var(--font-mono);
-  font-size: calc(var(--fs-meta) * var(--scale));
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--text-secondary);
-  margin-bottom: var(--space-1);
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-}
-.output-label::before {
-  content: '';
-  width: 12px;
-  height: 1px;
-  background: var(--text-tertiary);
-}
-
-.output-content {
-  font-family: var(--font-body);
-  font-size: calc(var(--fs-body) * var(--scale));
-  line-height: 1.55;
-  color: var(--text-primary);
-  max-width: 600px;
-}
-.output-content em {
-  font-style: italic;
-}
-.output-content em.accent {
-  font-family: var(--font-display);
-  font-size: 1.12em;
-  color: var(--accent);
-  letter-spacing: -0.01em;
-}
-.output-content .quote {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: calc(28px * var(--scale));
-  color: var(--text-primary);
-  display: block;
-  padding-left: var(--space-3);
-  border-left: 2px solid var(--accent);
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-}
-
-.output-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  margin-top: var(--space-1);
-}
-.output-list li {
-  font-family: var(--font-body);
-  font-size: calc(16px * var(--scale));
-  line-height: 1.5;
-  color: var(--text-primary);
-  display: grid;
-  grid-template-columns: 32px 1fr;
-  gap: var(--space-2);
-  align-items: baseline;
-}
-.output-list li .marker {
-  font-family: var(--font-mono);
-  font-size: calc(var(--fs-meta) * var(--scale));
-  letter-spacing: 0.12em;
-  color: var(--text-tertiary);
-  padding-top: 4px;
-}
-
-.output-block.tight .output-content {
-  font-size: calc(15px * var(--scale));
-  color: var(--text-secondary);
-}
-
-/* ════════════════════════════════════════════════════════════════
-   OUTRO + VISUELL SUTUR TIL HERO
-   ════════════════════════════════════════════════════════════════ */
-.del1-outro {
-  position: relative;
-  padding: var(--space-20) 0 var(--space-12);
-  text-align: center;
-}
-
-.del1-outro-line {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-style: italic;
-  font-size: calc(var(--fs-h2) * var(--scale));
-  line-height: var(--lh-snug);
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
-  opacity: 0;
-  transition: opacity 800ms var(--reveal-ease);
-}
-.del1-outro-line.revealed {
-  opacity: 1;
-}
-
-.del1-sutur {
-  margin-top: var(--space-12);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-3);
-  opacity: 0;
-  transition: opacity 800ms var(--reveal-ease) 400ms;
-}
-.del1-sutur.revealed { opacity: 1; }
-
-.sutur-line {
-  width: 1px;
-  height: 96px;
-  background: linear-gradient(to bottom, var(--hairline-strong), transparent);
-}
-
-.sutur-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 24px rgba(227, 6, 19, 0.6);
-  animation: sutur-pulse 2400ms ease-in-out infinite;
-}
-
-@keyframes sutur-pulse {
-  0%, 100% { opacity: 0.4; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.2); }
-}
-
-.sutur-label {
-  font-family: var(--font-mono);
-  font-size: calc(var(--fs-meta) * var(--scale));
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--text-tertiary);
-  margin-top: var(--space-2);
-}
-
-
-
-.prompt-list {
-  margin-top: var(--space-20);
-  border-top: 1px solid var(--hairline);
-}
-
-.prompt-block {
-  display: grid;
-  grid-template-columns: 5fr 7fr;
-  gap: var(--space-12);
-  padding: var(--space-12) 0;
-  border-bottom: 1px solid var(--hairline);
-  position: relative;
-}
-
-.prompt-block::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 32px;
-  height: 1px;
-  background: var(--accent);
-}
-
-.prompt-side {
-  position: relative;
-}
-
-.prompt-num {
-  font-family: var(--font-mono);
-  font-size: calc(var(--fs-meta) * var(--scale));
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--text-tertiary);
-  margin-bottom: var(--space-2);
-}
-
-.prompt-cmd {
-  font-family: var(--font-mono);
-  font-size: calc(13px * var(--scale));
-  font-weight: 500;
-  color: var(--accent);
-  letter-spacing: 0.12em;
-  border-left: 2px solid var(--accent);
-  padding-left: var(--space-2);
-  margin-bottom: var(--space-4);
-  text-transform: lowercase;
-}
-
-.prompt-shell {
-  font-family: var(--font-mono);
-  font-size: calc(15px * var(--scale));
-  line-height: 1.7;
-  color: var(--text-primary);
-  background: var(--bg-elevated);
-  border: 1px solid var(--hairline-strong);
-  padding: var(--space-3) var(--space-4);
-  position: relative;
-  border-radius: 2px;
-}
-.prompt-shell::before {
-  content: '$';
-  position: absolute;
-  left: var(--space-2);
-  top: var(--space-3);
-  color: var(--text-tertiary);
-  font-weight: 500;
-}
-.prompt-text {
-  display: block;
-  padding-left: var(--space-3);
-  min-height: 1.7em;
-  white-space: pre-wrap;
-}
-.prompt-cursor {
-  display: inline-block;
-  width: 7px;
-  height: 1.05em;
-  background: var(--accent);
-  vertical-align: text-bottom;
-  margin-left: 2px;
-  transform: translateY(2px);
-  animation: cursor-blink 700ms steps(2) infinite;
-  transition: opacity 400ms ease-out;
-}
-.prompt-cursor.done {
-  animation: none;
-  opacity: 0;
-}
-
-@keyframes cursor-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-.prompt-meta {
-  font-family: var(--font-mono);
-  font-size: calc(var(--fs-meta) * var(--scale));
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--text-tertiary);
-  margin-top: var(--space-3);
-}
-
-/* Output-side */
-.output-side {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
-  position: relative;
-}
-
-.output-divider {
-  position: absolute;
-  left: calc(-0.5 * var(--space-12));
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: var(--hairline);
-}
-
-.output-block {
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 600ms var(--reveal-ease), transform 600ms var(--reveal-ease);
-}
-.output-block.revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.output-label {
-  font-family: var(--font-mono);
-  font-size: calc(var(--fs-meta) * var(--scale));
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--text-secondary);
-  margin-bottom: var(--space-1);
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-}
-.output-label::before {
-  content: '';
-  width: 12px;
-  height: 1px;
-  background: var(--text-tertiary);
-}
-
-.output-content {
-  font-family: var(--font-body);
-  font-size: calc(var(--fs-body) * var(--scale));
-  line-height: 1.55;
-  color: var(--text-primary);
-  max-width: 600px;
-}
-.output-content em {
-  font-style: italic;
-}
-.output-content em.accent {
-  font-family: var(--font-display);
-  font-size: 1.12em;
-  color: var(--accent);
-  letter-spacing: -0.01em;
-}
-.output-content .quote {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: calc(28px * var(--scale));
-  color: var(--text-primary);
-  display: block;
-  padding-left: var(--space-3);
-  border-left: 2px solid var(--accent);
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-}
-
-.output-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  margin-top: var(--space-1);
-}
-.output-list li {
-  font-family: var(--font-body);
-  font-size: calc(16px * var(--scale));
-  line-height: 1.5;
-  color: var(--text-primary);
-  display: grid;
-  grid-template-columns: 32px 1fr;
-  gap: var(--space-2);
-  align-items: baseline;
-}
-.output-list li .marker {
-  font-family: var(--font-mono);
-  font-size: calc(var(--fs-meta) * var(--scale));
-  letter-spacing: 0.12em;
-  color: var(--text-tertiary);
-  padding-top: 4px;
-}
-
-.output-block.tight .output-content {
-  font-size: calc(15px * var(--scale));
-  color: var(--text-secondary);
-}
-
-
-
-.del1-outro {
-  position: relative;
-  padding: var(--space-20) 0 var(--space-12);
-  text-align: center;
-}
-
-.del1-outro-line {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-style: italic;
-  font-size: calc(var(--fs-h2) * var(--scale));
-  line-height: var(--lh-snug);
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
-  opacity: 0;
-  transition: opacity 800ms var(--reveal-ease);
-}
-.del1-outro-line.revealed {
-  opacity: 1;
-}
-
-.del1-sutur {
-  margin-top: var(--space-12);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-3);
-  opacity: 0;
-  transition: opacity 800ms var(--reveal-ease) 400ms;
-}
-.del1-sutur.revealed { opacity: 1; }
-
-.sutur-line {
-  width: 1px;
-  height: 96px;
-  background: linear-gradient(to bottom, var(--hairline-strong), transparent);
-}
-
-.sutur-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 24px rgba(227, 6, 19, 0.6);
-  animation: sutur-pulse 2400ms ease-in-out infinite;
-}
-
-@keyframes sutur-pulse {
-  0%, 100% { opacity: 0.4; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.2); }
-}
-
-.sutur-label {
-  font-family: var(--font-mono);
-  font-size: calc(var(--fs-meta) * var(--scale));
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--text-tertiary);
-  margin-top: var(--space-2);
-}
-
-
-
 @keyframes fade-in {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
@@ -1100,26 +517,28 @@ section.del1.container {
 /* ═══ TOC + LIVE-MINIATYRER ═══ */
 
 .toc-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  border-top: 1px solid var(--hairline-strong);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(7, auto);
+  grid-auto-flow: column;
+  column-gap: 48px;
+  row-gap: 12px;
+  border-top: 0.5px solid var(--hairline-strong);
   margin-top: var(--space-8);
   position: relative;
 }
 
 .toc-card {
   background: transparent;
-  padding: var(--space-5) var(--space-2) var(--space-4);
+  padding: 14px var(--space-2);
   display: grid;
-  grid-template-columns: 96px 1fr 140px;
+  grid-template-columns: 56px 1fr 80px;
   align-items: center;
-  gap: var(--space-6);
+  gap: var(--space-3);
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  border-bottom: 1px solid var(--hairline);
-  min-height: 112px;
+  border-bottom: 0.5px solid var(--hairline);
   transition:
     background var(--hover-dur) var(--hover-ease),
     padding var(--hover-dur) var(--hover-ease);
@@ -1137,7 +556,7 @@ section.del1.container {
 }
 .toc-card:hover {
   background: var(--bg-elevated);
-  padding-left: var(--space-4);
+  padding-left: var(--space-3);
   z-index: 5;
 }
 .toc-card:hover .toc-card-num { color: var(--accent); }
@@ -1155,6 +574,24 @@ section.del1.container {
 }
 .toc-card:hover::after {
   background: var(--accent);
+}
+
+/* Aktiv rad ('Du er her') – permanent rød markør + subtil tint */
+.toc-card[data-type="toc"] {
+  background: rgba(227, 6, 19, 0.04);
+}
+.toc-card[data-type="toc"]::after {
+  background: var(--accent);
+}
+
+/* Fallback til én kolonne under 1200px viewport */
+@media (max-width: 1199px) {
+  .toc-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-auto-flow: row;
+    column-gap: 0;
+  }
 }
 
 /* Live cards: ingen ekstra spennvidde, men aksent på badge */
@@ -1223,6 +660,10 @@ section.del1.container {
   0%, 100% { box-shadow: 0 0 0 0 var(--accent-glow); }
   50% { box-shadow: 0 0 0 5px transparent; }
 }
+@keyframes status-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.65; transform: scale(0.95); }
+}
 
 /* Tittel + tag stacked i kolonne 2 */
 .toc-card-body {
@@ -1233,7 +674,7 @@ section.del1.container {
 }
 .toc-card-title {
   font-family: var(--font-display);
-  font-size: calc(26px * var(--scale));
+  font-size: calc(22px * var(--scale));
   line-height: 1.2;
   color: var(--text-primary);
   transition: color var(--hover-dur) var(--hover-ease);
@@ -1241,7 +682,7 @@ section.del1.container {
   font-variation-settings: "opsz" 60, "SOFT" 50, "WONK" 0;
 }
 .toc-card[data-live="true"] .toc-card-title {
-  font-size: calc(28px * var(--scale));
+  font-size: calc(22px * var(--scale));
 }
 .toc-card-title em { font-style: italic; font-variation-settings: "opsz" 60, "SOFT" 60, "WONK" 1; }
 .toc-card-title em.r { color: var(--accent); }
@@ -1282,10 +723,6 @@ section.del1.container {
   animation: toc-breathe 4200ms ease-in-out infinite;
   transform-origin: center;
 }
-@keyframes toc-breathe {
-  0%, 100% { opacity: 0.55; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.04); }
-}
 .live-toc rect {
   fill: var(--text-tertiary);
   transition: fill 0.4s;
@@ -1298,22 +735,11 @@ section.del1.container {
   animation: spider-pulse 6500ms ease-in-out infinite;
   transform-origin: center;
 }
-@keyframes spider-pulse {
-  0%, 100% { transform: scale(1); }
-  10% { transform: scale(1.02); }
-  20% { transform: scale(1); }
-  30% { transform: scale(1.04); }
-  40% { transform: scale(1); }
-}
 .live-spider polygon {
   fill: var(--accent-soft);
   stroke: var(--accent);
   stroke-width: 1.2;
   animation: spider-morph 6500ms ease-in-out infinite;
-}
-@keyframes spider-morph {
-  0%, 100% { fill-opacity: 0.6; }
-  35% { fill-opacity: 1; }
 }
 .live-spider .axis { stroke: var(--text-tertiary); stroke-width: 0.5; opacity: 0.5; }
 .live-spider .ring { stroke: var(--text-tertiary); stroke-width: 0.4; fill: none; opacity: 0.3; }
@@ -1335,18 +761,8 @@ section.del1.container {
   fill: var(--accent);
   animation: chat-cursor 800ms steps(2) infinite;
 }
-@keyframes chat-cursor {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
-}
 .live-chat .chat-rotator {
   animation: chat-rotate 3700ms ease-in-out infinite;
-}
-@keyframes chat-rotate {
-  0%, 28% { transform: translateY(0); }
-  33%, 61% { transform: translateY(-100%); }
-  66%, 94% { transform: translateY(-200%); }
-  100% { transform: translateY(0); }
 }
 
 /* Verdikjede mini: sekvensiell fase-rotasjon - 5,3s */
@@ -1598,28 +1014,30 @@ section.del1.container {
 .a2-table {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 0;
-  border-top: 1px solid var(--hairline-strong);
+  gap: 8px;
+  border-top: 0.5px solid var(--hairline-strong);
+  padding-top: 8px;
 }
 .a2-row {
   display: grid;
   grid-template-columns: 220px 100px 1fr 60px;
   gap: var(--space-4);
   align-items: center;
-  padding: var(--space-4) 0;
-  border-bottom: 1px solid var(--hairline);
+  padding: 4px 0;
+  max-height: 48px;
+  border-bottom: 0.5px solid var(--hairline);
   position: relative;
 }
 .a2-segment {
   font-family: var(--font-display);
-  font-size: calc(28px * var(--scale));
+  font-size: calc(18px * var(--scale));
   line-height: 1.1;
   color: var(--text-primary);
 }
 .a2-margin {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: calc(40px * var(--scale));
+  font-size: calc(22px * var(--scale));
   line-height: 1;
   color: var(--text-primary);
   text-align: right;
@@ -1660,11 +1078,11 @@ section.del1.container {
 }
 
 .a2-summary {
-  margin-top: var(--space-6);
+  margin-top: 32px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-8);
-  align-items: end;
+  align-items: center;
 }
 .a2-summary-tall {
   font-family: var(--font-display);
@@ -1673,6 +1091,7 @@ section.del1.container {
   line-height: 0.9;
   color: var(--accent);
   letter-spacing: -0.04em;
+  margin-bottom: 16px;
 }
 .a2-summary-text {
   font-family: var(--font-body);
@@ -1773,7 +1192,7 @@ section.del1.container {
 .a3-legend-item.norden::before { background: var(--text-secondary); }
 
 .a3-platforms {
-  border-left: 1px solid var(--hairline-strong);
+  border-left: 0.5px solid var(--hairline-strong);
   padding-left: var(--space-6);
 }
 .a3-platforms-head {
@@ -1786,7 +1205,7 @@ section.del1.container {
 }
 .a3-platform {
   padding: var(--space-3) 0;
-  border-bottom: 1px solid var(--hairline);
+  border-bottom: 0.5px solid var(--hairline);
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -1812,7 +1231,7 @@ section.del1.container {
 .a3-pe-meta {
   margin-top: var(--space-6);
   padding-top: var(--space-3);
-  border-top: 1px solid var(--hairline);
+  border-top: 0.5px solid var(--hairline);
   font-family: var(--font-body);
   font-size: calc(15px * var(--scale));
   color: var(--text-secondary);
@@ -2051,7 +1470,7 @@ section.del1.container {
   gap: var(--space-6);
   margin-top: var(--space-6);
   padding-top: var(--space-3);
-  border-top: 1px solid var(--hairline);
+  border-top: 0.5px solid var(--hairline);
 }
 .a5-mini-stat .num {
   font-family: var(--font-display);
@@ -2079,7 +1498,7 @@ section.del1.container {
   grid-template-rows: 1fr 1fr;
   gap: 1px;
   background: var(--hairline);
-  border: 1px solid var(--hairline);
+  border: 0.5px solid var(--hairline);
 }
 .a6-cell {
   background: var(--bg-primary);
@@ -2167,7 +1586,7 @@ section.del1.container {
   grid-template-columns: repeat(5, 1fr);
   gap: 1px;
   background: var(--hairline-strong);
-  border: 1px solid var(--hairline-strong);
+  border: 0.5px solid var(--hairline-strong);
   position: relative;
   box-shadow: 0 0 0 0 var(--accent-soft);
   transition: box-shadow 800ms ease;
@@ -2194,7 +1613,7 @@ section.del1.container {
   border-radius: 50%;
   background: var(--accent);
   box-shadow: 0 0 0 0 var(--accent-glow);
-  animation: live-dot 1800ms ease-in-out infinite;
+  animation: live-dot 2000ms ease-in-out infinite;
 }
 .value-chain.has-active::before { opacity: 0; }
 .value-chain.has-active::after { opacity: 0; }
@@ -2280,7 +1699,7 @@ section.del1.container {
   color: var(--text-secondary);
   margin-top: auto;
   padding-top: var(--space-3);
-  border-top: 1px solid var(--hairline-strong);
+  border-top: 0.5px solid var(--hairline-strong);
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -2322,7 +1741,7 @@ section.del1.container {
   justify-content: space-between;
   align-items: baseline;
   margin-bottom: var(--space-6);
-  border-bottom: 1px solid var(--hairline);
+  border-bottom: 0.5px solid var(--hairline);
   padding-bottom: var(--space-3);
   gap: var(--space-4);
   flex-wrap: wrap;
@@ -2347,10 +1766,11 @@ section.del1.container {
 
 .drill-title {
   font-family: var(--font-display);
+  font-weight: var(--fw-h3);
   font-size: calc(var(--fs-h3) * var(--scale));
-  line-height: 1.15;
+  line-height: var(--lh-h3);
   color: var(--text-primary);
-  letter-spacing: -0.01em;
+  letter-spacing: var(--ls-h3);
   margin-bottom: var(--space-3);
 }
 .drill-title em { font-style: italic; color: var(--accent); }
@@ -2361,7 +1781,7 @@ section.del1.container {
   grid-auto-rows: minmax(260px, auto);
   gap: 1px;
   background: var(--hairline-strong);
-  border: 1px solid var(--hairline-strong);
+  border: 0.5px solid var(--hairline-strong);
   margin-top: var(--space-6);
 }
 .drill-cell {
@@ -2434,7 +1854,7 @@ section.del1.container {
   grid-template-columns: auto 1fr;
   gap: var(--space-3);
   padding: var(--space-3) 0;
-  border-top: 1px solid var(--hairline-strong);
+  border-top: 0.5px solid var(--hairline-strong);
   align-items: baseline;
 }
 .drill-tool:first-child { border-top: none; padding-top: 0; }
@@ -2473,7 +1893,7 @@ section.del1.container {
    I2 · CXO-CHAT
    ════════════════════════════════════════════════════════════════ */
 .chat {
-  border: 1px solid var(--hairline-strong);
+  border: 0.5px solid var(--hairline-strong);
   background: var(--bg-deeper);
   display: flex;
   flex-direction: column;
@@ -2495,7 +1915,7 @@ section.del1.container {
 
 .chat-meta {
   padding: var(--space-3) var(--space-4);
-  border-bottom: 1px solid var(--hairline-strong);
+  border-bottom: 0.5px solid var(--hairline-strong);
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -2521,7 +1941,7 @@ section.del1.container {
   border-radius: 50%;
   background: var(--accent);
   box-shadow: 0 0 0 0 var(--accent-glow);
-  animation: live-dot 1800ms ease-in-out infinite;
+  animation: live-dot 2000ms ease-in-out infinite;
 }
 .chat-meta-model { color: var(--text-secondary); }
 
@@ -2681,7 +2101,7 @@ section.del1.container {
   background: var(--accent);
   margin-left: 2px;
   vertical-align: text-bottom;
-  animation: cursor-blink 900ms steps(2, end) infinite;
+  animation: cursor-blink 700ms steps(2) infinite;
   transform: translateY(2px);
 }
 @keyframes cursor-blink {
@@ -2701,7 +2121,7 @@ section.del1.container {
 /* CHIPS */
 .chat-chips {
   padding: var(--space-3) var(--space-6) var(--space-2);
-  border-top: 1px solid var(--hairline);
+  border-top: 0.5px solid var(--hairline);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1px;
@@ -2770,7 +2190,7 @@ section.del1.container {
   grid-template-columns: 1fr auto;
   gap: var(--space-3);
   padding: var(--space-3) var(--space-6) var(--space-4);
-  border-top: 1px solid var(--hairline);
+  border-top: 0.5px solid var(--hairline);
   align-items: center;
 }
 .chat-input {
@@ -2779,7 +2199,7 @@ section.del1.container {
   font-size: calc(15px * var(--scale));
   color: var(--text-primary);
   padding: var(--space-2) 0;
-  border-bottom: 1px solid var(--hairline);
+  border-bottom: 0.5px solid var(--hairline);
   transition: border-color var(--hover-dur) var(--hover-ease);
 }
 .chat-input::placeholder { color: var(--text-tertiary); }
@@ -2792,7 +2212,7 @@ section.del1.container {
   text-transform: uppercase;
   color: var(--text-secondary);
   padding: 10px 18px;
-  border: 1px solid var(--hairline-strong);
+  border: 0.5px solid var(--hairline-strong);
   transition: all var(--hover-dur) var(--hover-ease);
   white-space: nowrap;
 }
@@ -2825,7 +2245,7 @@ section.del1.container {
 .key-dialog.is-visible { display: flex; }
 .key-dialog-inner {
   background: var(--bg-elevated);
-  border: 1px solid var(--hairline-strong);
+  border: 0.5px solid var(--hairline-strong);
   padding: var(--space-6);
   max-width: 520px;
   width: 100%;
@@ -2842,9 +2262,11 @@ section.del1.container {
 }
 .key-dialog-title {
   font-family: var(--font-display);
-  font-size: 24px;
+  font-weight: var(--fw-h3);
+  font-size: calc(var(--fs-h3) * var(--scale));
+  line-height: var(--lh-h3);
   margin-bottom: var(--space-2);
-  letter-spacing: -0.01em;
+  letter-spacing: var(--ls-h3);
 }
 .key-dialog-text {
   font-family: var(--font-body);
@@ -2856,7 +2278,7 @@ section.del1.container {
 .key-dialog-input {
   width: 100%;
   padding: var(--space-2);
-  border: 1px solid var(--hairline-strong);
+  border: 0.5px solid var(--hairline-strong);
   background: var(--bg-deeper);
   font-family: var(--font-mono);
   font-size: 12px;
@@ -2866,7 +2288,7 @@ section.del1.container {
 .key-dialog-actions { display: flex; gap: var(--space-2); justify-content: flex-end; }
 .key-dialog-btn {
   padding: 10px 18px;
-  border: 1px solid var(--hairline-strong);
+  border: 0.5px solid var(--hairline-strong);
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.18em;
@@ -2898,7 +2320,7 @@ section.del1.container {
   gap: var(--space-1);
 }
 .q-item {
-  border: 1px solid var(--hairline);
+  border: 0.5px solid var(--hairline);
   background: var(--bg-card);
   padding: var(--space-3);
   position: relative;
@@ -2960,7 +2382,7 @@ section.del1.container {
 }
 .q-opt {
   background: transparent;
-  border: 1px solid var(--hairline-strong);
+  border: 0.5px solid var(--hairline-strong);
   padding: var(--space-2);
   text-align: left;
   cursor: pointer;
@@ -3004,7 +2426,7 @@ section.del1.container {
   top: var(--space-6);
 }
 .spider-card {
-  border: 1px solid var(--hairline);
+  border: 0.5px solid var(--hairline);
   background: var(--bg-card);
   padding: var(--space-6);
   position: relative;
@@ -3101,7 +2523,7 @@ section.del1.container {
 .spider-result {
   margin-top: var(--space-6);
   padding-top: var(--space-6);
-  border-top: 1px solid var(--hairline);
+  border-top: 0.5px solid var(--hairline);
   opacity: 0;
   transform: translateY(8px);
   transition: opacity 600ms var(--reveal-ease), transform 600ms var(--reveal-ease);
@@ -3207,7 +2629,7 @@ section.del1.container {
 .spider-footnote {
   margin-top: var(--space-8);
   padding-top: var(--space-3);
-  border-top: 1px solid var(--hairline);
+  border-top: 0.5px solid var(--hairline);
   font-family: var(--font-mono);
   font-size: var(--fs-meta);
   letter-spacing: 0.18em;
@@ -3233,7 +2655,7 @@ section.del1.container {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--text-tertiary);
-  border: 1px solid var(--hairline);
+  border: 0.5px solid var(--hairline);
   padding: 8px 14px;
   cursor: pointer;
   transition: all var(--hover-dur) var(--hover-ease);
@@ -3263,7 +2685,7 @@ section.del1.container {
   grid-template-rows: 1fr 1fr;
   gap: 1px;
   background: var(--hairline);
-  border: 1px solid var(--hairline);
+  border: 0.5px solid var(--hairline);
   margin-top: var(--space-6);
 }
 .i4-cell {
@@ -3310,10 +2732,11 @@ section.del1.container {
 .i4-cell.is-bdo .i4-tag::before { background: var(--accent); }
 .i4-title {
   font-family: var(--font-display);
-  font-size: calc(36px * var(--scale));
-  line-height: var(--lh-snug);
+  font-weight: var(--fw-h3);
+  font-size: calc(var(--fs-h3) * var(--scale));
+  line-height: var(--lh-h3);
   color: var(--text-primary);
-  letter-spacing: -0.01em;
+  letter-spacing: var(--ls-h3);
 }
 .i4-title em { font-style: italic; color: var(--accent); }
 .i4-text {
@@ -3331,7 +2754,7 @@ section.del1.container {
   gap: 6px;
   margin-top: auto;
   padding-top: var(--space-3);
-  border-top: 1px solid var(--hairline);
+  border-top: 0.5px solid var(--hairline);
 }
 .i4-list li {
   font-family: var(--font-mono);
@@ -3366,7 +2789,7 @@ section.del1.container {
   grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   background: var(--hairline-strong);
-  border: 1px solid var(--hairline-strong);
+  border: 0.5px solid var(--hairline-strong);
 }
 .contact-card {
   background: var(--bg-card);
@@ -3407,7 +2830,7 @@ section.del1.container {
   letter-spacing: 0.04em;
   color: var(--text-primary);
   text-decoration: none;
-  border-bottom: 1px solid var(--hairline-strong);
+  border-bottom: 0.5px solid var(--hairline-strong);
   padding-bottom: 4px;
   align-self: flex-start;
   transition: color var(--hover-dur) var(--hover-ease), border-color var(--hover-dur) var(--hover-ease);
@@ -3420,7 +2843,7 @@ section.del1.container {
 .landing-signature {
   margin-top: var(--space-16);
   padding-top: var(--space-4);
-  border-top: 1px solid var(--hairline);
+  border-top: 0.5px solid var(--hairline);
   font-family: var(--font-mono);
   font-size: calc(var(--fs-meta) * var(--scale));
   letter-spacing: 0.16em;
@@ -3441,8 +2864,8 @@ section.del1.container {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: var(--space-8);
-  border-top: 1px solid var(--hairline);
-  border-bottom: 1px solid var(--hairline);
+  border-top: 0.5px solid var(--hairline);
+  border-bottom: 0.5px solid var(--hairline);
   padding: var(--space-6) 0;
   margin: var(--space-8) 0 var(--space-6);
 }
@@ -3493,7 +2916,7 @@ section.del1.container {
   flex-direction: column;
   gap: var(--space-4);
   padding: var(--space-6) 0;
-  border-bottom: 1px solid var(--hairline);
+  border-bottom: 0.5px solid var(--hairline);
   margin-bottom: var(--space-6);
 }
 .filter-row {
@@ -3526,7 +2949,7 @@ section.del1.container {
   align-items: center;
   gap: 8px;
   padding: 8px 14px;
-  border: 1px solid var(--hairline-strong);
+  border: 0.5px solid var(--hairline-strong);
   border-radius: 0;
   background: transparent;
   font-family: var(--font-mono);
@@ -3557,7 +2980,7 @@ section.del1.container {
 .search-input {
   width: 100%;
   background: transparent;
-  border: 1px solid var(--hairline-strong);
+  border: 0.5px solid var(--hairline-strong);
   padding: 10px 14px 10px 36px;
   font-family: var(--font-body);
   font-size: calc(14px * var(--scale));
@@ -3629,7 +3052,7 @@ section.del1.container {
 }
 .region-select {
   background: transparent;
-  border: 1px solid var(--hairline-strong);
+  border: 0.5px solid var(--hairline-strong);
   padding: 10px 32px 10px 14px;
   font-family: var(--font-body);
   font-size: calc(14px * var(--scale));
@@ -3663,7 +3086,7 @@ section.del1.container {
   align-items: center;
   gap: 6px;
   padding: 10px 14px;
-  border: 1px solid var(--hairline-strong);
+  border: 0.5px solid var(--hairline-strong);
   font-family: var(--font-mono);
   font-size: calc(11px * var(--scale));
   letter-spacing: 0.12em;
@@ -3690,7 +3113,7 @@ section.del1.container {
 .chart-area {
   position: relative;
   background: var(--bg-deeper);
-  border: 1px solid var(--hairline);
+  border: 0.5px solid var(--hairline);
   padding: var(--space-6);
   min-height: 560px;
 }
@@ -3784,7 +3207,7 @@ section.del1.container {
   position: fixed;
   z-index: 50;
   background: var(--bg-primary);
-  border: 1px solid var(--hairline-strong);
+  border: 0.5px solid var(--hairline-strong);
   padding: 12px 14px;
   font-family: var(--font-mono);
   font-size: 11px;
@@ -3833,7 +3256,7 @@ section.del1.container {
    ════════════════════════════════════════════════════════════════ */
 .detail-panel {
   background: var(--bg-elevated);
-  border: 1px solid var(--hairline);
+  border: 0.5px solid var(--hairline);
   padding: var(--space-6);
   position: sticky;
   top: var(--space-4);
@@ -3886,7 +3309,7 @@ section.del1.container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--hairline);
+  border-bottom: 0.5px solid var(--hairline);
   padding-bottom: var(--space-2);
   margin-bottom: var(--space-3);
 }
@@ -3902,7 +3325,7 @@ section.del1.container {
 }
 .btn-close {
   background: transparent;
-  border: 1px solid var(--hairline-strong);
+  border: 0.5px solid var(--hairline-strong);
   padding: 4px 10px;
   font-family: var(--font-mono);
   font-size: 10px;
@@ -3915,9 +3338,10 @@ section.del1.container {
 
 .detail-name {
   font-family: var(--font-display);
-  font-size: calc(28px * var(--scale));
-  line-height: 1.05;
-  letter-spacing: -0.01em;
+  font-weight: var(--fw-h3);
+  font-size: calc(var(--fs-h3) * var(--scale));
+  line-height: var(--lh-h3);
+  letter-spacing: var(--ls-h3);
   margin-bottom: var(--space-1);
 }
 .detail-region {
@@ -3960,7 +3384,7 @@ section.del1.container {
 .detail-block {
   margin-top: var(--space-5);
   padding-top: var(--space-4);
-  border-top: 1px solid var(--hairline);
+  border-top: 0.5px solid var(--hairline);
 }
 .detail-block-title {
   font-family: var(--font-mono);
@@ -4107,7 +3531,6 @@ section.del1.container {
   .hero-supporting .sub-num { font-size: 32px; }
   .hero-scroll { display: none; }
 
-  .prompt-block { grid-template-columns: 1fr; gap: var(--space-6); }
   .output-divider { display: none; }
 
   .toc-card {
@@ -4130,7 +3553,7 @@ section.del1.container {
   .a2-summary-tall { font-size: 64px; }
   .a3-grid { grid-template-columns: 1fr; }
   .a3-stat-num { font-size: 96px; }
-  .a3-platforms { border-left: none; padding-left: 0; border-top: 1px solid var(--hairline-strong); padding-top: var(--space-4); }
+  .a3-platforms { border-left: none; padding-left: 0; border-top: 0.5px solid var(--hairline-strong); padding-top: var(--space-4); }
   .a4-hero .num { font-size: 96px; }
   .a4-hero .label { font-size: 22px; }
   .a4-context { grid-template-columns: 1fr; gap: var(--space-6); }
@@ -4154,7 +3577,7 @@ section.del1.container {
     align-items: center;
     min-height: auto;
     padding: var(--space-3);
-    border-bottom: 1px solid var(--hairline);
+    border-bottom: 0.5px solid var(--hairline);
   }
   .phase-num { font-size: 32px; }
   .phase-label { font-size: 17px; }
@@ -4162,7 +3585,7 @@ section.del1.container {
     margin-top: 0;
     padding-top: 0;
     border-top: none;
-    border-left: 1px solid var(--hairline);
+    border-left: 0.5px solid var(--hairline);
     padding-left: var(--space-2);
     margin-left: auto;
   }
@@ -4197,8 +3620,407 @@ section.del1.container {
     transition-duration: 0.01ms !important;
   }
   html { scroll-behavior: auto; }
-  .prompt-cursor { display: none; }
-  .sutur-dot { animation: none; opacity: 0.7; }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   === PRESENTASJONSKONTROLL ===
+   Sticky right-edge indikator, presentation/overview modes, help.
+   Append-only, ingen eksisterende selektorer endret.
+   ════════════════════════════════════════════════════════════════ */
+
+#nav-indicator {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+#nav-indicator .nav-rail-wrap {
+  position: relative;
+  width: 1px;
+  flex: 0 0 auto;
+}
+#nav-indicator .nav-rail {
+  position: absolute;
+  inset: 0;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+#nav-indicator .nav-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 0;
+  background: rgba(227, 6, 19, 0.30);
+  transition: height 320ms var(--interactive-ease);
+}
+#nav-indicator .nav-dot-track {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px; /* 7px dot + 9px gap = 16px pitch */
+  pointer-events: auto;
+}
+#nav-indicator .nav-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  transition:
+    background var(--hover-dur) var(--hover-ease),
+    transform var(--hover-dur) var(--hover-ease);
+}
+#nav-indicator .nav-dot:hover,
+#nav-indicator .nav-dot:focus-visible {
+  background: rgba(255, 255, 255, 0.6);
+  transform: scale(1.2);
+  outline: none;
+}
+#nav-indicator .nav-dot.is-active {
+  background: var(--accent);
+  transform: scale(1.3);
+}
+#nav-indicator .nav-tooltip {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 6px 10px;
+  background: rgba(20, 20, 25, 0.92);
+  border: 0.5px solid var(--hairline-strong);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms var(--hover-ease);
+}
+#nav-indicator .nav-dot:hover .nav-tooltip,
+#nav-indicator .nav-dot:focus-visible .nav-tooltip {
+  opacity: 1;
+}
+#nav-indicator .nav-tt-num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-tertiary);
+}
+#nav-indicator .nav-tt-name {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+/* PRESENTATION MODE */
+body.presentation-mode {
+  scroll-snap-type: y mandatory;
+}
+body.presentation-mode > section.section,
+body.presentation-mode > section.hero {
+  min-height: 100vh;
+  scroll-snap-align: start;
+}
+body.presentation-mode > section.preserve-scroll {
+  scroll-snap-align: none;
+}
+#pres-badge {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 81;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  padding: 4px 8px;
+  border: 0.5px solid var(--accent);
+  background: rgba(10, 10, 15, 0.7);
+  pointer-events: none;
+  display: none;
+}
+body.presentation-mode #pres-badge { display: block; }
+
+/* OVERVIEW MODE */
+#overview-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(10, 10, 15, 0.92);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  transform: scale(1.05);
+  pointer-events: none;
+  transition:
+    opacity 700ms var(--reveal-ease),
+    transform 700ms var(--reveal-ease);
+  overflow-y: auto;
+}
+#overview-overlay.is-open {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+#overview-overlay .overview-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  padding: 64px;
+}
+#overview-overlay .overview-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 400ms var(--reveal-ease),
+    transform 400ms var(--reveal-ease);
+}
+#overview-overlay.is-open .overview-tile.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+#overview-overlay .ov-tile-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding-bottom: 8px;
+  border-bottom: 0.5px solid var(--hairline);
+}
+#overview-overlay .ov-tile-num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-tertiary);
+}
+#overview-overlay .ov-tile-name {
+  font-family: var(--font-display);
+  font-size: 24px;
+  line-height: 1.15;
+  color: var(--text-primary);
+  font-variation-settings: "opsz" 60, "SOFT" 50;
+}
+#overview-overlay .ov-tile-frame {
+  position: relative;
+  width: 100%;
+  border: 0.5px solid rgba(255, 255, 255, 0.12);
+  background: rgba(10, 10, 15, 0.4);
+  overflow: hidden;
+  transition:
+    border-color var(--hover-dur) var(--hover-ease),
+    transform var(--hover-dur) var(--hover-ease);
+}
+#overview-overlay .overview-tile:hover .ov-tile-frame,
+#overview-overlay .overview-tile:focus-visible .ov-tile-frame {
+  border-color: rgba(227, 6, 19, 0.6);
+  transform: scale(1.02);
+  outline: none;
+}
+#overview-overlay .ov-tile-frame[data-aspect="16-10"] { aspect-ratio: 16 / 10; }
+#overview-overlay .ov-tile-frame[data-aspect="4-5"] { aspect-ratio: 4 / 5; }
+#overview-overlay .ov-tile-frame[data-aspect="2-3"] { aspect-ratio: 2 / 3; }
+
+#overview-overlay .ov-clone {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  transform-origin: top left;
+  transform: scale(0.18);
+  pointer-events: none;
+}
+#overview-overlay .ov-static {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px;
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0 11px, rgba(255,255,255,0.03) 11px 11.5px),
+    repeating-linear-gradient(90deg, transparent 0 11px, rgba(255,255,255,0.03) 11px 11.5px);
+  animation: ovStaticPulse 4s ease-in-out infinite;
+}
+@keyframes ovStaticPulse {
+  0%, 100% { background-position: 0 0, 0 0; }
+  50% { background-position: 0 6px, 6px 0; }
+}
+#overview-overlay .ov-static-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+#overview-overlay .ov-static-stat {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 36px;
+  line-height: 1;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
+#overview-overlay .ov-static-stat-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-tertiary);
+  margin-top: 2px;
+}
+#overview-overlay .ov-static-foot {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-tertiary);
+  align-self: flex-end;
+}
+
+/* HELP BUTTON + PANEL */
+#help-button {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 90;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 0.5px solid var(--hairline-strong);
+  background: rgba(20, 20, 25, 0.6);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  cursor: pointer;
+  opacity: 0.3;
+  transition: opacity var(--hover-dur) var(--hover-ease);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+#help-button:hover,
+#help-button:focus-visible { opacity: 1; outline: none; }
+
+#help-panel {
+  position: fixed;
+  right: 24px;
+  bottom: 64px;
+  z-index: 91;
+  width: 320px;
+  background: rgba(20, 20, 25, 0.95);
+  border: 0.5px solid var(--hairline-strong);
+  padding: 20px;
+  transform: translateX(20px);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 250ms ease-out,
+    opacity 250ms ease-out;
+}
+#help-panel.is-open {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+#help-panel .help-title {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-tertiary);
+  margin-bottom: 12px;
+}
+#help-panel ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+#help-panel li {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 12px;
+  padding: 4px 0;
+}
+#help-panel kbd {
+  font-family: inherit;
+  color: var(--text-primary);
+  background: transparent;
+  border: 0.5px solid var(--hairline-strong);
+  padding: 1px 6px;
+  font-size: 10px;
+  display: inline-block;
+  min-width: 24px;
+  text-align: center;
+}
+
+#first-visit-hint {
+  position: fixed;
+  right: 24px;
+  bottom: 72px;
+  z-index: 89;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+  background: rgba(20, 20, 25, 0.85);
+  border: 0.5px solid var(--hairline-strong);
+  padding: 8px 12px;
+  transform: translateX(40px);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 400ms var(--reveal-ease),
+    opacity 400ms var(--reveal-ease);
+}
+#first-visit-hint.is-show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #nav-indicator .nav-dot,
+  #overview-overlay,
+  #overview-overlay .overview-tile,
+  #overview-overlay .ov-tile-frame,
+  #help-panel,
+  #first-visit-hint,
+  #nav-indicator .nav-progress,
+  #nav-indicator .nav-tooltip {
+    transition-duration: 0ms !important;
+    animation: none !important;
+  }
+  #overview-overlay .overview-tile:hover .ov-tile-frame,
+  #overview-overlay .overview-tile:focus-visible .ov-tile-frame,
+  #nav-indicator .nav-dot:hover,
+  #nav-indicator .nav-dot:focus-visible,
+  #nav-indicator .nav-dot.is-active {
+    transform: none;
+  }
+  #overview-overlay.is-open { transform: none; }
+}
+
+@media (max-width: 900px) {
+  #nav-indicator { display: none; }
+  #overview-overlay .overview-grid { grid-template-columns: repeat(2, 1fr); padding: 32px; gap: 20px; }
 }
 
 </style>
@@ -4209,160 +4031,6 @@ section.del1.container {
 <div class="proj-indicator">PROJEKSJON</div>
 
 <main>
-
-<!-- ════════════════════════════════════════════════════════════════
-     DEL 1 · Hvordan rapporten ble bygget (0:00 - 0:30)
-     ════════════════════════════════════════════════════════════════ -->
-<section class="del1 container" id="del-1" data-type="del1">
-
-    <div class="del1-meta">DEL 01 · METODIKK</div>
-
-    <!-- ↓↓↓ TOBIAS: erstatt {N} med faktisk timetall ↓↓↓ -->
-    <h1 class="del1-headline">
-      Denne rapporten ble bygget på <em>{N} timer</em><br>
-      av én operatør og Claude. Slik.
-    </h1>
-
-    <p class="del1-sub">Tre prompts startet det. Resten var iterasjon. Her er de tre, og det de produserte.</p>
-
-    <div class="prompt-list">
-
-      <!-- ═══════════════════════════════════════════════════════
-           PROMPT 01 · /rot
-           ═══════════════════════════════════════════════════════ -->
-      <article class="prompt-block" data-prompt-id="1">
-        <div class="prompt-side">
-          <div class="prompt-num">PROMPT 01</div>
-          <div class="prompt-cmd">/rot</div>
-          <div class="prompt-shell">
-            <span class="prompt-text" data-text="diagnose 8-min demoen som problem"></span><span class="prompt-cursor"></span>
-          </div>
-          <div class="prompt-meta">FØRSTEPRINSIPPER · DIAGNOSE</div>
-        </div>
-
-        <div class="output-side">
-          <div class="output-divider"></div>
-
-          <div class="output-block" data-delay="0">
-            <div class="output-label">KJERNE</div>
-            <div class="output-content">
-              Tomt rom for AI-stemme i BDO-ledelsen. Den som fyller det først, eier det. Demoen er sjansen.
-            </div>
-          </div>
-
-          <div class="output-block" data-delay="220">
-            <div class="output-label">MOTTAKER</div>
-            <div class="output-content">
-              Martin Aasen, Managing Director BDO Norge. Forrige narrativ i hodet hans: <em>tomt rom</em>. Ingen tydelig AI-stemme i BDOs ledelse ennå.
-            </div>
-          </div>
-
-          <div class="output-block tight" data-delay="440">
-            <div class="output-label">HVIT FLEKK</div>
-            <div class="output-content">
-              Vet ikke hvordan Aasen plasserer Hennings rapport som benchmark. Nøytralt referansepunkt, eller stilt-etter standard? Demoen må fungere for begge.
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- ═══════════════════════════════════════════════════════
-           PROMPT 02 · /suksess
-           ═══════════════════════════════════════════════════════ -->
-      <article class="prompt-block" data-prompt-id="2">
-        <div class="prompt-side">
-          <div class="prompt-num">PROMPT 02</div>
-          <div class="prompt-cmd">/suksess</div>
-          <div class="prompt-shell">
-            <span class="prompt-text" data-text="kontrakt mot Martin Aasen"></span><span class="prompt-cursor"></span>
-          </div>
-          <div class="prompt-meta">SYV PUNKTER · ÉN MOTTAKER</div>
-        </div>
-
-        <div class="output-side">
-          <div class="output-divider"></div>
-
-          <div class="output-block" data-delay="0">
-            <div class="output-label">TANKEANKER</div>
-            <div class="output-content">
-              <span class="quote">Rapporter er døde. Tobias bygger leveranser som lever.</span>
-            </div>
-          </div>
-
-          <div class="output-block" data-delay="240">
-            <div class="output-label">FØLE</div>
-            <div class="output-content">
-              "Vi har vært <em>treg</em>. Tobias har sett noe vi ikke har sett. Vi må handle på dette nå."
-            </div>
-          </div>
-
-          <div class="output-block" data-delay="460">
-            <div class="output-label">GJØRE</div>
-            <div class="output-content">
-              Innen 14 dager: mandat. Budsjett, ressurs, intern posisjon. Skalere kapabiliteten på tvers av firmaet.
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- ═══════════════════════════════════════════════════════
-           PROMPT 03 · /form
-           ═══════════════════════════════════════════════════════ -->
-      <article class="prompt-block" data-prompt-id="3">
-        <div class="prompt-side">
-          <div class="prompt-num">PROMPT 03</div>
-          <div class="prompt-cmd">/form</div>
-          <div class="prompt-shell">
-            <span class="prompt-text" data-text="interaktiv rapport som overgår Henning"></span><span class="prompt-cursor"></span>
-          </div>
-          <div class="prompt-meta">VISUELL UTFØRELSE · TOPP 30/MILLION</div>
-        </div>
-
-        <div class="output-side">
-          <div class="output-divider"></div>
-
-          <div class="output-block" data-delay="0">
-            <div class="output-label">SIGNATURMOMENT</div>
-            <div class="output-content">
-              Innholdsfortegnelsen er ikke navigasjon. Den er <em class="accent">rapporten i miniatyr</em>. 14 mini-previews som lever individuelt.
-            </div>
-          </div>
-
-          <div class="output-block" data-delay="240">
-            <div class="output-label">SLOP-FELLER</div>
-            <ul class="output-list">
-              <li><span class="marker">01</span><span>Generisk Linear-mørk tema. Hver dashboard ser slik ut nå.</span></li>
-              <li><span class="marker">02</span><span>Animasjon for animasjons skyld. Maks én signatur per seksjon.</span></li>
-              <li><span class="marker">03</span><span>Bullet-suppe i ANALYSE. Én headline, ett tall, én visualisering.</span></li>
-            </ul>
-          </div>
-
-          <div class="output-block" data-delay="480">
-            <div class="output-label">UTFØRELSESLØFT</div>
-            <ul class="output-list">
-              <li><span class="marker">01</span><span>Innholdsfortegnelsen som live-organisme. 14 mini-previews, fire ekte-levende.</span></li>
-              <li><span class="marker">02</span><span>Tall som typografi. <em class="accent">-13%</em> i 120px Instrument Serif italic, BDO-rødt.</span></li>
-              <li><span class="marker">03</span><span>Konstellasjon-hero. Transaksjonsforhold tegnet som forbindelser, ikke pynt.</span></li>
-            </ul>
-          </div>
-        </div>
-      </article>
-
-    </div>
-
-    <!-- ═══════════════════════════════════════════════════════
-         OUTRO + VISUELL SUTUR TIL HERO
-         ═══════════════════════════════════════════════════════ -->
-    <footer class="del1-outro">
-      <p class="del1-outro-line">Resten av siden er resultatet.</p>
-      <div class="del1-sutur">
-        <div class="sutur-line"></div>
-        <div class="sutur-dot"></div>
-        <div class="sutur-label">Bygg, anlegg og eiendom 2026</div>
-      </div>
-    </footer>
-
-  </section>
 
 <!-- ════════════════════════════════════════════════════════════════
      HERO · Konstellasjon + tre tall (0:30 - 1:00)
@@ -4415,7 +4083,7 @@ section.del1.container {
         <span class="num-tag">Innhold</span>
       </div>
       <div>
-        <h2 class="section-title"><em>Fjorten</em> seksjoner. Mini-previews lever på siden.</h2>
+        <h2 class="section-title"><em>Tretten</em> seksjoner. Mini-previews lever på siden.</h2>
         <p class="section-dek">Fire kort er ekte miniatyrer som puster, pulser og roterer. Resten er signaturer. Klikk for å hoppe.</p>
       </div>
     </div>
@@ -4454,32 +4122,10 @@ section.del1.container {
           </div>
         </a>
 
-        <!-- Kort 2: DEL 1 - Metode (statisk: tre prompt-bokser med flow-linje) -->
-        <a class="toc-card" href="#del-1" data-type="del1" data-reveal="1">
+        <!-- Kort 2: A1 - Todelt marked (omsetning opp / margin ned, to piler) -->
+        <a class="toc-card" href="#a1" data-type="analyse" data-reveal="1">
           <div class="toc-card-head">
             <div class="toc-card-num">02</div>
-          </div>
-          <div class="toc-card-body"><div class="toc-card-title">Metode. <em>Tre prompts.</em></div><div class="toc-card-tag">Del 1</div></div>
-          <div class="toc-card-sig sig">
-            <svg viewBox="0 0 100 100" aria-hidden="true">
-              <line class="stroke" x1="22" y1="34" x2="22" y2="50"/>
-              <line class="stroke" x1="22" y1="50" x2="78" y2="50"/>
-              <line class="stroke" x1="50" y1="50" x2="50" y2="66"/>
-              <line class="stroke" x1="78" y1="50" x2="78" y2="66"/>
-              <rect class="stroke-strong" x="14" y="22" width="16" height="12" rx="1"/>
-              <rect class="stroke-strong" x="42" y="58" width="16" height="12" rx="1"/>
-              <rect class="stroke-strong" x="70" y="58" width="16" height="12" rx="1"/>
-              <circle class="fill-r" cx="22" cy="50" r="1.6"/>
-              <circle class="fill-r" cx="50" cy="50" r="1.6"/>
-              <circle class="fill-r" cx="78" cy="50" r="1.6"/>
-            </svg>
-          </div>
-        </a>
-
-        <!-- Kort 3: A1 - Todelt marked (omsetning opp / margin ned, to piler) -->
-        <a class="toc-card" href="#a1" data-type="analyse" data-reveal="2">
-          <div class="toc-card-head">
-            <div class="toc-card-num">03</div>
           </div>
           <div class="toc-card-body"><div class="toc-card-title">Todelt marked.</div><div class="toc-card-tag">Analyse</div></div>
           <div class="toc-card-sig sig">
@@ -4496,10 +4142,10 @@ section.del1.container {
           </div>
         </a>
 
-        <!-- Kort 4: A2 - Verdikjeden (6 prikker, 3 røde = trafikklys) -->
-        <a class="toc-card" href="#a2" data-type="analyse" data-reveal="3">
+        <!-- Kort 3: A2 - Verdikjeden (6 prikker, 3 røde = trafikklys) -->
+        <a class="toc-card" href="#a2" data-type="analyse" data-reveal="2">
           <div class="toc-card-head">
-            <div class="toc-card-num">04</div>
+            <div class="toc-card-num">03</div>
           </div>
           <div class="toc-card-body"><div class="toc-card-title">Seks segmenter, <em>tre i rødt.</em></div><div class="toc-card-tag">Analyse</div></div>
           <div class="toc-card-sig sig">
@@ -4515,10 +4161,10 @@ section.del1.container {
           </div>
         </a>
 
-        <!-- Kort 5: A3 - Konsolideringsbølgen (node-merger) -->
-        <a class="toc-card" href="#a3" data-type="analyse" data-reveal="4">
+        <!-- Kort 4: A3 - Konsolideringsbølgen (node-merger) -->
+        <a class="toc-card" href="#a3" data-type="analyse" data-reveal="3">
           <div class="toc-card-head">
-            <div class="toc-card-num">05</div>
+            <div class="toc-card-num">04</div>
           </div>
           <div class="toc-card-body"><div class="toc-card-title"><em>408</em> transaksjoner.</div><div class="toc-card-tag">Analyse</div></div>
           <div class="toc-card-sig sig">
@@ -4541,10 +4187,10 @@ section.del1.container {
           </div>
         </a>
 
-        <!-- Kort 6: A4 - Produktivitet (-13%) - krasjet sparkline -->
-        <a class="toc-card" href="#a4" data-type="analyse" data-reveal="5">
+        <!-- Kort 5: A4 - Produktivitet (-13%) - krasjet sparkline -->
+        <a class="toc-card" href="#a4" data-type="analyse" data-reveal="4">
           <div class="toc-card-head">
-            <div class="toc-card-num">06</div>
+            <div class="toc-card-num">05</div>
           </div>
           <div class="toc-card-body"><div class="toc-card-title"><em class="r">-13%.</em></div><div class="toc-card-tag">Analyse</div></div>
           <div class="toc-card-sig sig">
@@ -4556,10 +4202,10 @@ section.del1.container {
           </div>
         </a>
 
-        <!-- Kort 7: A5 - Konkurser × Nyetablering (X-kryss) -->
-        <a class="toc-card" href="#a5" data-type="analyse" data-reveal="6">
+        <!-- Kort 6: A5 - Konkurser × Nyetablering (X-kryss) -->
+        <a class="toc-card" href="#a5" data-type="analyse" data-reveal="5">
           <div class="toc-card-head">
-            <div class="toc-card-num">07</div>
+            <div class="toc-card-num">06</div>
           </div>
           <div class="toc-card-body"><div class="toc-card-title">To kurver krysser.</div><div class="toc-card-tag">Analyse</div></div>
           <div class="toc-card-sig sig">
@@ -4574,10 +4220,10 @@ section.del1.container {
           </div>
         </a>
 
-        <!-- Kort 8: A6 - Drivere mot 2050 (Venn med 3 sirkler) -->
-        <a class="toc-card" href="#a6" data-type="analyse" data-reveal="7">
+        <!-- Kort 7: A6 - Drivere mot 2050 (Venn med 3 sirkler) -->
+        <a class="toc-card" href="#a6" data-type="analyse" data-reveal="6">
           <div class="toc-card-head">
-            <div class="toc-card-num">08</div>
+            <div class="toc-card-num">07</div>
           </div>
           <div class="toc-card-body"><div class="toc-card-title"><em>2050.</em></div><div class="toc-card-tag">Analyse</div></div>
           <div class="toc-card-sig sig">
@@ -4592,10 +4238,10 @@ section.del1.container {
           </div>
         </a>
 
-        <!-- Kort 9: I1 - Verdikjede (LIVE: fase-rotasjon 5,3s) -->
-        <a class="toc-card" href="#i1" data-type="interaktiv" data-live="true" data-reveal="8">
+        <!-- Kort 8: I1 - Verdikjede (LIVE: fase-rotasjon 5,3s) -->
+        <a class="toc-card" href="#i1" data-type="interaktiv" data-live="true" data-reveal="7">
           <div class="toc-card-head">
-            <div class="toc-card-num">09</div>
+            <div class="toc-card-num">08</div>
             <div class="toc-card-live">Live · Rotasjon</div>
           </div>
           <div class="toc-card-body"><div class="toc-card-title">Verdikjede-velger.</div><div class="toc-card-tag">Interaktiv</div></div>
@@ -4619,10 +4265,10 @@ section.del1.container {
           </div>
         </a>
 
-        <!-- Kort 10: I2 - CXO-chat (LIVE: typing 3,7s) -->
-        <a class="toc-card" href="#i2" data-type="interaktiv" data-live="true" data-reveal="9">
+        <!-- Kort 9: I2 - CXO-chat (LIVE: typing 3,7s) -->
+        <a class="toc-card" href="#i2" data-type="interaktiv" data-live="true" data-reveal="8">
           <div class="toc-card-head">
-            <div class="toc-card-num">10</div>
+            <div class="toc-card-num">09</div>
             <div class="toc-card-live">Live · Typing</div>
           </div>
           <div class="toc-card-body"><div class="toc-card-title">CXO-chat. <em>Seks chips.</em></div><div class="toc-card-tag">Interaktiv</div></div>
@@ -4660,10 +4306,10 @@ section.del1.container {
           </div>
         </a>
 
-        <!-- Kort 11: I3 - Spider (LIVE: hjerteslag 6,5s) -->
-        <a class="toc-card" href="#i3" data-type="interaktiv" data-live="true" data-reveal="10">
+        <!-- Kort 10: I3 - Spider (LIVE: hjerteslag 6,5s) -->
+        <a class="toc-card" href="#i3" data-type="interaktiv" data-live="true" data-reveal="9">
           <div class="toc-card-head">
-            <div class="toc-card-num">11</div>
+            <div class="toc-card-num">10</div>
             <div class="toc-card-live">Live · Pulse</div>
           </div>
           <div class="toc-card-body"><div class="toc-card-title">Modenhets-spider.</div><div class="toc-card-tag">Interaktiv</div></div>
@@ -4696,10 +4342,10 @@ section.del1.container {
           </div>
         </a>
 
-        <!-- Kort 12: I4 - AI gjennom verdikjeden (2x2 grid) -->
-        <a class="toc-card" href="#i4" data-type="interaktiv" data-reveal="11">
+        <!-- Kort 11: I4 - AI gjennom verdikjeden (2x2 grid) -->
+        <a class="toc-card" href="#i4" data-type="interaktiv" data-reveal="10">
           <div class="toc-card-head">
-            <div class="toc-card-num">12</div>
+            <div class="toc-card-num">11</div>
           </div>
           <div class="toc-card-body"><div class="toc-card-title">BDOs kart.</div><div class="toc-card-tag">Interaktiv</div></div>
           <div class="toc-card-sig sig">
@@ -4718,10 +4364,10 @@ section.del1.container {
           </div>
         </a>
 
-        <!-- Kort 13: I5 - Live BAA-dashboard (scatter-sky) -->
-        <a class="toc-card" href="#i5" data-type="interaktiv" data-reveal="12">
+        <!-- Kort 12: I5 - Live BAA-dashboard (scatter-sky) -->
+        <a class="toc-card" href="#i5" data-type="interaktiv" data-reveal="11">
           <div class="toc-card-head">
-            <div class="toc-card-num">13</div>
+            <div class="toc-card-num">12</div>
           </div>
           <div class="toc-card-body"><div class="toc-card-title"><em>200+</em> selskaper.</div><div class="toc-card-tag">Interaktiv</div></div>
           <div class="toc-card-sig sig">
@@ -4752,10 +4398,10 @@ section.del1.container {
           </div>
         </a>
 
-        <!-- Kort 14: Z - Landing (to divergerende piler) -->
-        <a class="toc-card" href="#landing" data-type="landing" data-reveal="13">
+        <!-- Kort 13: Z - Landing (to divergerende piler) -->
+        <a class="toc-card" href="#landing" data-type="landing" data-reveal="12">
           <div class="toc-card-head">
-            <div class="toc-card-num">14</div>
+            <div class="toc-card-num">13</div>
           </div>
           <div class="toc-card-body"><div class="toc-card-title">Vi leverer <em class="r">kapabilitet.</em></div><div class="toc-card-tag">Landing</div></div>
           <div class="toc-card-sig sig">
@@ -5767,7 +5413,7 @@ section.del1.container {
 
       <div class="landing-signature">
         <span>Bygget av Tobias Mørland Kvaslerud + Claude</span>
-        <span>{N} timer · BDO Norge · 2026</span>
+        <span>[8] timer · BDO Norge · 2026</span>
       </div>
     </div>
   </div>
@@ -6018,94 +5664,6 @@ const revealObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.25 });
 revealEls.forEach((el) => revealObserver.observe(el));
-
-
-
-(function() {
-  'use strict';
-
-  // ═══════════════════════════════════════════════════════════════
-  // TYPEWRITER + STAGGERED REVEAL pr. prompt-blokk
-  // ═══════════════════════════════════════════════════════════════
-  const TYPE_SPEED = 18; // ms per tegn (subtilt, ikke melodramatisk)
-  const PROMPT_TO_OUTPUT_DELAY = 280; // ms etter typing før output starter
-
-  function typeText(el, text, speed = TYPE_SPEED) {
-    return new Promise((resolve) => {
-      let i = 0;
-      el.textContent = '';
-      const tick = () => {
-        if (i < text.length) {
-          el.textContent = text.slice(0, ++i);
-          // Subtil variasjon for organisk preg
-          const isSpace = text[i - 1] === ' ';
-          const variance = isSpace ? speed * 1.5 : speed * (0.85 + Math.random() * 0.3);
-          setTimeout(tick, variance);
-        } else {
-          resolve();
-        }
-      };
-      setTimeout(tick, 60);
-    });
-  }
-
-  function revealOutputs(block) {
-    const outputs = block.querySelectorAll('.output-block');
-    outputs.forEach((output) => {
-      const delay = parseInt(output.dataset.delay || '0', 10);
-      setTimeout(() => output.classList.add('revealed'), delay);
-    });
-  }
-
-  async function activateBlock(block) {
-    if (block.dataset.activated) return;
-    block.dataset.activated = '1';
-
-    const promptText = block.querySelector('.prompt-text');
-    const cursor = block.querySelector('.prompt-cursor');
-    const text = promptText.dataset.text || '';
-
-    // Reduced motion: vis alt umiddelbart
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      promptText.textContent = text;
-      cursor.classList.add('done');
-      block.querySelectorAll('.output-block').forEach(o => o.classList.add('revealed'));
-      return;
-    }
-
-    await typeText(promptText, text);
-    setTimeout(() => cursor.classList.add('done'), 400);
-    setTimeout(() => revealOutputs(block), PROMPT_TO_OUTPUT_DELAY);
-  }
-
-  // IntersectionObserver pr. prompt-blokk
-  const blocks = document.querySelectorAll('.prompt-block');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        activateBlock(entry.target);
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.35, rootMargin: '0px 0px -10% 0px' });
-
-  blocks.forEach(b => io.observe(b));
-
-  // Outro + sutur reveal
-  const outroLine = document.querySelector('.del1-outro-line');
-  const sutur = document.querySelector('.del1-sutur');
-  const outroIO = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        outroLine.classList.add('revealed');
-        sutur.classList.add('revealed');
-        outroIO.disconnect();
-      }
-    });
-  }, { threshold: 0.5 });
-  if (outroLine) outroIO.observe(outroLine);
-
-})();
 
 (function() {
 'use strict';
@@ -8135,6 +7693,461 @@ init();
 
 console.log('%cBDO BAA 2026 · LEVENDE RAPPORT · FINAL', 'font-family: serif; font-style: italic; font-size: 22px; color: #E30613');
 console.log('Bygget av Tobias Mørland Kvaslerud + Claude. Trykk P for projeksjons-modus.');
+
+
+// ════════════════════════════════════════════════════════════════
+// === PRESENTASJONSKONTROLL ===
+// Sticky indikator, presentation/overview-modes, help, snarveier.
+// Append-only. Bruker ingen eksisterende variabler eller selektorer.
+// ════════════════════════════════════════════════════════════════
+(function presentationControl() {
+  'use strict';
+
+  const PREFERS_REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const SCROLL_DUR = PREFERS_REDUCED ? 0 : 600;
+  const COMPLEX_NODE_THRESHOLD = 800;
+  const STAGGER_PER_TILE = 30;
+
+  // Ease cubic-bezier(0.16, 1, 0.3, 1) approximated for smooth scroll
+  function easeOutExpo(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
+
+  // ─── DEL 1: SEKSJONSDETEKSJON ────────────────────────────────
+  let sections = [];
+  let currentSectionIndex = 0;
+
+  function buildSections() {
+    const nodes = Array.from(document.querySelectorAll('section[id]'));
+    sections = nodes.map((el, idx) => {
+      const numId = el.querySelector('.num-id');
+      const titleEl = el.querySelector('.section-title, .hero-title');
+      let label = '';
+      if (titleEl) {
+        label = (titleEl.textContent || '').replace(/\s+/g, ' ').trim();
+        // Trim to first sentence
+        const period = label.indexOf('.');
+        if (period > 0 && period < 60) label = label.slice(0, period);
+        if (label.length > 50) label = label.slice(0, 47) + '…';
+      } else {
+        label = el.id;
+      }
+      const num = numId ? numId.textContent.trim() : (el.id === 'hero' ? 'A0' : (el.id === 'landing' ? 'Z' : el.id.toUpperCase()));
+      const isComplex = el.querySelectorAll('*').length > COMPLEX_NODE_THRESHOLD;
+      return { id: el.id, label, num, element: el, height: el.scrollHeight, isComplex };
+    });
+    return sections;
+  }
+
+  function getCurrentSectionIdx() {
+    const mid = window.scrollY + window.innerHeight * 0.5;
+    let bestIdx = 0;
+    let bestDist = Infinity;
+    sections.forEach((s, i) => {
+      const r = s.element.getBoundingClientRect();
+      const top = r.top + window.scrollY;
+      const center = top + r.height / 2;
+      const d = Math.abs(center - mid);
+      if (d < bestDist) { bestDist = d; bestIdx = i; }
+    });
+    return bestIdx;
+  }
+
+  // ─── DEL 2: STICKY INDIKATOR ─────────────────────────────────
+  let indicatorEl = null;
+  let progressEl = null;
+  let dotEls = [];
+
+  function buildIndicator() {
+    indicatorEl = document.createElement('div');
+    indicatorEl.id = 'nav-indicator';
+    indicatorEl.setAttribute('role', 'navigation');
+    indicatorEl.setAttribute('aria-label', 'Seksjonsindikator');
+
+    const railWrap = document.createElement('div');
+    railWrap.className = 'nav-rail-wrap';
+    const dotCount = sections.length;
+    const trackHeight = (dotCount * 7) + ((dotCount - 1) * 9); // dot+gap pitch 16
+    railWrap.style.height = trackHeight + 'px';
+
+    const rail = document.createElement('div');
+    rail.className = 'nav-rail';
+    railWrap.appendChild(rail);
+
+    progressEl = document.createElement('div');
+    progressEl.className = 'nav-progress';
+    railWrap.appendChild(progressEl);
+
+    const track = document.createElement('div');
+    track.className = 'nav-dot-track';
+    track.style.position = 'absolute';
+    track.style.top = '0';
+    track.style.left = '50%';
+    track.style.transform = 'translateX(-50%)';
+
+    sections.forEach((s, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'nav-dot';
+      dot.setAttribute('aria-label', `Seksjon ${s.num} – ${s.label}`);
+      dot.dataset.idx = String(i);
+
+      const tip = document.createElement('span');
+      tip.className = 'nav-tooltip';
+      tip.innerHTML = `<span class="nav-tt-num">${s.num}</span><span class="nav-tt-name">${s.label}</span>`;
+      dot.appendChild(tip);
+
+      dot.addEventListener('click', () => scrollToSection(i));
+      dotEls.push(dot);
+      track.appendChild(dot);
+    });
+
+    railWrap.appendChild(track);
+    indicatorEl.appendChild(railWrap);
+    document.body.appendChild(indicatorEl);
+  }
+
+  function updateIndicator(idx) {
+    currentSectionIndex = idx;
+    dotEls.forEach((d, i) => d.classList.toggle('is-active', i === idx));
+    if (progressEl && dotEls.length > 0) {
+      const ratio = dotEls.length === 1 ? 1 : idx / (dotEls.length - 1);
+      const railH = parseFloat(indicatorEl.querySelector('.nav-rail-wrap').style.height);
+      progressEl.style.height = (ratio * railH) + 'px';
+    }
+  }
+
+  // ─── Smooth scroll helper ────────────────────────────────────
+  function smoothScrollTo(targetY, dur) {
+    const startY = window.scrollY;
+    const dist = targetY - startY;
+    if (dur <= 0 || PREFERS_REDUCED) {
+      window.scrollTo(0, targetY);
+      return;
+    }
+    const startT = performance.now();
+    function step(now) {
+      const t = Math.min(1, (now - startT) / dur);
+      window.scrollTo(0, startY + dist * easeOutExpo(t));
+      if (t < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function scrollToSection(idx) {
+    if (idx < 0 || idx >= sections.length) return;
+    const r = sections[idx].element.getBoundingClientRect();
+    const targetY = r.top + window.scrollY;
+    smoothScrollTo(targetY, SCROLL_DUR);
+  }
+
+  // ─── DEL 3: TASTATURNAVIGASJON ───────────────────────────────
+  function isTypingTarget(t) {
+    return t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable);
+  }
+
+  function topMostOverlay() {
+    if (overviewEl && overviewEl.classList.contains('is-open')) return 'overview';
+    if (helpPanelEl && helpPanelEl.classList.contains('is-open')) return 'help';
+    return null;
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (isTypingTarget(e.target)) return;
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+
+    const k = e.key;
+    if (k === 'Escape') {
+      const top = topMostOverlay();
+      if (top === 'overview') { closeOverview(); e.preventDefault(); return; }
+      if (top === 'help') { closeHelp(); e.preventDefault(); return; }
+      return;
+    }
+    // Block navigation while overview is open (it has its own click-handler)
+    if (overviewEl && overviewEl.classList.contains('is-open')) return;
+
+    if (k === 'ArrowRight' || k === 'ArrowDown' || k === 'PageDown') {
+      scrollToSection(Math.min(sections.length - 1, currentSectionIndex + 1));
+      e.preventDefault();
+    } else if (k === 'ArrowLeft' || k === 'ArrowUp' || k === 'PageUp') {
+      scrollToSection(Math.max(0, currentSectionIndex - 1));
+      e.preventDefault();
+    } else if (k === 'Home') {
+      scrollToSection(0);
+      e.preventDefault();
+    } else if (k === 'End') {
+      scrollToSection(sections.length - 1);
+      e.preventDefault();
+    } else if (k === 'p' || k === 'P') {
+      togglePresentationMode();
+      // Do not preventDefault: existing handler also listens for P.
+    } else if (k === 'm' || k === 'M') {
+      toggleOverview();
+      e.preventDefault();
+    } else if (k === '?' || k === '/' || (e.shiftKey && k === '?')) {
+      toggleHelp();
+      e.preventDefault();
+    }
+    dismissFirstVisitHint();
+  }, false);
+
+  // ─── DEL 4: PRESENTATION MODE ────────────────────────────────
+  let presBadge = null;
+  function ensurePresBadge() {
+    if (presBadge) return;
+    presBadge = document.createElement('div');
+    presBadge.id = 'pres-badge';
+    presBadge.textContent = 'PRES';
+    presBadge.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(presBadge);
+  }
+  function togglePresentationMode() {
+    ensurePresBadge();
+    document.body.classList.toggle('presentation-mode');
+    sections.forEach(s => {
+      if (s.isComplex) s.element.classList.add('preserve-scroll');
+    });
+  }
+
+  // ─── DEL 5: OVERVIEW MODE ────────────────────────────────────
+  let overviewEl = null;
+  let overviewBuilt = false;
+
+  function buildOverview() {
+    overviewEl = document.createElement('div');
+    overviewEl.id = 'overview-overlay';
+    overviewEl.setAttribute('role', 'dialog');
+    overviewEl.setAttribute('aria-label', 'Seksjonsoversikt');
+    overviewEl.setAttribute('aria-modal', 'true');
+
+    const grid = document.createElement('div');
+    grid.className = 'overview-grid';
+
+    sections.forEach((s, i) => {
+      const tile = document.createElement('div');
+      tile.className = 'overview-tile';
+      tile.tabIndex = 0;
+      tile.setAttribute('role', 'button');
+      tile.setAttribute('aria-label', `Gå til ${s.num} – ${s.label}`);
+
+      const meta = document.createElement('div');
+      meta.className = 'ov-tile-meta';
+      meta.innerHTML = `<span class="ov-tile-num">${s.num}</span><span class="ov-tile-name">${s.label}</span>`;
+
+      const frame = document.createElement('div');
+      frame.className = 'ov-tile-frame';
+      const ratio = s.element.scrollHeight / window.innerHeight;
+      let aspect = '16-10';
+      if (ratio > 3) aspect = '2-3';
+      else if (ratio > 1.5) aspect = '4-5';
+      frame.dataset.aspect = aspect;
+
+      if (s.isComplex) {
+        frame.appendChild(buildStaticTile(s));
+      } else {
+        const clone = s.element.cloneNode(true);
+        clone.removeAttribute('id'); // avoid duplicate id
+        // Strip nested IDs to avoid duplicates
+        clone.querySelectorAll('[id]').forEach(n => n.removeAttribute('id'));
+        const wrap = document.createElement('div');
+        wrap.className = 'ov-clone';
+        wrap.appendChild(clone);
+        frame.appendChild(wrap);
+      }
+
+      tile.appendChild(meta);
+      tile.appendChild(frame);
+      tile.addEventListener('click', () => {
+        closeOverview();
+        setTimeout(() => scrollToSection(i), 380);
+      });
+      tile.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); tile.click(); }
+      });
+      grid.appendChild(tile);
+    });
+
+    overviewEl.appendChild(grid);
+    document.body.appendChild(overviewEl);
+    overviewBuilt = true;
+  }
+
+  function buildStaticTile(s) {
+    const wrap = document.createElement('div');
+    wrap.className = 'ov-static';
+
+    const stats = document.createElement('div');
+    stats.className = 'ov-static-stats';
+    const numEls = Array.from(s.element.querySelectorAll('.stat-num, .a3-stat-num, .drill-stat-num, .a2-summary-tall, .a1-stat .num, .sub-num'))
+      .slice(0, 3);
+    numEls.forEach(n => {
+      const v = (n.textContent || '').trim() || (n.dataset.counter || '');
+      if (!v) return;
+      const row = document.createElement('div');
+      const num = document.createElement('div');
+      num.className = 'ov-static-stat';
+      num.textContent = v;
+      const lbl = document.createElement('div');
+      lbl.className = 'ov-static-stat-label';
+      // Try sibling .stat-label or .sub-label
+      const sib = n.parentElement && n.parentElement.querySelector('.stat-label, .sub-label, .a3-stat-label, .drill-stat-label');
+      lbl.textContent = sib ? sib.textContent.trim() : '';
+      row.appendChild(num);
+      row.appendChild(lbl);
+      stats.appendChild(row);
+    });
+
+    const foot = document.createElement('div');
+    foot.className = 'ov-static-foot';
+    foot.textContent = 'Levende';
+
+    wrap.appendChild(stats);
+    wrap.appendChild(foot);
+    return wrap;
+  }
+
+  function openOverview() {
+    if (!overviewBuilt) buildOverview();
+    overviewEl.classList.add('is-open');
+    const tiles = overviewEl.querySelectorAll('.overview-tile');
+    tiles.forEach((t, i) => {
+      setTimeout(() => t.classList.add('is-in'), PREFERS_REDUCED ? 0 : i * STAGGER_PER_TILE);
+    });
+  }
+  function closeOverview() {
+    if (!overviewEl) return;
+    overviewEl.classList.remove('is-open');
+    overviewEl.querySelectorAll('.overview-tile').forEach(t => t.classList.remove('is-in'));
+  }
+  function toggleOverview() {
+    if (overviewEl && overviewEl.classList.contains('is-open')) closeOverview();
+    else openOverview();
+  }
+
+  // ─── DEL 6: HELP OVERLAY ─────────────────────────────────────
+  let helpButtonEl = null;
+  let helpPanelEl = null;
+  let firstVisitHintEl = null;
+  let firstVisitTimer = null;
+
+  function buildHelp() {
+    helpButtonEl = document.createElement('button');
+    helpButtonEl.id = 'help-button';
+    helpButtonEl.type = 'button';
+    helpButtonEl.setAttribute('aria-label', 'Vis tastatursnarveier');
+    helpButtonEl.textContent = '?';
+    helpButtonEl.addEventListener('click', toggleHelp);
+    document.body.appendChild(helpButtonEl);
+
+    helpPanelEl = document.createElement('div');
+    helpPanelEl.id = 'help-panel';
+    helpPanelEl.setAttribute('role', 'dialog');
+    helpPanelEl.setAttribute('aria-label', 'Tastatursnarveier');
+    helpPanelEl.innerHTML = `
+      <div class="help-title">Tastatursnarveier</div>
+      <ul>
+        <li><span><kbd>→</kbd> <kbd>↓</kbd></span><span>Neste seksjon</span></li>
+        <li><span><kbd>←</kbd> <kbd>↑</kbd></span><span>Forrige seksjon</span></li>
+        <li><span><kbd>Home</kbd></span><span>Til toppen</span></li>
+        <li><span><kbd>End</kbd></span><span>Til bunn</span></li>
+        <li><span><kbd>P</kbd></span><span>Presentation mode</span></li>
+        <li><span><kbd>M</kbd></span><span>Oversikt</span></li>
+        <li><span><kbd>?</kbd></span><span>Denne hjelpen</span></li>
+        <li><span><kbd>Esc</kbd></span><span>Lukk overlay</span></li>
+      </ul>`;
+    document.body.appendChild(helpPanelEl);
+
+    document.addEventListener('click', (e) => {
+      if (!helpPanelEl.classList.contains('is-open')) return;
+      if (helpPanelEl.contains(e.target) || helpButtonEl.contains(e.target)) return;
+      closeHelp();
+    });
+  }
+  function openHelp() { helpPanelEl.classList.add('is-open'); }
+  function closeHelp() { helpPanelEl.classList.remove('is-open'); }
+  function toggleHelp() {
+    if (helpPanelEl.classList.contains('is-open')) closeHelp();
+    else openHelp();
+  }
+
+  function maybeShowFirstVisitHint() {
+    let firstVisit;
+    try { firstVisit = localStorage.getItem('firstVisit'); }
+    catch (_) { return; }
+    if (firstVisit) return;
+    firstVisitHintEl = document.createElement('div');
+    firstVisitHintEl.id = 'first-visit-hint';
+    firstVisitHintEl.textContent = 'Trykk ? for snarveier';
+    document.body.appendChild(firstVisitHintEl);
+    firstVisitTimer = setTimeout(() => {
+      if (firstVisitHintEl) firstVisitHintEl.classList.add('is-show');
+    }, 10000);
+  }
+  function dismissFirstVisitHint() {
+    if (!firstVisitHintEl) return;
+    firstVisitHintEl.classList.remove('is-show');
+    try { localStorage.setItem('firstVisit', '1'); } catch (_) {}
+    setTimeout(() => {
+      if (firstVisitHintEl && firstVisitHintEl.parentNode) firstVisitHintEl.parentNode.removeChild(firstVisitHintEl);
+      firstVisitHintEl = null;
+    }, 500);
+    if (firstVisitTimer) { clearTimeout(firstVisitTimer); firstVisitTimer = null; }
+  }
+  ['mousedown', 'wheel', 'touchstart'].forEach(evt =>
+    window.addEventListener(evt, dismissFirstVisitHint, { once: true, passive: true }));
+
+  // ─── INIT ────────────────────────────────────────────────────
+  function init() {
+    buildSections();
+    if (sections.length === 0) return;
+    buildIndicator();
+    buildHelp();
+    maybeShowFirstVisitHint();
+
+    // IntersectionObserver threshold 0.5 to track current
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.4) {
+            const idx = sections.findIndex(s => s.element === entry.target);
+            if (idx !== -1) updateIndicator(idx);
+          }
+        });
+      }, { threshold: [0.4, 0.5, 0.6] });
+      sections.forEach(s => io.observe(s.element));
+    }
+
+    // Fallback scroll-based update for proximity-to-center accuracy
+    let scrollTick = false;
+    window.addEventListener('scroll', () => {
+      if (scrollTick) return;
+      scrollTick = true;
+      requestAnimationFrame(() => {
+        updateIndicator(getCurrentSectionIdx());
+        scrollTick = false;
+      });
+    }, { passive: true });
+
+    updateIndicator(getCurrentSectionIdx());
+  }
+
+  // Run after main init + dynamic content (i5 dashboard) populates
+  function delayedInit() {
+    setTimeout(() => {
+      init();
+      // Re-evaluate complexity after another beat in case of late mounts
+      setTimeout(() => {
+        sections.forEach(s => {
+          s.isComplex = s.element.querySelectorAll('*').length > COMPLEX_NODE_THRESHOLD;
+        });
+      }, 800);
+    }, 400);
+  }
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    delayedInit();
+  } else {
+    document.addEventListener('DOMContentLoaded', delayedInit);
+  }
+})();
+
 </script>
 
 </body>
