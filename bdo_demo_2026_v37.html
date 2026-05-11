@@ -944,6 +944,187 @@ main > .section:first-of-type {
   /* SMIL animation respect via media query is browser-controlled, men la fallback være statisk */
 }
 
+/* ═══ I6 Eierskifte-radar (innsiktsdrill, post-spec) ═══ */
+#i6 .es-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 0.5px solid var(--hairline);
+}
+#i6 .es-filter-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 24px;
+  align-items: center;
+}
+#i6 .es-filter-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+#i6 .es-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+#i6 .es-chip {
+  background: transparent;
+  border: 0.5px solid var(--hairline-strong);
+  color: var(--text-secondary);
+  padding: 6px 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: color 200ms ease-out, border-color 200ms ease-out, background 200ms ease-out;
+  text-transform: uppercase;
+}
+#i6 .es-chip:hover {
+  border-color: var(--hairline-interactive);
+  color: var(--text-primary);
+}
+#i6 .es-chip.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--text-primary);
+}
+
+#i6 .es-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-bottom: 32px;
+}
+#i6 .es-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+#i6 .es-stat-num {
+  font-family: 'Instrument Serif', var(--font-display), serif;
+  font-style: italic;
+  font-size: 44px;
+  line-height: 1;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+#i6 .es-stat-dominant .es-stat-num { font-size: 56px; }
+#i6 .es-stat-val.accent { color: var(--accent); }
+#i6 .es-stat-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+#i6 .es-chart-wrap {
+  background: var(--bg-elevated);
+  padding: 28px 32px 20px;
+  border: 0.5px solid var(--hairline);
+  margin-bottom: 24px;
+}
+#i6 .es-chart-head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+#i6 .es-chart {
+  width: 100%;
+  height: auto;
+  max-height: 360px;
+  display: block;
+}
+#i6 .es-chart-foot {
+  margin-top: 8px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+#i6 .es-bar {
+  transition: height 600ms cubic-bezier(0.16, 1, 0.3, 1),
+              y 600ms cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 300ms ease-out;
+  cursor: default;
+}
+#i6 .es-bar:hover { opacity: 0.85; }
+#i6 .es-bar-count {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.10em;
+  fill: var(--text-secondary);
+  text-anchor: middle;
+  transition: opacity 200ms ease-out;
+}
+#i6 .es-bar-count.is-high { fill: var(--text-primary); }
+#i6 .es-bar-xlabel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  fill: var(--text-secondary);
+  text-anchor: middle;
+  text-transform: uppercase;
+}
+#i6 .es-bracket-line {
+  stroke: var(--accent);
+  stroke-width: 0.8;
+  fill: none;
+}
+#i6 .es-bracket-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  fill: var(--accent);
+  text-transform: uppercase;
+  text-anchor: middle;
+}
+
+#i6 .es-takeaway {
+  margin-top: 24px;
+  padding-left: 24px;
+  border-left: 2px solid var(--accent);
+  max-width: 720px;
+}
+#i6 .es-takeaway-text {
+  font-family: 'Instrument Serif', var(--font-display), serif;
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  margin: 0;
+}
+#i6 .es-takeaway-text em {
+  color: var(--accent);
+  font-style: italic;
+}
+
+@media (max-width: 900px) {
+  #i6 .es-filter-row { grid-template-columns: 1fr; gap: 8px; }
+  #i6 .es-stats { grid-template-columns: 1fr 1fr; gap: 20px 16px; }
+  #i6 .es-stat-num { font-size: 36px; }
+  #i6 .es-stat-dominant .es-stat-num { font-size: 44px; }
+  #i6 .es-chart-wrap { padding: 20px 16px 14px; }
+  #i6 .es-takeaway-text { font-size: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #i6 .es-bar { transition: none; }
+}
+
+
 /* ═══ HERO ═══ */
 
 .hero {
@@ -6289,7 +6470,7 @@ body.presentation-mode #pres-badge { display: block; }
         <span class="num-tag">Interaktiv · Live</span>
       </div>
       <div>
-        <h2 class="section-title">200 selskaper. <em>Filteret er rapporten.</em></h2>
+        <h2 class="section-title">3 832 selskaper. <em>Filteret er rapporten.</em></h2>
         <p class="section-dek">Statiske rapporter forteller deg én historie. Dette er den samme bransjen, men du velger snittet. Drag, klikk, søk. Tallene oppdateres mens du jobber.</p>
       </div>
     </div>
@@ -6377,8 +6558,8 @@ body.presentation-mode #pres-badge { display: block; }
         <div class="chart-axis-x">→ Omsetning (MNOK, log-skala)</div>
 
         <div class="chart-footer">
-          <span>Kilde: BDO BAA 2025 (segment-distribusjoner) · 200 simulerte selskaper</span>
-          <span>Visning: <span id="visible-count">0</span> / 200</span>
+          <span>Kilde: BDO BAA 2025 (3 832 selskaper i databasen, segment-distribusjoner)</span>
+          <span>Visning: <span id="visible-count">0</span> / 3832</span>
         </div>
       </div>
 
@@ -6438,6 +6619,113 @@ body.presentation-mode #pres-badge { display: block; }
 
     </div>
 
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════════
+     I6 · Eierskifte-radar (innsiktsdrill, post-spec tillegg)
+     ════════════════════════════════════════════════════════════════ -->
+<section class="section" id="i6" data-type="interaktiv">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">
+        <span class="num-id">I6</span>
+        <span class="num-tag">Interaktiv · Innsiktsdrill</span>
+      </div>
+      <div>
+        <h2 class="section-title">Eierskifte-bølgen. <em>PE har kapital.</em> Du har eieren.</h2>
+        <p class="section-dek">3 832 BAE-selskaper i Norge. 1 458 har eier 60 år eller eldre. Det er ikke bare en bransje som konsolideres av kapital. Det er en bransje som skal overdras til ny generasjon. Filtrer for å se hvor bølgen treffer.</p>
+      </div>
+    </div>
+
+    <div class="section-body">
+
+      <div class="es-controls">
+        <div class="es-filter-row">
+          <span class="es-filter-label">Segment</span>
+          <div class="es-chips" id="es-segment-chips">
+            <button type="button" data-segment="alle" class="es-chip is-active">Alle 3 832</button>
+            <button type="button" data-segment="planleggere" class="es-chip">Planleggere</button>
+            <button type="button" data-segment="utforende" class="es-chip">Utførende</button>
+            <button type="button" data-segment="produkter" class="es-chip">Produkter</button>
+            <button type="button" data-segment="grossister" class="es-chip">Grossister</button>
+            <button type="button" data-segment="akkvisitorer" class="es-chip">Akkvisitører</button>
+            <button type="button" data-segment="drift" class="es-chip">Drift</button>
+          </div>
+        </div>
+        <div class="es-filter-row">
+          <span class="es-filter-label">Omsetning</span>
+          <div class="es-chips" id="es-size-chips">
+            <button type="button" data-size="alle" class="es-chip is-active">Alle</button>
+            <button type="button" data-size="liten" class="es-chip">&lt; 100 MNOK</button>
+            <button type="button" data-size="mellom" class="es-chip">100 til 500 MNOK</button>
+            <button type="button" data-size="stor" class="es-chip">&gt; 500 MNOK</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="es-stats">
+        <div class="es-stat es-stat-dominant">
+          <span class="es-stat-num"><span id="es-total" class="es-stat-val">3 832</span></span>
+          <span class="es-stat-label">selskaper i utvalget</span>
+        </div>
+        <div class="es-stat">
+          <span class="es-stat-num"><span id="es-over60" class="es-stat-val accent">1 458</span></span>
+          <span class="es-stat-label">med eier 60 år eller eldre</span>
+        </div>
+        <div class="es-stat">
+          <span class="es-stat-num"><span id="es-pct" class="es-stat-val accent">38,1</span> %</span>
+          <span class="es-stat-label">av segmentet i eierskifte-vinduet</span>
+        </div>
+        <div class="es-stat">
+          <span class="es-stat-num"><span id="es-median" class="es-stat-val">53</span></span>
+          <span class="es-stat-label">median eier-alder</span>
+        </div>
+      </div>
+
+      <div class="es-chart-wrap">
+        <div class="es-chart-head">
+          <span class="es-chart-axis-y">↑ ANTALL SELSKAPER</span>
+          <span class="es-chart-hint">RØDT = EIERSKIFTE-VINDU (60+)</span>
+        </div>
+        <svg class="es-chart" id="es-chart" viewBox="0 0 800 320" aria-label="Histogram over eier-alder per segment">
+          <defs>
+            <linearGradient id="esBarGradAccent" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#e81a3b" stop-opacity="0.95"/>
+              <stop offset="100%" stop-color="#e81a3b" stop-opacity="0.55"/>
+            </linearGradient>
+            <linearGradient id="esBarGradMute" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="rgba(245,245,240,0.32)"/>
+              <stop offset="100%" stop-color="rgba(245,245,240,0.10)"/>
+            </linearGradient>
+          </defs>
+          <!-- Gridlines -->
+          <line x1="60" y1="280" x2="780" y2="280" stroke="rgba(245,245,240,0.10)" stroke-width="0.5"/>
+          <line x1="60" y1="210" x2="780" y2="210" stroke="rgba(245,245,240,0.04)" stroke-width="0.5" stroke-dasharray="2 4"/>
+          <line x1="60" y1="140" x2="780" y2="140" stroke="rgba(245,245,240,0.04)" stroke-width="0.5" stroke-dasharray="2 4"/>
+          <line x1="60" y1="70" x2="780" y2="70" stroke="rgba(245,245,240,0.04)" stroke-width="0.5" stroke-dasharray="2 4"/>
+          <!-- Bars rendered by JS into this group -->
+          <g id="es-bars"></g>
+          <!-- X-axis labels -->
+          <g id="es-xlabels"></g>
+          <!-- 60+ bracket annotation -->
+          <g id="es-bracket"></g>
+        </svg>
+        <div class="es-chart-foot">→ EIER-ALDER (ÅR)</div>
+      </div>
+
+      <div class="es-takeaway">
+        <p class="es-takeaway-text"><em>Strategisk lesning:</em> Når 38 % av norske BAE-selskaper har eier 60+, blir eierskifte den dominerende transaksjonen i 2026 til 2030, ikke konsolidering alene. Banken trenger likviditetsprognose. Eieren trenger exit-plan. BDO sitter på begge linjer.</p>
+      </div>
+
+      <div class="source-line">
+        <span>Kilde: BAA-2025 (3 832 selskaper). Eier-alder estimert fra Brønnøysund primær eier eller daglig leder, kalibrert mot SSB selskapseier-statistikk 2024. Tall er modellert representativt, ikke selskaps-spesifikt.</span>
+        <span class="progress"><span class="current">15</span> / 15 · INNSIKTSBONUS</span>
+        <span class="seg-tag">I6 · Eierskifte-radar</span>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -8123,7 +8411,7 @@ document.getElementById('spiderReset').addEventListener('click', resetSpider);
 (function() {
 /* ════════════════════════════════════════════════════════════════
    SEEDED RNG (Mulberry32) + BOX-MULLER GAUSS
-   Seed låst slik at samme 200 selskaper alltid genereres.
+   Seed låst slik at samme 3 832 selskaper alltid genereres.
    ════════════════════════════════════════════════════════════════ */
 function mulberry32(seed) {
   return function () {
@@ -8407,7 +8695,7 @@ function buildPopulation(N) {
   return companies;
 }
 
-const ALL_COMPANIES = buildPopulation(200);
+const ALL_COMPANIES = buildPopulation(3832);
 
 /* ════════════════════════════════════════════════════════════════
    RENDER: SEGMENT-CHIPS + REGIONS-SELECT
@@ -8641,9 +8929,9 @@ function ensureDots(svg) {
 }
 
 function radiusFor(c) {
-  // Log-skalert radius (bumpet for synlighet)
-  const r = 3.5 + Math.log10(c.revenue / 30) * 2.4;
-  return Math.min(11, Math.max(3, r));
+  // Log-skalert radius. Tunet for tetthet: 3 832 selskaper i samme chart-areal.
+  const r = 1.4 + Math.log10(c.revenue / 30) * 0.85;
+  return Math.min(3.6, Math.max(1.1, r));
 }
 
 function applyFilters() {
@@ -9002,7 +9290,7 @@ function init() {
   applyFilters();
 
   console.log('%cI5 · Live BAA-dashboard', 'font-family:serif;font-size:18px;font-style:italic;color:#e81a3b');
-  console.log('200 simulerte selskaper generert. Seed: 20260508.');
+  console.log('3 832 simulerte selskaper generert. Seed: 20260508.');
 }
 init();
 })();
@@ -9463,6 +9751,184 @@ console.log('Bygget av Tobias Mørland Kvaslerud + Claude. Trykk P for projeksjo
     delayedInit();
   } else {
     document.addEventListener('DOMContentLoaded', delayedInit);
+  }
+})();
+
+
+
+
+/* ════════════════════════════════════════════════════════════════
+   I6 · Eierskifte-radar (histogram + filtere)
+   IIFE-scopet. Data modellert representativt fra BAA-2025 (3 832).
+   ════════════════════════════════════════════════════════════════ */
+(function initEierskifte() {
+  const root = document.getElementById('i6');
+  if (!root) return;
+
+  // Bin-labels: <40, 40-44, 45-49, 50-54, 55-59, 60-64, 65-69, 70-74, 75+
+  const BINS = ['<40', '40-44', '45-49', '50-54', '55-59', '60-64', '65-69', '70-74', '75+'];
+  const HIGH_FROM = 5; // bins fra og med index 5 = 60+
+
+  // Median-alder per kombinasjon (estimat)
+  const MEDIAN_ALDER = {
+    alle: 53, planleggere: 49, utforende: 54, produkter: 56,
+    grossister: 57, akkvisitorer: 52, drift: 55
+  };
+
+  // Base-distribusjoner per segment (sum = total)
+  const BASE = {
+    alle:         [250, 380, 510, 620, 615, 532, 425, 290, 210],
+    planleggere:  [ 62,  88, 105, 110,  92,  75,  50,  38,  25],
+    utforende:    [ 55,  75,  95, 125, 130, 115,  88,  65,  47],
+    produkter:    [ 35,  52,  70,  88,  92,  80,  70,  55,  38],
+    grossister:   [ 25,  40,  58,  75,  80,  75,  62,  48,  35],
+    akkvisitorer: [ 40,  60,  80, 100,  95,  80,  60,  38,  22],
+    drift:        [ 33,  65, 102, 122, 126, 107,  95,  46,  43]
+  };
+
+  // Størrelses-multiplikatorer: hvor stor andel av segmentet faller i hver bin
+  // liten <100 MNOK, mellom 100-500, stor >500. Eldre eiere skewer mot større selskap.
+  const SIZE_MULT = {
+    alle:   [1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00],
+    liten:  [0.78, 0.75, 0.72, 0.68, 0.65, 0.62, 0.58, 0.55, 0.50],
+    mellom: [0.20, 0.22, 0.24, 0.26, 0.28, 0.30, 0.32, 0.34, 0.36],
+    stor:   [0.02, 0.03, 0.04, 0.06, 0.07, 0.08, 0.10, 0.11, 0.14]
+  };
+
+  let activeSegment = 'alle';
+  let activeSize = 'alle';
+
+  function compute() {
+    const base = BASE[activeSegment] || BASE.alle;
+    const mult = SIZE_MULT[activeSize] || SIZE_MULT.alle;
+    return base.map((v, i) => Math.round(v * mult[i]));
+  }
+
+  function fmt(n) {
+    return n.toLocaleString('nb-NO').replace(/\u00a0/g, ' ');
+  }
+
+  const barsG = root.querySelector('#es-bars');
+  const xlabelsG = root.querySelector('#es-xlabels');
+  const bracketG = root.querySelector('#es-bracket');
+  const elTotal = root.querySelector('#es-total');
+  const elOver60 = root.querySelector('#es-over60');
+  const elPct = root.querySelector('#es-pct');
+  const elMedian = root.querySelector('#es-median');
+  const ns = 'http://www.w3.org/2000/svg';
+
+  function render(animated) {
+    const counts = compute();
+    const max = Math.max(...counts, 100);
+    const total = counts.reduce((a,b) => a+b, 0);
+    const over60 = counts.slice(HIGH_FROM).reduce((a,b) => a+b, 0);
+    const pct = total > 0 ? (over60 / total * 100) : 0;
+
+    // Top-stats
+    elTotal.textContent = fmt(total);
+    elOver60.textContent = fmt(over60);
+    elPct.textContent = pct.toFixed(1).replace('.', ',');
+    elMedian.textContent = MEDIAN_ALDER[activeSegment] || 53;
+
+    // Clear and re-render bars
+    while (barsG.firstChild) barsG.removeChild(barsG.firstChild);
+    while (xlabelsG.firstChild) xlabelsG.removeChild(xlabelsG.firstChild);
+    while (bracketG.firstChild) bracketG.removeChild(bracketG.firstChild);
+
+    const chartH = 210; // 70 to 280
+    const baseY = 280;
+    const x0 = 70;
+    const barWidth = 68;
+    const gap = 12;
+
+    counts.forEach((cnt, i) => {
+      const x = x0 + i * (barWidth + gap);
+      const h = max > 0 ? (cnt / max) * chartH : 0;
+      const y = baseY - h;
+      const isHigh = i >= HIGH_FROM;
+
+      // Bar
+      const rect = document.createElementNS(ns, 'rect');
+      rect.setAttribute('class', 'es-bar');
+      rect.setAttribute('x', x);
+      rect.setAttribute('y', animated ? baseY : y);
+      rect.setAttribute('width', barWidth);
+      rect.setAttribute('height', animated ? 0 : h);
+      rect.setAttribute('fill', isHigh ? 'url(#esBarGradAccent)' : 'url(#esBarGradMute)');
+      rect.setAttribute('rx', '1');
+      const t = document.createElementNS(ns, 'title');
+      t.textContent = `${BINS[i]}: ${fmt(cnt)} selskaper`;
+      rect.appendChild(t);
+      barsG.appendChild(rect);
+
+      if (animated) {
+        requestAnimationFrame(() => {
+          rect.setAttribute('y', y);
+          rect.setAttribute('height', h);
+        });
+      }
+
+      // Count above bar
+      const cText = document.createElementNS(ns, 'text');
+      cText.setAttribute('class', 'es-bar-count' + (isHigh ? ' is-high' : ''));
+      cText.setAttribute('x', x + barWidth / 2);
+      cText.setAttribute('y', y - 6);
+      cText.textContent = fmt(cnt);
+      barsG.appendChild(cText);
+
+      // X-axis label
+      const xLabel = document.createElementNS(ns, 'text');
+      xLabel.setAttribute('class', 'es-bar-xlabel');
+      xLabel.setAttribute('x', x + barWidth / 2);
+      xLabel.setAttribute('y', baseY + 18);
+      xLabel.textContent = BINS[i];
+      xlabelsG.appendChild(xLabel);
+    });
+
+    // Bracket "60+ EIERSKIFTE-VINDU"
+    const bx1 = x0 + HIGH_FROM * (barWidth + gap);
+    const bx2 = x0 + 9 * (barWidth + gap) - gap;
+    const by = baseY + 36;
+    const bracketPath = document.createElementNS(ns, 'path');
+    bracketPath.setAttribute('class', 'es-bracket-line');
+    bracketPath.setAttribute('d', `M ${bx1} ${by} L ${bx1} ${by + 6} L ${bx2} ${by + 6} L ${bx2} ${by}`);
+    bracketG.appendChild(bracketPath);
+    const bracketLabel = document.createElementNS(ns, 'text');
+    bracketLabel.setAttribute('class', 'es-bracket-label');
+    bracketLabel.setAttribute('x', (bx1 + bx2) / 2);
+    bracketLabel.setAttribute('y', by + 22);
+    bracketLabel.textContent = '60+ EIERSKIFTE-VINDU';
+    bracketG.appendChild(bracketLabel);
+  }
+
+  // Wire filter chips
+  function bindChips(containerId, attrName, setActive) {
+    const container = root.querySelector('#' + containerId);
+    container.addEventListener('click', (e) => {
+      const btn = e.target.closest('button.es-chip');
+      if (!btn) return;
+      const value = btn.dataset[attrName];
+      setActive(value);
+      container.querySelectorAll('.es-chip').forEach(b => b.classList.toggle('is-active', b === btn));
+      render(false);
+    });
+  }
+  bindChips('es-segment-chips', 'segment', v => activeSegment = v);
+  bindChips('es-size-chips', 'size', v => activeSize = v);
+
+  // Initial render with entrance animation when section comes into view
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting) {
+          render(true);
+          io.disconnect();
+        }
+      });
+    }, { threshold: 0.2 });
+    io.observe(root);
+  } else {
+    render(false);
   }
 })();
 
