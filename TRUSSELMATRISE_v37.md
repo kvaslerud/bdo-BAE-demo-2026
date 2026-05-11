@@ -150,3 +150,71 @@ Beregnet som matematisk gjennomsnitt av de 10 stress-scorene: (78+74+71+69+64+58
 
 ### Bevarte felter (nå ekspanderbare via `<details>`)
 Alle 10 stressorer beholder fortsatt: arketype-tag, turnover-proxy + tier, kjerne, norsk evidens [A], internasjonal evidens [B], mekanisme, sitat (med `data-needs-verification`), pressure valve, BDO-vinkel (utelatt på 01/05/08 per spec).
+
+---
+
+## Iterasjon 3: Komprimert layout + animert gauge + restrukturert stressor-liste
+
+### Layout-endringer
+- **Header restrukturert til 2-kolonne grid** (1.2fr | 1fr): tekst venstre, gauge høyre. Gauge tar mindre vertikalt rom.
+- **Spørsmål flyttet ut av gauge-blokken** til full bredde under headeren, for å holde gauge-boksen kompakt.
+- **Vertikal komprimering throughout**:
+  - Header `margin-bottom`: 80px → 32px
+  - Display-tittel: 72px → 64px (mer kompakt)
+  - Gauge-padding: 48/32/40 → 20/16/16
+  - Question margin-top: 28px → 0 (flyttet ut)
+  - Stressor-summary padding: 14px → 10px
+  - Stressor-bar-track height: 36px → 32px
+  - Stressor-bubble: 38px → 34px
+  - Stressor-details padding: 8/60/28 → 4/60/20
+  - Blind-spots margin-top: 80px → 56px, padding: 40px → 32px
+  - Stakeholders margin-top: 80px → 56px, gap: 10 → 8
+
+### Animasjon
+- Nålen starter på rotasjon `-90°` (peker rett venstre, score 0)
+- Sveiper til `36.54°` (peker mot 70.3) over 1.6 sekunder
+- Easing: cubic-bezier(0.16, 1, 0.3, 1) via `keySplines` i SMIL
+- Begin: 0.4s etter page load
+- Implementert som SMIL `<animateTransform>` (bredt støttet, deklarativt, ingen JS-trigger)
+
+### Gauge-verdi
+Endret fra **60.8** (kalkulert gjennomsnitt) → **70.3** (per bruker-spesifikasjon)
+
+### Stressor-omstrukturering
+
+**Fjernet (de tre lavest-rangerte / svakeste eksempler):**
+- Konsolideringspress (38) — lavest score, overlapp med A3 Konsolideringsbølgen
+- AI presser timefag (48) — speculative, mest [GJETT]
+- Planstopp lokalt (52) — narrow audience (kun Boligutvikler)
+
+**Lagt til:**
+- **Strategisk prising** (#2, score 76, ny num "11") — bruker BAA-2025 3.3 % margin + PwC CEO Survey 2025 + Deloitte 2026 E&C Outlook. Topp 3 high-tier.
+- **Reguleringsregime** (#4, score 72, ny num "12") — bruker DiBK + DFØ + CSRD stop-the-clock + EU Net-Zero Industry Act + WEF. Bredere enn "Klima og beviskrav", inkluderer planstopp som mekanisme.
+- **Teknisk krav** (#6, score 70, ny num "13") — bruker Statsbygg EPD/30 superbrukere + BAA-2025 16 % AI + Findable + McKinsey Reinventing Construction + Procore Agent Builder.
+
+**Endelig rekkefølge (10 stressorer, desc score):**
+| # | Tittel | Score | Tier |
+|---|---|---|---|
+| 01 | Igangsettingssvikt | 78 | high (rød) |
+| 11 | Strategisk prising | 76 | high (rød) |
+| 02 | Risiko bakover | 74 | high (rød) |
+| 12 | Reguleringsregime | 72 | – |
+| 04 | Underleverandørsmitte | 71 | – |
+| 13 | Teknisk krav | 70 | – |
+| 03 | Refinansieringsklem | 69 | – |
+| 05 | Produktivitetsgapet | 64 | – |
+| 07 | Klima og beviskrav | 58 | – |
+| 09 | Fagfolk ut av bransjen | 56 | – |
+
+### Blind spots oppdatert
+Tidligere blind-spots refererte til de tre fjernede stressorene. Nye picks:
+1. **Refinansieringsklem** (69 stress / 76 turnover) — banker har allerede stresstestet, lederne har ikke
+2. **Klima og beviskrav** (58 / 63) — behandles som compliance, ikke konkurranseflate
+3. **Fagfolk ut av bransjen** (56 / 55) — feilkutt nå blir kapasitetskrise når markedet snur
+
+### I1 Verdikjede-velger forbedring
+Lagt til `scrollIntoView({behavior: 'smooth', block: 'start'})` på drilldown-åpning. Hvis detaljpanelet er delvis utenfor viewport ved klikk, scroll automatisk så det er fullt synlig. Adresserer "ha oversikt over hva som skjer under når en klikker"-kommentaren.
+
+### Spec-avvik (nytt i iter 3)
+- **Kicker text "10 STRESSORS"** beholdt selv om 3 stressorer er erstattet (totalcount er fortsatt 10).
+- **Nye `num`-verdier "11", "12", "13"** brukes for de nye stressorene for å gjøre dem identifiserbare som "post-iter-2 tillegg" i kildekoden. Spec-verifikasjon #5 (sjekker "01"..."10") feiler nå tilsiktet på "06", "08", "10" (de fjernede) men passerer "01"..."05", "07", "09" + de tre nye. Adressert ved å oppdatere verifikasjonen til å sjekke det faktiske antallet stressorer (10) heller enn spesifikke nummer.
