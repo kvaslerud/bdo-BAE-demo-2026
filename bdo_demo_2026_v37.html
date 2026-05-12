@@ -4384,6 +4384,9 @@ body.slide-mode > section.section:not(.is-current) .syn-close {
               fill-opacity var(--filter-dur) var(--filter-ease),
               stroke-opacity var(--hover-dur) var(--hover-ease);
 }
+.dot.is-static {
+  animation: none;
+}
 .dot.dimmed {
   opacity: 0.06;
   pointer-events: none;
@@ -9495,9 +9498,13 @@ function ensureDots(svg) {
 
   const g = document.createElementNS(ns, 'g');
   g.setAttribute('class', 'dots-group');
+  // Perf: kun ~6 % av dots får drift-animasjon for å holde 3 832-cluster lett på projektor-GPU.
+  // Velger deterministisk basert på id, ikke ut fra rangering, så distribusjon ser organisk ut.
+  const ANIM_FRAC = 0.06;
   ALL_COMPANIES.forEach((c, idx) => {
     const dot = document.createElementNS(ns, 'circle');
-    dot.setAttribute('class', 'dot');
+    const animates = ((c.id * 91) % 100) < (ANIM_FRAC * 100);
+    dot.setAttribute('class', animates ? 'dot' : 'dot is-static');
     dot.setAttribute('cx', xScale(c.revenue));
     dot.setAttribute('cy', yScale(c.margin));
     dot.setAttribute('r', radiusFor(c));
@@ -9508,11 +9515,13 @@ function ensureDots(svg) {
     dot.setAttribute('data-id', c.id);
     // currentColor for drop-shadow
     dot.style.color = c.segmentColor;
-    // Unik drift-rytme per prikk (deterministisk fra id)
-    const driftDur = (5.5 + ((c.id * 37) % 100) / 100 * 4).toFixed(2) + 's';
-    const driftDelay = (-((c.id * 53) % 100) / 100 * 7).toFixed(2) + 's';
-    dot.style.setProperty('--drift-dur', driftDur);
-    dot.style.setProperty('--drift-delay', driftDelay);
+    if (animates) {
+      // Unik drift-rytme per prikk (deterministisk fra id)
+      const driftDur = (5.5 + ((c.id * 37) % 100) / 100 * 4).toFixed(2) + 's';
+      const driftDelay = (-((c.id * 53) % 100) / 100 * 7).toFixed(2) + 's';
+      dot.style.setProperty('--drift-dur', driftDur);
+      dot.style.setProperty('--drift-delay', driftDelay);
+    }
     dot.addEventListener('mouseenter', e => showTooltip(c, e));
     dot.addEventListener('mousemove', e => moveTooltip(e));
     dot.addEventListener('mouseleave', hideTooltip);
