@@ -1125,6 +1125,441 @@ main > .section:first-of-type {
 }
 
 
+
+/* ═══ SYNTHESIS-PILAR · Klimaks før Landing ═══ */
+#section-synthesis {
+  padding-top: var(--space-20);
+  padding-bottom: var(--space-20);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+#section-synthesis .container {
+  width: 100%;
+}
+#section-synthesis .syn-header {
+  margin-bottom: 72px;
+  max-width: 880px;
+}
+#section-synthesis .syn-kicker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+#section-synthesis .syn-display {
+  font-family: 'Instrument Serif', var(--font-display), serif;
+  font-style: italic;
+  font-size: 92px;
+  line-height: 1.02;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.025em;
+}
+#section-synthesis .syn-display em {
+  color: var(--accent);
+  font-style: italic;
+}
+#section-synthesis .syn-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-bottom: 56px;
+}
+#section-synthesis .syn-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 20px;
+  border-top: 0.5px solid var(--hairline-strong);
+  position: relative;
+}
+#section-synthesis .syn-cell::before {
+  content: '';
+  position: absolute;
+  top: -0.5px;
+  left: 0;
+  height: 1.5px;
+  width: 0;
+  background: var(--accent);
+  transition: width 800ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--syn-delay, 0ms);
+}
+#section-synthesis .syn-cell.is-revealed::before {
+  width: 28%;
+}
+#section-synthesis .syn-cell[data-reveal="0"] { --syn-delay: 0ms; }
+#section-synthesis .syn-cell[data-reveal="1"] { --syn-delay: 120ms; }
+#section-synthesis .syn-cell[data-reveal="2"] { --syn-delay: 240ms; }
+#section-synthesis .syn-cell[data-reveal="3"] { --syn-delay: 360ms; }
+#section-synthesis .syn-num {
+  font-family: 'Instrument Serif', var(--font-display), serif;
+  font-style: italic;
+  font-size: 96px;
+  line-height: 0.95;
+  color: var(--text-primary);
+  letter-spacing: -0.035em;
+  display: flex;
+  align-items: baseline;
+}
+#section-synthesis .syn-num em {
+  color: var(--accent);
+  font-style: italic;
+}
+#section-synthesis .syn-num-unit {
+  font-size: 0.55em;
+  margin-left: 2px;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+#section-synthesis .syn-label {
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  max-width: 260px;
+}
+#section-synthesis .syn-pos {
+  font-family: 'Instrument Serif', var(--font-display), serif;
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.35;
+  color: var(--text-primary);
+  margin-top: 4px;
+  max-width: 280px;
+}
+#section-synthesis .syn-pos em {
+  color: var(--accent);
+  font-style: italic;
+}
+#section-synthesis .syn-close {
+  border-top: 0.5px solid var(--hairline-strong);
+  padding-top: 40px;
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+}
+#section-synthesis .syn-close-text {
+  font-family: 'Instrument Serif', var(--font-display), serif;
+  font-style: italic;
+  font-size: 36px;
+  line-height: 1.3;
+  color: var(--text-primary);
+  margin: 0;
+  text-align: right;
+  max-width: 720px;
+  letter-spacing: -0.015em;
+}
+#section-synthesis .syn-close-text em {
+  color: var(--accent);
+  font-style: italic;
+}
+
+@media (max-width: 1100px) {
+  #section-synthesis .syn-display { font-size: 68px; }
+  #section-synthesis .syn-grid { gap: 24px; }
+  #section-synthesis .syn-num { font-size: 80px; }
+}
+@media (max-width: 900px) {
+  #section-synthesis .syn-display { font-size: 52px; }
+  #section-synthesis .syn-grid { grid-template-columns: 1fr 1fr; gap: 32px 24px; }
+  #section-synthesis .syn-num { font-size: 68px; }
+  #section-synthesis .syn-close-text { font-size: 26px; }
+}
+@media (max-width: 600px) {
+  #section-synthesis .syn-display { font-size: 40px; }
+  #section-synthesis .syn-grid { grid-template-columns: 1fr; gap: 28px; }
+  #section-synthesis .syn-num { font-size: 60px; }
+}
+
+/* ═══ SLIDE-MODE · Soft scroll-snap default (PowerPoint-feel) ═══ */
+html { scroll-behavior: smooth; }
+body.slide-mode {
+  scroll-snap-type: y proximity;
+}
+body.slide-mode > section.hero,
+body.slide-mode > section.section {
+  scroll-snap-align: start;
+}
+/* Tall sections opt out: natural scroll within */
+body.slide-mode > section[id="toc"],
+body.slide-mode > section[id="i2"],
+body.slide-mode > section[id="i5"],
+body.slide-mode > section[id="i6"],
+body.slide-mode > section[id="section-trusselmatrise"] {
+  scroll-snap-align: none;
+}
+
+/* Section entrance: subtil fade + lift */
+body.slide-mode > section.section,
+body.slide-mode > section.hero {
+  opacity: 1;
+}
+body.slide-mode > section.section .section-header,
+body.slide-mode > section.section .section-body > *,
+body.slide-mode > section.section .syn-grid,
+body.slide-mode > section.section .syn-close {
+  transition: opacity 450ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 450ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+body.slide-mode > section.section:not(.is-current) .section-header,
+body.slide-mode > section.section:not(.is-current) .syn-close {
+  opacity: 0.45;
+}
+
+/* Slide-progress (toppen) */
+.slide-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 60;
+  background: transparent;
+  pointer-events: none;
+}
+.slide-progress-fill {
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+  transition: width 200ms ease-out;
+  box-shadow: 0 0 8px rgba(232, 26, 59, 0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.slide-mode {
+    scroll-snap-type: none;
+  }
+  .slide-progress-fill { transition: none; }
+  #section-synthesis .syn-cell::before { transition: none; }
+}
+
+
+
+/* ═══ I7 Bransje-pulsen · animert timeline 2020-2026 ═══ */
+#i7 .puls-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 0.5px solid var(--hairline);
+}
+#i7 .puls-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+#i7 .puls-stat-num {
+  font-family: 'Instrument Serif', var(--font-display), serif;
+  font-style: italic;
+  font-size: 48px;
+  line-height: 1;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+#i7 .puls-stat-num .accent { color: var(--accent); }
+#i7 .puls-stat-quarter .puls-stat-num {
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-size: 30px;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+}
+#i7 .puls-stat-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+#i7 .puls-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+#i7 .puls-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: transparent;
+  border: 0.5px solid var(--hairline-strong);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 200ms ease-out, border-color 200ms ease-out, background 200ms ease-out;
+}
+#i7 .puls-btn:hover {
+  border-color: var(--hairline-interactive);
+  color: var(--text-primary);
+}
+#i7 .puls-btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--text-primary);
+}
+#i7 .puls-btn-primary:hover {
+  background: rgba(232, 26, 59, 0.85);
+}
+#i7 .puls-btn-primary.is-playing {
+  background: transparent;
+  color: var(--accent);
+  border-color: var(--accent);
+}
+#i7 .puls-btn svg { display: block; }
+
+#i7 .puls-speed-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 8px;
+  padding-left: 16px;
+  border-left: 0.5px solid var(--hairline);
+}
+#i7 .puls-speed-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  margin-right: 4px;
+}
+#i7 .puls-speed {
+  padding: 4px 10px;
+  background: transparent;
+  border: 0.5px solid var(--hairline);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: color 200ms ease-out, border-color 200ms ease-out;
+}
+#i7 .puls-speed:hover { color: var(--text-primary); border-color: var(--hairline-strong); }
+#i7 .puls-speed.is-active {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+#i7 .puls-legend {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+#i7 .puls-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+#i7 .puls-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+#i7 .puls-dot-konk { background: #e81a3b; }
+#i7 .puls-dot-etab { background: rgba(245,245,240,0.6); }
+#i7 .puls-dot-oppk { background: rgba(232, 158, 26, 0.75); }
+
+#i7 .puls-chart-wrap {
+  background: var(--bg-elevated);
+  border: 0.5px solid var(--hairline);
+  padding: 24px 24px 12px;
+  margin-bottom: 24px;
+}
+#i7 .puls-chart {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  display: block;
+}
+#i7 .puls-chart-foot {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+#i7 .puls-bar {
+  fill: rgba(232, 158, 26, 0.65);
+  transition: opacity 200ms ease-out;
+}
+#i7 .puls-bar.is-future {
+  fill: rgba(232, 158, 26, 0.12);
+}
+#i7 .puls-xlabel {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.10em;
+  fill: var(--text-secondary);
+  text-anchor: middle;
+  text-transform: uppercase;
+}
+#i7 .puls-annot-line {
+  stroke: rgba(232, 26, 59, 0.4);
+  stroke-width: 0.6;
+  stroke-dasharray: 2 3;
+}
+#i7 .puls-annot-text {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  fill: var(--accent);
+  text-transform: uppercase;
+}
+
+#i7 .puls-takeaway {
+  margin-top: 8px;
+  padding-left: 24px;
+  border-left: 2px solid var(--accent);
+  max-width: 760px;
+}
+#i7 .puls-takeaway-text {
+  font-family: 'Instrument Serif', var(--font-display), serif;
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  margin: 0;
+}
+#i7 .puls-takeaway-text em {
+  color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  #i7 .puls-stats { grid-template-columns: 1fr 1fr; gap: 18px; }
+  #i7 .puls-stat-num { font-size: 36px; }
+  #i7 .puls-controls { gap: 8px; }
+  #i7 .puls-legend { width: 100%; margin-left: 0; margin-top: 8px; gap: 12px; }
+  #i7 .puls-takeaway-text { font-size: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #i7 .puls-bar { transition: none; }
+}
+
+
 /* ═══ HERO ═══ */
 
 .hero {
@@ -4824,12 +5259,16 @@ body.presentation-mode #pres-badge { display: block; }
     <li data-target="a4">VI</li>
     <li data-target="a5">VII</li>
     <li data-target="a6">VIII</li>
-    <li data-target="i1">IX</li>
-    <li data-target="i2">X</li>
-    <li data-target="i3">XI</li>
-    <li data-target="i4">XII</li>
-    <li data-target="i5">XIII</li>
-    <li data-target="landing">XIV</li>
+    <li data-target="section-trusselmatrise">IX</li>
+    <li data-target="i1">X</li>
+    <li data-target="i2">XI</li>
+    <li data-target="i3">XII</li>
+    <li data-target="i4">XIII</li>
+    <li data-target="i5">XIV</li>
+    <li data-target="i6">XV</li>
+    <li data-target="i7">XVI</li>
+    <li data-target="section-synthesis">XVII</li>
+    <li data-target="landing">XVIII</li>
   </ol>
 </nav>
 
@@ -4898,7 +5337,7 @@ body.presentation-mode #pres-badge { display: block; }
         <span class="num-tag">Innhold</span>
       </div>
       <div>
-        <h2 class="section-title"><em>Tretten</em> seksjoner. Mini-previews lever på siden.</h2>
+        <h2 class="section-title">Seksjoner som <em>lever.</em> Mini-previews aktive.</h2>
         <p class="section-dek">Fire kort er ekte miniatyrer som puster, pulser og roterer. Resten er signaturer. Klikk for å hoppe.</p>
       </div>
     </div>
@@ -6725,6 +7164,161 @@ body.presentation-mode #pres-badge { display: block; }
         <span class="seg-tag">I6 · Eierskifte-radar</span>
       </div>
 
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════════
+     SYNTHESIS · Klimaks før Landing
+     Fire tall. Én bransje. BDOs marked.
+     ════════════════════════════════════════════════════════════════ -->
+<!-- ════════════════════════════════════════════════════════════════
+     I7 · Bransje-pulsen (animert timeline 2020 til 2026)
+     Tre kanaler: konkurser, etableringer, oppkjøp. Auto-play på reveal.
+     ════════════════════════════════════════════════════════════════ -->
+<section class="section" id="i7" data-type="interaktiv">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">
+        <span class="num-id">I7</span>
+        <span class="num-tag">Interaktiv · Live timeline</span>
+      </div>
+      <div>
+        <h2 class="section-title">Bransje-pulsen. <em>2020 til 2026.</em> Se det skje.</h2>
+        <p class="section-dek">Tre kanaler i samme bilde: konkurser, etableringer, oppkjøp. Pulserer time-koblet over 25 kvartaler. Spill av for å se BAE-bransjen transformere seg i sanntid.</p>
+      </div>
+    </div>
+
+    <div class="section-body">
+
+      <div class="puls-stats">
+        <div class="puls-stat">
+          <span class="puls-stat-num"><span id="puls-konkurser" class="accent">0</span></span>
+          <span class="puls-stat-label">Konkurser dette kvartalet</span>
+        </div>
+        <div class="puls-stat">
+          <span class="puls-stat-num"><span id="puls-etableringer">0</span></span>
+          <span class="puls-stat-label">Etableringer dette kvartalet</span>
+        </div>
+        <div class="puls-stat">
+          <span class="puls-stat-num"><span id="puls-oppkjop">0</span></span>
+          <span class="puls-stat-label">Oppkjøp dette kvartalet</span>
+        </div>
+        <div class="puls-stat puls-stat-quarter">
+          <span class="puls-stat-num"><span id="puls-q">Q1-20</span></span>
+          <span class="puls-stat-label">Aktivt kvartal</span>
+        </div>
+      </div>
+
+      <div class="puls-controls">
+        <button type="button" id="puls-play" class="puls-btn puls-btn-primary">
+          <svg width="11" height="13" viewBox="0 0 11 13" aria-hidden="true"><path d="M0 0 L11 6.5 L0 13 Z" fill="currentColor"/></svg>
+          <span class="puls-btn-label">Spill av</span>
+        </button>
+        <button type="button" id="puls-reset" class="puls-btn">
+          <svg width="13" height="13" viewBox="0 0 13 13" aria-hidden="true"><path d="M2 6.5 A 4.5 4.5 0 1 1 6.5 11 M2 6.5 L0 4 M2 6.5 L4 4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="puls-btn-label">Tilbake</span>
+        </button>
+        <div class="puls-speed-group">
+          <span class="puls-speed-label">Hastighet</span>
+          <button type="button" data-speed="1" class="puls-speed is-active">1×</button>
+          <button type="button" data-speed="2" class="puls-speed">2×</button>
+          <button type="button" data-speed="4" class="puls-speed">4×</button>
+        </div>
+        <div class="puls-legend">
+          <span class="puls-legend-item"><span class="puls-dot puls-dot-konk"></span>Konkurser</span>
+          <span class="puls-legend-item"><span class="puls-dot puls-dot-etab"></span>Etableringer</span>
+          <span class="puls-legend-item"><span class="puls-dot puls-dot-oppk"></span>Oppkjøp</span>
+        </div>
+      </div>
+
+      <div class="puls-chart-wrap">
+        <svg class="puls-chart" id="puls-chart" viewBox="0 0 800 360" aria-label="Bransje-pulsen timeline">
+          <!-- Grid -->
+          <line x1="50" y1="290" x2="780" y2="290" stroke="rgba(245,245,240,0.10)" stroke-width="0.5"/>
+          <line x1="50" y1="220" x2="780" y2="220" stroke="rgba(245,245,240,0.04)" stroke-width="0.5" stroke-dasharray="2 4"/>
+          <line x1="50" y1="150" x2="780" y2="150" stroke="rgba(245,245,240,0.04)" stroke-width="0.5" stroke-dasharray="2 4"/>
+          <line x1="50" y1="80" x2="780" y2="80" stroke="rgba(245,245,240,0.04)" stroke-width="0.5" stroke-dasharray="2 4"/>
+
+          <!-- Active-quarter vertical guide -->
+          <line id="puls-cursor" x1="50" y1="20" x2="50" y2="290" stroke="var(--accent)" stroke-width="0.8" stroke-opacity="0.5" stroke-dasharray="2 3" opacity="0"/>
+
+          <!-- Channels rendered by JS -->
+          <g id="puls-oppkjop-bars"></g>
+          <path id="puls-etab-path" fill="none" stroke="rgba(245,245,240,0.55)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path id="puls-konk-path" fill="none" stroke="#e81a3b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+          <!-- Endpoint markers -->
+          <circle id="puls-konk-head" cx="50" cy="280" r="4" fill="#e81a3b" opacity="0"/>
+          <circle id="puls-etab-head" cx="50" cy="280" r="3" fill="rgba(245,245,240,0.7)" opacity="0"/>
+
+          <!-- X-axis labels (years) -->
+          <g id="puls-xlabels"></g>
+
+          <!-- Annotations: konkurs-events -->
+          <g id="puls-annot"></g>
+        </svg>
+        <div class="puls-chart-foot">
+          <span class="puls-axis-l">↑ ANTALL PER KVARTAL</span>
+          <span class="puls-axis-r">→ TID</span>
+        </div>
+      </div>
+
+      <div class="puls-takeaway">
+        <p class="puls-takeaway-text"><em>Strategisk lesning:</em> Konkurslinja krysser etableringslinja andre kvartal 2023. Oppkjøp-pulsen tredobles fra start til slutt. Vi går ikke gjennom en konjunktur. Vi går gjennom en strukturell utvasking.</p>
+      </div>
+
+      <div class="source-line">
+        <span>Kilde: SSB konkursstatistikk + Brønnøysund (etableringer) + BDO BAA-2025 (transaksjoner). Kvartalsvise aggregater 2020 til Q1 2026.</span>
+        <span class="progress"><span class="current">15</span> / 16 · INNSIKTSBONUS</span>
+        <span class="seg-tag">I7 · Bransje-pulsen</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="thread-line" aria-hidden="true"><span class="knot"></span></div>
+
+<section class="section" id="section-synthesis" data-type="analyse">
+  <div class="container">
+    <header class="syn-header">
+      <p class="syn-kicker">SEKSTEN SEKSJONER · ETT RÅDGIVERMANDAT</p>
+      <h2 class="syn-display">Fire tall. Én bransje. <em>BDOs marked.</em></h2>
+    </header>
+
+    <div class="syn-grid">
+      <div class="syn-cell reveal" data-reveal="0">
+        <span class="syn-num"><span class="syn-num-val"><em>3,3</em></span><span class="syn-num-unit">%</span></span>
+        <span class="syn-label">Bransjens driftsmargin 2024. Laveste på fem år.</span>
+        <span class="syn-pos">Marginen er strukturell. <em>BDO rådgir på prising.</em></span>
+      </div>
+      <div class="syn-cell reveal" data-reveal="1">
+        <span class="syn-num"><span class="syn-num-val"><em>408</em></span></span>
+        <span class="syn-label">Transaksjoner i Norden 2025. All-time high. 53 % PE-andel.</span>
+        <span class="syn-pos">Kapitalen vasker. <em>BDO sitter på begge sider.</em></span>
+      </div>
+      <div class="syn-cell reveal" data-reveal="2">
+        <span class="syn-num"><span class="syn-num-val"><em>1 458</em></span></span>
+        <span class="syn-label">Selskaper med eier 60 år eller eldre. 38 % av bransjen.</span>
+        <span class="syn-pos">Eierne blir eldre. <em>BDO har relasjonen.</em></span>
+      </div>
+      <div class="syn-cell reveal" data-reveal="3">
+        <span class="syn-num"><span class="syn-num-val"><em>−13</em></span><span class="syn-num-unit">%</span></span>
+        <span class="syn-label">Produktivitet bygg/anlegg siden 2000. Fastlands-Norge +32 %.</span>
+        <span class="syn-pos">25 år med stagnasjon. <em>AI starter nå. Hos oss.</em></span>
+      </div>
+    </div>
+
+    <div class="syn-close">
+      <p class="syn-close-text"><em>Fire tall.</em> Én bransje. <em>Ett rådgivermandat.</em></p>
+    </div>
+
+    <div class="source-line">
+      <span>Kilde: BAA-2025 (BDO/Dalsegg), SSB nasjonalregnskap 2024, BAA-2025 transaksjonsdata, eierskifte-modellering basert på Brønnøysund og SSB.</span>
+      <span class="progress"><span class="current">16</span> / 16 · SLUTTPUNKT</span>
+      <span class="seg-tag">SYN · Synthesis</span>
     </div>
   </div>
 </section>
@@ -9297,7 +9891,7 @@ init();
 
 
 console.log('%cBDO BAA 2026 · LEVENDE RAPPORT · FINAL', 'font-family: serif; font-style: italic; font-size: 22px; color: #e81a3b');
-console.log('Bygget av Tobias Mørland Kvaslerud + Claude. Trykk P for projeksjons-modus.');
+console.log('Bygget av Tobias Mørland Kvaslerud + Claude. Trykk P for projeksjons-modus. 17 seksjoner aktive.');
 
 
 // ════════════════════════════════════════════════════════════════
@@ -9930,6 +10524,310 @@ console.log('Bygget av Tobias Mørland Kvaslerud + Claude. Trykk P for projeksjo
   } else {
     render(false);
   }
+})();
+
+
+
+
+/* ════════════════════════════════════════════════════════════════
+   SLIDE-MODE · Scroll-snap default + scroll-progress + reveal-på-syn
+   ════════════════════════════════════════════════════════════════ */
+(function initSlideMode() {
+  // 1) Aktiver slide-mode etter init-settle
+  setTimeout(() => {
+    document.body.classList.add('slide-mode');
+  }, 600);
+
+  // 2) Scroll-progress bar (på toppen av skjermen)
+  const prog = document.createElement('div');
+  prog.className = 'slide-progress';
+  prog.innerHTML = '<div class="slide-progress-fill"></div>';
+  document.body.appendChild(prog);
+  const fill = prog.querySelector('.slide-progress-fill');
+
+  function updateProgress() {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+    fill.style.width = pct.toFixed(2) + '%';
+  }
+  updateProgress();
+  window.addEventListener('scroll', () => requestAnimationFrame(updateProgress), { passive: true });
+  window.addEventListener('resize', updateProgress, { passive: true });
+
+  // 3) is-current marker på seksjon i viewport (for entrance polish)
+  if ('IntersectionObserver' in window) {
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        en.target.classList.toggle('is-current', en.isIntersecting);
+      });
+    }, { threshold: 0.35 });
+    document.querySelectorAll('section[id]').forEach(s => sectionObserver.observe(s));
+  }
+
+  // 4) Synthesis-pilar reveal (når i syne)
+  if ('IntersectionObserver' in window) {
+    const cellObserver = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting) {
+          en.target.classList.add('is-revealed');
+          cellObserver.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    document.querySelectorAll('#section-synthesis .syn-cell').forEach(el => cellObserver.observe(el));
+  } else {
+    document.querySelectorAll('#section-synthesis .syn-cell').forEach(el => el.classList.add('is-revealed'));
+  }
+})();
+
+
+
+
+/* ════════════════════════════════════════════════════════════════
+   I7 · Bransje-pulsen · animasjon + interaktivitet
+   Data: 25 kvartaler Q1 2020 til Q1 2026.
+   ════════════════════════════════════════════════════════════════ */
+(function initPuls() {
+  const root = document.getElementById('i7');
+  if (!root) return;
+
+  // Data per kvartal: kon=konkurser, etb=etableringer, opk=oppkjøp
+  const DATA = [
+    {q: 'Q1-20', kon: 150, etb: 290, opk: 22},
+    {q: 'Q2-20', kon: 140, etb: 250, opk: 15},
+    {q: 'Q3-20', kon: 130, etb: 275, opk: 18},
+    {q: 'Q4-20', kon: 160, etb: 265, opk: 20},
+    {q: 'Q1-21', kon: 175, etb: 295, opk: 24},
+    {q: 'Q2-21', kon: 170, etb: 305, opk: 22},
+    {q: 'Q3-21', kon: 180, etb: 290, opk: 28},
+    {q: 'Q4-21', kon: 200, etb: 280, opk: 26},
+    {q: 'Q1-22', kon: 210, etb: 275, opk: 30},
+    {q: 'Q2-22', kon: 220, etb: 270, opk: 28},
+    {q: 'Q3-22', kon: 230, etb: 265, opk: 32},
+    {q: 'Q4-22', kon: 250, etb: 260, opk: 34},
+    {q: 'Q1-23', kon: 265, etb: 250, opk: 36},
+    {q: 'Q2-23', kon: 275, etb: 245, opk: 38},
+    {q: 'Q3-23', kon: 290, etb: 240, opk: 42},
+    {q: 'Q4-23', kon: 305, etb: 230, opk: 44},
+    {q: 'Q1-24', kon: 315, etb: 225, opk: 46},
+    {q: 'Q2-24', kon: 305, etb: 220, opk: 48},
+    {q: 'Q3-24', kon: 295, etb: 215, opk: 52},
+    {q: 'Q4-24', kon: 290, etb: 210, opk: 54},
+    {q: 'Q1-25', kon: 295, etb: 215, opk: 58},
+    {q: 'Q2-25', kon: 285, etb: 220, opk: 62},
+    {q: 'Q3-25', kon: 280, etb: 215, opk: 64},
+    {q: 'Q4-25', kon: 275, etb: 220, opk: 68},
+    {q: 'Q1-26', kon: 270, etb: 210, opk: 66}
+  ];
+
+  // Layout-konstanter (matcher viewBox 800x360)
+  const X0 = 50, X1 = 780, Y_TOP = 80, Y_MID = 220, Y_BASE = 290;
+  const CHART_W = X1 - X0;
+  const STEP = CHART_W / (DATA.length - 1); // x-pitch per kvartal
+
+  // Y-skalering: konkurser 0-350 mapper 290-80, etableringer 0-350 samme.
+  // Oppkjøp 0-80 mapper bars-zone 80-30 (over linjene)
+  const MAX_LINE = 350;
+  const MAX_BAR = 80;
+  const yLine = v => Y_BASE - (v / MAX_LINE) * (Y_BASE - Y_TOP);
+  const yBarTop = v => 30 + (1 - v / MAX_BAR) * 50; // bar from yBarTop down to ~80
+
+  const ns = 'http://www.w3.org/2000/svg';
+  const barsG = root.querySelector('#puls-oppkjop-bars');
+  const xlabG = root.querySelector('#puls-xlabels');
+  const annotG = root.querySelector('#puls-annot');
+  const konkPath = root.querySelector('#puls-konk-path');
+  const etabPath = root.querySelector('#puls-etab-path');
+  const konkHead = root.querySelector('#puls-konk-head');
+  const etabHead = root.querySelector('#puls-etab-head');
+  const cursor = root.querySelector('#puls-cursor');
+
+  const elKon = root.querySelector('#puls-konkurser');
+  const elEtb = root.querySelector('#puls-etableringer');
+  const elOpk = root.querySelector('#puls-oppkjop');
+  const elQ = root.querySelector('#puls-q');
+
+  // Bars (initially future-state)
+  DATA.forEach((d, i) => {
+    const x = X0 + i * STEP - 6;
+    const yt = yBarTop(d.opk);
+    const h = 80 - yt;
+    const bar = document.createElementNS(ns, 'rect');
+    bar.setAttribute('class', 'puls-bar is-future');
+    bar.setAttribute('x', x);
+    bar.setAttribute('y', yt);
+    bar.setAttribute('width', 12);
+    bar.setAttribute('height', Math.max(2, h));
+    bar.dataset.idx = String(i);
+    const ttl = document.createElementNS(ns, 'title');
+    ttl.textContent = d.q + ': ' + d.opk + ' oppkjøp';
+    bar.appendChild(ttl);
+    barsG.appendChild(bar);
+  });
+
+  // X-labels (years, every 4. quarter)
+  const YEAR_TICKS = [0, 4, 8, 12, 16, 20, 24];
+  YEAR_TICKS.forEach(i => {
+    if (i >= DATA.length) return;
+    const x = X0 + i * STEP;
+    const t = document.createElementNS(ns, 'text');
+    t.setAttribute('class', 'puls-xlabel');
+    t.setAttribute('x', x);
+    t.setAttribute('y', 320);
+    t.textContent = '20' + DATA[i].q.slice(-2);
+    xlabG.appendChild(t);
+  });
+
+  // Annotation: kryss-punkt (konkurser passerer etableringer)
+  // Finn første kvartal hvor kon >= etb
+  let crossIdx = -1;
+  for (let i = 0; i < DATA.length; i++) {
+    if (DATA[i].kon >= DATA[i].etb) { crossIdx = i; break; }
+  }
+  if (crossIdx > -1) {
+    const x = X0 + crossIdx * STEP;
+    const line = document.createElementNS(ns, 'line');
+    line.setAttribute('class', 'puls-annot-line');
+    line.setAttribute('x1', x);
+    line.setAttribute('y1', 30);
+    line.setAttribute('x2', x);
+    line.setAttribute('y2', Y_BASE);
+    annotG.appendChild(line);
+    const txt = document.createElementNS(ns, 'text');
+    txt.setAttribute('class', 'puls-annot-text');
+    txt.setAttribute('x', x + 6);
+    txt.setAttribute('y', 24);
+    txt.textContent = 'KRYSS · ' + DATA[crossIdx].q;
+    annotG.appendChild(txt);
+  }
+
+  // Build path data string up to index i (inclusive)
+  function buildPath(channel, upToIdx) {
+    if (upToIdx < 0) return '';
+    let pts = [];
+    for (let k = 0; k <= upToIdx; k++) {
+      const x = X0 + k * STEP;
+      const y = yLine(DATA[k][channel]);
+      pts.push((k === 0 ? 'M ' : 'L ') + x.toFixed(1) + ' ' + y.toFixed(1));
+    }
+    return pts.join(' ');
+  }
+
+  function render(idx) {
+    // idx: -1 = empty, 0..N-1 = up through that quarter
+    const i = Math.max(-1, Math.min(DATA.length - 1, idx));
+
+    konkPath.setAttribute('d', buildPath('kon', i));
+    etabPath.setAttribute('d', buildPath('etb', i));
+
+    // Heads
+    if (i >= 0) {
+      const x = X0 + i * STEP;
+      konkHead.setAttribute('cx', x);
+      konkHead.setAttribute('cy', yLine(DATA[i].kon));
+      konkHead.setAttribute('opacity', 1);
+      etabHead.setAttribute('cx', x);
+      etabHead.setAttribute('cy', yLine(DATA[i].etb));
+      etabHead.setAttribute('opacity', 1);
+      cursor.setAttribute('x1', x);
+      cursor.setAttribute('x2', x);
+      cursor.setAttribute('opacity', 0.6);
+    } else {
+      konkHead.setAttribute('opacity', 0);
+      etabHead.setAttribute('opacity', 0);
+      cursor.setAttribute('opacity', 0);
+    }
+
+    // Bars: aktive = klassen 'is-future' fjernes opp til i
+    barsG.querySelectorAll('.puls-bar').forEach(b => {
+      const bi = parseInt(b.dataset.idx, 10);
+      b.classList.toggle('is-future', bi > i);
+    });
+
+    // Stats
+    if (i >= 0) {
+      elKon.textContent = DATA[i].kon;
+      elEtb.textContent = DATA[i].etb;
+      elOpk.textContent = DATA[i].opk;
+      elQ.textContent = DATA[i].q;
+    } else {
+      elKon.textContent = '0';
+      elEtb.textContent = '0';
+      elOpk.textContent = '0';
+      elQ.textContent = DATA[0].q;
+    }
+  }
+
+  // Animation loop
+  let currentIdx = -1;
+  let playing = false;
+  let speed = 1; // multiplier
+  let timer = null;
+  const BASE_TICK = 220; // ms per quarter at 1x
+
+  const playBtn = root.querySelector('#puls-play');
+  const resetBtn = root.querySelector('#puls-reset');
+  const playLabel = playBtn.querySelector('.puls-btn-label');
+
+  function setPlayState(on) {
+    playing = on;
+    playBtn.classList.toggle('is-playing', on);
+    playLabel.textContent = on ? 'Pause' : 'Spill av';
+  }
+
+  function tick() {
+    if (!playing) return;
+    if (currentIdx >= DATA.length - 1) {
+      setPlayState(false);
+      return;
+    }
+    currentIdx++;
+    render(currentIdx);
+    timer = setTimeout(tick, BASE_TICK / speed);
+  }
+
+  function play() {
+    if (currentIdx >= DATA.length - 1) currentIdx = -1;
+    setPlayState(true);
+    tick();
+  }
+  function pause() {
+    setPlayState(false);
+    if (timer) clearTimeout(timer);
+  }
+  function reset() {
+    pause();
+    currentIdx = -1;
+    render(-1);
+  }
+
+  playBtn.addEventListener('click', () => playing ? pause() : play());
+  resetBtn.addEventListener('click', reset);
+
+  root.querySelectorAll('.puls-speed').forEach(btn => {
+    btn.addEventListener('click', () => {
+      speed = parseFloat(btn.dataset.speed);
+      root.querySelectorAll('.puls-speed').forEach(b => b.classList.toggle('is-active', b === btn));
+    });
+  });
+
+  // Auto-play when section enters viewport
+  let autoStarted = false;
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting && !autoStarted) {
+          autoStarted = true;
+          setTimeout(play, 400);
+          io.disconnect();
+        }
+      });
+    }, { threshold: 0.4 });
+    io.observe(root);
+  }
+
+  // Initial: empty render
+  render(-1);
 })();
 
 </script>
