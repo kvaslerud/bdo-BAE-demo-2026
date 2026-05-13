@@ -1782,6 +1782,229 @@ body.slide-mode > section.section:not(.is-current) .syn-close {
   #i3 .q-scale-edge { font-size: 10.5px; }
 }
 
+/* I3 nytt layout: spider ved siden av header + 2-col questions */
+#i3 .i3-top {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 64px;
+  margin-bottom: 48px;
+  align-items: start;
+}
+#i3 .i3-top-text { max-width: 640px; }
+#i3 .i3-top-text .section-num { margin-bottom: 24px; }
+#i3 .i3-top-spider { display: flex; justify-content: flex-end; }
+#i3 .i3-top-spider .spider-card { max-width: 480px; width: 100%; }
+
+#i3 .spider-questions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 32px;
+  max-height: none;
+  overflow: visible;
+}
+#i3 .q-row {
+  padding: 8px 0;
+}
+
+@media (max-width: 1100px) {
+  #i3 .i3-top { grid-template-columns: 1fr; gap: 32px; }
+  #i3 .spider-questions { grid-template-columns: 1fr; }
+}
+
+
+/* I6 Vinnerne 2024 · topp 10 % vs median */
+#i6 .vinn-controls {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 24px;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 0.5px solid var(--hairline);
+}
+#i6 .vinn-controls-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+#i6 .vinn-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+#i6 .vinn-chip {
+  background: transparent;
+  border: 0.5px solid var(--hairline-strong);
+  color: var(--text-secondary);
+  padding: 6px 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: color 200ms ease-out, border-color 200ms ease-out, background 200ms ease-out;
+  text-transform: uppercase;
+}
+#i6 .vinn-chip:hover {
+  border-color: var(--hairline-interactive);
+  color: var(--text-primary);
+}
+#i6 .vinn-chip.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--text-primary);
+}
+
+#i6 .vinn-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  margin-bottom: 32px;
+}
+#i6 .vinn-summary-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+#i6 .vinn-summary-num {
+  font-family: 'Instrument Serif', var(--font-display), serif;
+  font-style: italic;
+  font-size: 48px;
+  line-height: 1;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+#i6 .vinn-summary-num .accent { color: var(--accent); }
+#i6 .vinn-summary-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+#i6 .vinn-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 28px;
+}
+#i6 .vinn-card {
+  background: var(--bg-elevated);
+  border: 0.5px solid var(--hairline);
+  padding: 24px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+#i6 .vinn-card-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+#i6 .vinn-card-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 16px;
+}
+#i6 .vinn-winner {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+#i6 .vinn-winner-num {
+  font-family: 'Instrument Serif', var(--font-display), serif;
+  font-style: italic;
+  font-size: 56px;
+  line-height: 0.95;
+  color: var(--accent);
+  letter-spacing: -0.03em;
+}
+#i6 .vinn-winner-tag {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+#i6 .vinn-median {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  margin-bottom: 6px;
+}
+#i6 .vinn-median-num {
+  font-family: 'Instrument Serif', var(--font-display), serif;
+  font-style: italic;
+  font-size: 26px;
+  line-height: 1;
+  color: var(--text-secondary);
+  letter-spacing: -0.01em;
+}
+#i6 .vinn-median-tag {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+#i6 .vinn-gap-bar {
+  position: relative;
+  height: 3px;
+  background: rgba(245, 245, 240, 0.06);
+  margin-top: 6px;
+}
+#i6 .vinn-gap-bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--accent);
+  transition: width 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+#i6 .vinn-gap-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+#i6 .vinn-takeaway {
+  margin-top: 16px;
+  padding-left: 24px;
+  border-left: 2px solid var(--accent);
+  max-width: 760px;
+}
+#i6 .vinn-takeaway-text {
+  font-family: 'Instrument Serif', var(--font-display), serif;
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  margin: 0;
+}
+#i6 .vinn-takeaway-text em { color: var(--accent); }
+
+@media (max-width: 1100px) {
+  #i6 .vinn-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 700px) {
+  #i6 .vinn-grid { grid-template-columns: 1fr; }
+  #i6 .vinn-summary { grid-template-columns: 1fr 1fr; gap: 20px 16px; }
+  #i6 .vinn-summary-num { font-size: 36px; }
+  #i6 .vinn-winner-num { font-size: 44px; }
+}
+
+
 /* ═══ HERO ═══ */
 
 .hero {
@@ -6903,28 +7126,17 @@ body.presentation-mode #pres-badge { display: block; }
      ════════════════════════════════════════════════════════════════ -->
 <section class="section" id="i3" data-type="interaktiv">
   <div class="container">
-    <div class="section-header">
-      <div class="section-num">
-        <span class="num-id">10</span>
-        <span class="num-tag">Interaktiv · Live</span>
-      </div>
-      <div>
-        <h2 class="section-title">AI-modenhet i <em>åtte dimensjoner.</em> Skala 1 til 5.</h2>
-        <p class="section-dek">Selvtest mot åtte dimensjoner. Spider-grafen tegnes mens du svarer. Gjennomsnittet i norsk BAA lander på 35 til 55 prosent.</p>
-      </div>
-    </div>
-
-    <div class="section-body">
-      <div class="spider-wrap">
-
-        <!-- Venstre: spørsmål -->
-        <div class="spider-questions" id="spiderQuestions" role="list" aria-label="Åtte spørsmål om AI-modenhet">
-          <!-- Bygges av JS fra QUESTIONS-array -->
+    <div class="i3-top">
+      <div class="i3-top-text">
+        <div class="section-num">
+          <span class="num-id">10</span>
+          <span class="num-tag">Interaktiv · Live</span>
         </div>
-
-        <!-- Høyre: live spider + resultat (sticky) -->
-        <div class="spider-stage">
-          <div class="spider-card">
+        <h2 class="section-title">AI-modenhet i <em>åtte dimensjoner.</em> Skala 1 til 5.</h2>
+        <p class="section-dek">Selvtest mot åtte dimensjoner. Spider-grafen tegnes mens du svarer.</p>
+      </div>
+      <div class="i3-top-spider">
+        <div class="spider-card">
             <div class="spider-meta">
               <span>Live tegning</span>
               <span class="spider-meta-progress" id="spiderProgress">0 / 8 besvart</span>
@@ -6964,8 +7176,12 @@ body.presentation-mode #pres-badge { display: block; }
 
             <div class="spider-footnote">Bygget for å måle deg, ikke imponere deg.</div>
           </div>
-        </div>
+      </div>
+    </div>
 
+    <div class="section-body">
+      <div class="spider-questions" id="spiderQuestions" role="list" aria-label="Åtte spørsmål om AI-modenhet">
+        <!-- Bygges av JS fra QUESTIONS-array -->
       </div>
     </div>
   </div>
@@ -7223,197 +7439,56 @@ body.presentation-mode #pres-badge { display: block; }
     <div class="section-header">
       <div class="section-num">
         <span class="num-id">13</span>
-        <span class="num-tag">Interaktiv · Innsiktsdrill</span>
+        <span class="num-tag">Interaktiv · Vinneranalyse</span>
       </div>
       <div>
-        <h2 class="section-title">Eierskifte-bølgen. <em>PE har kapital.</em> Du har eieren.</h2>
-        <p class="section-dek">3 832 BAE-selskaper i Norge. 1 458 har eier 60 år eller eldre. Det er ikke bare en bransje som konsolideres av kapital. Det er en bransje som skal overdras til ny generasjon. Filtrer for å se hvor bølgen treffer.</p>
+        <h2 class="section-title">Vinnerne <em>2024.</em> Hva skiller dem fra resten?</h2>
+        <p class="section-dek">Topp 10 % i BAA-databasen presterer langt over snittet. Seks tall viser gapet. Klikk segment for å se hvor gapet er størst i din del av bransjen.</p>
       </div>
     </div>
 
     <div class="section-body">
 
-      <div class="es-controls">
-        <div class="es-filter-row">
-          <span class="es-filter-label">Segment</span>
-          <div class="es-chips" id="es-segment-chips">
-            <button type="button" data-segment="alle" class="es-chip is-active">Alle 3 832</button>
-            <button type="button" data-segment="planleggere" class="es-chip">Planleggere</button>
-            <button type="button" data-segment="utforende" class="es-chip">Utførende</button>
-            <button type="button" data-segment="produkter" class="es-chip">Produkter</button>
-            <button type="button" data-segment="grossister" class="es-chip">Grossister</button>
-            <button type="button" data-segment="akkvisitorer" class="es-chip">Akkvisitører</button>
-            <button type="button" data-segment="drift" class="es-chip">Drift</button>
-          </div>
-        </div>
-        <div class="es-filter-row">
-          <span class="es-filter-label">Omsetning</span>
-          <div class="es-chips" id="es-size-chips">
-            <button type="button" data-size="alle" class="es-chip is-active">Alle</button>
-            <button type="button" data-size="liten" class="es-chip">&lt; 100 MNOK</button>
-            <button type="button" data-size="mellom" class="es-chip">100 til 500 MNOK</button>
-            <button type="button" data-size="stor" class="es-chip">&gt; 500 MNOK</button>
-          </div>
+      <div class="vinn-controls">
+        <span class="vinn-controls-label">Segment</span>
+        <div class="vinn-chips" id="vinn-chips">
+          <button type="button" data-vinn="alle" class="vinn-chip is-active">Alle 3 832</button>
+          <button type="button" data-vinn="planleggere" class="vinn-chip">Planleggere</button>
+          <button type="button" data-vinn="utforende" class="vinn-chip">Utførende</button>
+          <button type="button" data-vinn="produkter" class="vinn-chip">Produkter</button>
+          <button type="button" data-vinn="grossister" class="vinn-chip">Grossister</button>
+          <button type="button" data-vinn="akkvisitorer" class="vinn-chip">Akkvisitører</button>
+          <button type="button" data-vinn="drift" class="vinn-chip">Drift</button>
         </div>
       </div>
 
-      <div class="es-stats">
-        <div class="es-stat es-stat-dominant">
-          <span class="es-stat-num"><span id="es-total" class="es-stat-val">3 832</span></span>
-          <span class="es-stat-label">selskaper i utvalget</span>
+      <div class="vinn-summary">
+        <div class="vinn-summary-cell">
+          <span class="vinn-summary-num"><span id="vinn-count">382</span></span>
+          <span class="vinn-summary-label">Vinnere i utvalget</span>
         </div>
-        <div class="es-stat">
-          <span class="es-stat-num"><span id="es-over60" class="es-stat-val accent">1 458</span></span>
-          <span class="es-stat-label">med eier 60 år eller eldre</span>
+        <div class="vinn-summary-cell">
+          <span class="vinn-summary-num"><span id="vinn-median-margin" class="accent">3,3</span> %</span>
+          <span class="vinn-summary-label">Median driftsmargin</span>
         </div>
-        <div class="es-stat">
-          <span class="es-stat-num"><span id="es-pct" class="es-stat-val accent">38,1</span> %</span>
-          <span class="es-stat-label">av segmentet i eierskifte-vinduet</span>
+        <div class="vinn-summary-cell">
+          <span class="vinn-summary-num"><span id="vinn-winner-margin" class="accent">12,3</span> %</span>
+          <span class="vinn-summary-label">Vinnere driftsmargin</span>
         </div>
-        <div class="es-stat">
-          <span class="es-stat-num"><span id="es-median" class="es-stat-val">53</span></span>
-          <span class="es-stat-label">median eier-alder</span>
-        </div>
-      </div>
-
-      <div class="es-chart-wrap">
-        <div class="es-chart-head">
-          <span class="es-chart-axis-y">↑ ANTALL SELSKAPER</span>
-          <span class="es-chart-hint">RØDT = EIERSKIFTE-VINDU (60+)</span>
-        </div>
-        <svg class="es-chart" id="es-chart" viewBox="0 0 800 320" aria-label="Histogram over eier-alder per segment">
-          <defs>
-            <linearGradient id="esBarGradAccent" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#e81a3b" stop-opacity="0.95"/>
-              <stop offset="100%" stop-color="#e81a3b" stop-opacity="0.55"/>
-            </linearGradient>
-            <linearGradient id="esBarGradMute" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="rgba(245,245,240,0.32)"/>
-              <stop offset="100%" stop-color="rgba(245,245,240,0.10)"/>
-            </linearGradient>
-          </defs>
-          <!-- Gridlines -->
-          <line x1="60" y1="280" x2="780" y2="280" stroke="rgba(245,245,240,0.10)" stroke-width="0.5"/>
-          <line x1="60" y1="210" x2="780" y2="210" stroke="rgba(245,245,240,0.04)" stroke-width="0.5" stroke-dasharray="2 4"/>
-          <line x1="60" y1="140" x2="780" y2="140" stroke="rgba(245,245,240,0.04)" stroke-width="0.5" stroke-dasharray="2 4"/>
-          <line x1="60" y1="70" x2="780" y2="70" stroke="rgba(245,245,240,0.04)" stroke-width="0.5" stroke-dasharray="2 4"/>
-          <!-- Bars rendered by JS into this group -->
-          <g id="es-bars"></g>
-          <!-- X-axis labels -->
-          <g id="es-xlabels"></g>
-          <!-- 60+ bracket annotation -->
-          <g id="es-bracket"></g>
-        </svg>
-        <div class="es-chart-foot">→ EIER-ALDER (ÅR)</div>
-      </div>
-
-      <div class="es-takeaway">
-        <p class="es-takeaway-text"><em>Strategisk lesning:</em> Når 38 % av norske BAE-selskaper har eier 60+, blir eierskifte den dominerende transaksjonen i 2026 til 2030, ikke konsolidering alene. Banken trenger likviditetsprognose. Eieren trenger exit-plan. BDO sitter på begge linjer.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ════════════════════════════════════════════════════════════════
-     SYNTHESIS · Klimaks før Landing
-     Fire tall. Én bransje. BDOs marked.
-     ════════════════════════════════════════════════════════════════ -->
-<!-- ════════════════════════════════════════════════════════════════
-     I7 · Bransje-pulsen (animert timeline 2020 til 2026)
-     Tre kanaler: konkurser, etableringer, oppkjøp. Auto-play på reveal.
-     ════════════════════════════════════════════════════════════════ -->
-<section class="section" id="i7" data-type="interaktiv">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-num">
-        <span class="num-id">14</span>
-        <span class="num-tag">Interaktiv · Live timeline</span>
-      </div>
-      <div>
-        <h2 class="section-title">Bransje-pulsen. <em>2020 til 2026.</em> Se det skje.</h2>
-        <p class="section-dek">Tre kanaler i samme bilde: konkurser, etableringer, oppkjøp. Pulserer time-koblet over 25 kvartaler. Spill av for å se BAE-bransjen transformere seg i sanntid.</p>
-      </div>
-    </div>
-
-    <div class="section-body">
-
-      <div class="puls-stats">
-        <div class="puls-stat">
-          <span class="puls-stat-num"><span id="puls-konkurser" class="accent">0</span></span>
-          <span class="puls-stat-label">Konkurser dette kvartalet</span>
-        </div>
-        <div class="puls-stat">
-          <span class="puls-stat-num"><span id="puls-etableringer">0</span></span>
-          <span class="puls-stat-label">Etableringer dette kvartalet</span>
-        </div>
-        <div class="puls-stat">
-          <span class="puls-stat-num"><span id="puls-oppkjop">0</span></span>
-          <span class="puls-stat-label">Oppkjøp dette kvartalet</span>
-        </div>
-        <div class="puls-stat puls-stat-quarter">
-          <span class="puls-stat-num"><span id="puls-q">Q1-20</span></span>
-          <span class="puls-stat-label">Aktivt kvartal</span>
+        <div class="vinn-summary-cell">
+          <span class="vinn-summary-num"><span id="vinn-gap">3,7</span>×</span>
+          <span class="vinn-summary-label">Margin-gap</span>
         </div>
       </div>
 
-      <div class="puls-controls">
-        <button type="button" id="puls-play" class="puls-btn puls-btn-primary">
-          <svg width="11" height="13" viewBox="0 0 11 13" aria-hidden="true"><path d="M0 0 L11 6.5 L0 13 Z" fill="currentColor"/></svg>
-          <span class="puls-btn-label">Spill av</span>
-        </button>
-        <button type="button" id="puls-reset" class="puls-btn">
-          <svg width="13" height="13" viewBox="0 0 13 13" aria-hidden="true"><path d="M2 6.5 A 4.5 4.5 0 1 1 6.5 11 M2 6.5 L0 4 M2 6.5 L4 4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span class="puls-btn-label">Tilbake</span>
-        </button>
-        <div class="puls-speed-group">
-          <span class="puls-speed-label">Hastighet</span>
-          <button type="button" data-speed="1" class="puls-speed is-active">1×</button>
-          <button type="button" data-speed="2" class="puls-speed">2×</button>
-          <button type="button" data-speed="4" class="puls-speed">4×</button>
-        </div>
-        <div class="puls-legend">
-          <span class="puls-legend-item"><span class="puls-dot puls-dot-konk"></span>Konkurser</span>
-          <span class="puls-legend-item"><span class="puls-dot puls-dot-etab"></span>Etableringer</span>
-          <span class="puls-legend-item"><span class="puls-dot puls-dot-oppk"></span>Oppkjøp</span>
-        </div>
+      <div class="vinn-grid" id="vinn-grid">
+        <!-- 6 sammenligningskort bygges av JS -->
       </div>
 
-      <div class="puls-chart-wrap">
-        <svg class="puls-chart" id="puls-chart" viewBox="0 0 800 360" aria-label="Bransje-pulsen timeline">
-          <!-- Grid -->
-          <line x1="50" y1="290" x2="780" y2="290" stroke="rgba(245,245,240,0.10)" stroke-width="0.5"/>
-          <line x1="50" y1="220" x2="780" y2="220" stroke="rgba(245,245,240,0.04)" stroke-width="0.5" stroke-dasharray="2 4"/>
-          <line x1="50" y1="150" x2="780" y2="150" stroke="rgba(245,245,240,0.04)" stroke-width="0.5" stroke-dasharray="2 4"/>
-          <line x1="50" y1="80" x2="780" y2="80" stroke="rgba(245,245,240,0.04)" stroke-width="0.5" stroke-dasharray="2 4"/>
-
-          <!-- Active-quarter vertical guide -->
-          <line id="puls-cursor" x1="50" y1="20" x2="50" y2="290" stroke="var(--accent)" stroke-width="0.8" stroke-opacity="0.5" stroke-dasharray="2 3" opacity="0"/>
-
-          <!-- Channels rendered by JS -->
-          <g id="puls-oppkjop-bars"></g>
-          <path id="puls-etab-path" fill="none" stroke="rgba(245,245,240,0.55)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path id="puls-konk-path" fill="none" stroke="#e81a3b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-
-          <!-- Endpoint markers -->
-          <circle id="puls-konk-head" cx="50" cy="280" r="4" fill="#e81a3b" opacity="0"/>
-          <circle id="puls-etab-head" cx="50" cy="280" r="3" fill="rgba(245,245,240,0.7)" opacity="0"/>
-
-          <!-- X-axis labels (years) -->
-          <g id="puls-xlabels"></g>
-
-          <!-- Annotations: konkurs-events -->
-          <g id="puls-annot"></g>
-        </svg>
-        <div class="puls-chart-foot">
-          <span class="puls-axis-l">↑ ANTALL PER KVARTAL</span>
-          <span class="puls-axis-r">→ TID</span>
-        </div>
+      <div class="vinn-takeaway">
+        <p class="vinn-takeaway-text"><em>Strategisk lesning:</em> Du må ikke kopiere alt vinnerne gjør. Du må forflytte deg på to dimensjoner. AI-investering og EK-andel er de to enkleste å begynne med, og de driver fire av de andre.</p>
       </div>
 
-      <div class="puls-takeaway">
-        <p class="puls-takeaway-text"><em>Strategisk lesning:</em> Konkurslinja krysser etableringslinja andre kvartal 2023. Oppkjøp-pulsen tredobles fra start til slutt. Vi går ikke gjennom en konjunktur. Vi går gjennom en strukturell utvasking.</p>
-      </div>
     </div>
   </div>
 </section>
@@ -10532,180 +10607,7 @@ console.log('Bygget av Tobias Mørland Kvaslerud + Claude. Trykk P for projeksjo
 
 
 
-/* ════════════════════════════════════════════════════════════════
-   I6 · Eierskifte-radar (histogram + filtere)
-   IIFE-scopet. Data modellert representativt fra BAA-2025 (3 832).
-   ════════════════════════════════════════════════════════════════ */
-(function initEierskifte() {
-  const root = document.getElementById('i6');
-  if (!root) return;
 
-  // Bin-labels: <40, 40-44, 45-49, 50-54, 55-59, 60-64, 65-69, 70-74, 75+
-  const BINS = ['<40', '40-44', '45-49', '50-54', '55-59', '60-64', '65-69', '70-74', '75+'];
-  const HIGH_FROM = 5; // bins fra og med index 5 = 60+
-
-  // Median-alder per kombinasjon (estimat)
-  const MEDIAN_ALDER = {
-    alle: 53, planleggere: 49, utforende: 54, produkter: 56,
-    grossister: 57, akkvisitorer: 52, drift: 55
-  };
-
-  // Base-distribusjoner per segment (sum = total)
-  const BASE = {
-    alle:         [250, 380, 510, 620, 615, 532, 425, 290, 210],
-    planleggere:  [ 62,  88, 105, 110,  92,  75,  50,  38,  25],
-    utforende:    [ 55,  75,  95, 125, 130, 115,  88,  65,  47],
-    produkter:    [ 35,  52,  70,  88,  92,  80,  70,  55,  38],
-    grossister:   [ 25,  40,  58,  75,  80,  75,  62,  48,  35],
-    akkvisitorer: [ 40,  60,  80, 100,  95,  80,  60,  38,  22],
-    drift:        [ 33,  65, 102, 122, 126, 107,  95,  46,  43]
-  };
-
-  // Størrelses-multiplikatorer: hvor stor andel av segmentet faller i hver bin
-  // liten <100 MNOK, mellom 100-500, stor >500. Eldre eiere skewer mot større selskap.
-  const SIZE_MULT = {
-    alle:   [1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00],
-    liten:  [0.78, 0.75, 0.72, 0.68, 0.65, 0.62, 0.58, 0.55, 0.50],
-    mellom: [0.20, 0.22, 0.24, 0.26, 0.28, 0.30, 0.32, 0.34, 0.36],
-    stor:   [0.02, 0.03, 0.04, 0.06, 0.07, 0.08, 0.10, 0.11, 0.14]
-  };
-
-  let activeSegment = 'alle';
-  let activeSize = 'alle';
-
-  function compute() {
-    const base = BASE[activeSegment] || BASE.alle;
-    const mult = SIZE_MULT[activeSize] || SIZE_MULT.alle;
-    return base.map((v, i) => Math.round(v * mult[i]));
-  }
-
-  function fmt(n) {
-    return n.toLocaleString('nb-NO').replace(/\u00a0/g, ' ');
-  }
-
-  const barsG = root.querySelector('#es-bars');
-  const xlabelsG = root.querySelector('#es-xlabels');
-  const bracketG = root.querySelector('#es-bracket');
-  const elTotal = root.querySelector('#es-total');
-  const elOver60 = root.querySelector('#es-over60');
-  const elPct = root.querySelector('#es-pct');
-  const elMedian = root.querySelector('#es-median');
-  const ns = 'http://www.w3.org/2000/svg';
-
-  function render(animated) {
-    const counts = compute();
-    const max = Math.max(...counts, 100);
-    const total = counts.reduce((a,b) => a+b, 0);
-    const over60 = counts.slice(HIGH_FROM).reduce((a,b) => a+b, 0);
-    const pct = total > 0 ? (over60 / total * 100) : 0;
-
-    // Top-stats
-    elTotal.textContent = fmt(total);
-    elOver60.textContent = fmt(over60);
-    elPct.textContent = pct.toFixed(1).replace('.', ',');
-    elMedian.textContent = MEDIAN_ALDER[activeSegment] || 53;
-
-    // Clear and re-render bars
-    while (barsG.firstChild) barsG.removeChild(barsG.firstChild);
-    while (xlabelsG.firstChild) xlabelsG.removeChild(xlabelsG.firstChild);
-    while (bracketG.firstChild) bracketG.removeChild(bracketG.firstChild);
-
-    const chartH = 210; // 70 to 280
-    const baseY = 280;
-    const x0 = 70;
-    const barWidth = 68;
-    const gap = 12;
-
-    counts.forEach((cnt, i) => {
-      const x = x0 + i * (barWidth + gap);
-      const h = max > 0 ? (cnt / max) * chartH : 0;
-      const y = baseY - h;
-      const isHigh = i >= HIGH_FROM;
-
-      // Bar
-      const rect = document.createElementNS(ns, 'rect');
-      rect.setAttribute('class', 'es-bar');
-      rect.setAttribute('x', x);
-      rect.setAttribute('y', animated ? baseY : y);
-      rect.setAttribute('width', barWidth);
-      rect.setAttribute('height', animated ? 0 : h);
-      rect.setAttribute('fill', isHigh ? 'url(#esBarGradAccent)' : 'url(#esBarGradMute)');
-      rect.setAttribute('rx', '1');
-      const t = document.createElementNS(ns, 'title');
-      t.textContent = `${BINS[i]}: ${fmt(cnt)} selskaper`;
-      rect.appendChild(t);
-      barsG.appendChild(rect);
-
-      if (animated) {
-        requestAnimationFrame(() => {
-          rect.setAttribute('y', y);
-          rect.setAttribute('height', h);
-        });
-      }
-
-      // Count above bar
-      const cText = document.createElementNS(ns, 'text');
-      cText.setAttribute('class', 'es-bar-count' + (isHigh ? ' is-high' : ''));
-      cText.setAttribute('x', x + barWidth / 2);
-      cText.setAttribute('y', y - 6);
-      cText.textContent = fmt(cnt);
-      barsG.appendChild(cText);
-
-      // X-axis label
-      const xLabel = document.createElementNS(ns, 'text');
-      xLabel.setAttribute('class', 'es-bar-xlabel');
-      xLabel.setAttribute('x', x + barWidth / 2);
-      xLabel.setAttribute('y', baseY + 18);
-      xLabel.textContent = BINS[i];
-      xlabelsG.appendChild(xLabel);
-    });
-
-    // Bracket "60+ EIERSKIFTE-VINDU"
-    const bx1 = x0 + HIGH_FROM * (barWidth + gap);
-    const bx2 = x0 + 9 * (barWidth + gap) - gap;
-    const by = baseY + 36;
-    const bracketPath = document.createElementNS(ns, 'path');
-    bracketPath.setAttribute('class', 'es-bracket-line');
-    bracketPath.setAttribute('d', `M ${bx1} ${by} L ${bx1} ${by + 6} L ${bx2} ${by + 6} L ${bx2} ${by}`);
-    bracketG.appendChild(bracketPath);
-    const bracketLabel = document.createElementNS(ns, 'text');
-    bracketLabel.setAttribute('class', 'es-bracket-label');
-    bracketLabel.setAttribute('x', (bx1 + bx2) / 2);
-    bracketLabel.setAttribute('y', by + 22);
-    bracketLabel.textContent = '60+ EIERSKIFTE-VINDU';
-    bracketG.appendChild(bracketLabel);
-  }
-
-  // Wire filter chips
-  function bindChips(containerId, attrName, setActive) {
-    const container = root.querySelector('#' + containerId);
-    container.addEventListener('click', (e) => {
-      const btn = e.target.closest('button.es-chip');
-      if (!btn) return;
-      const value = btn.dataset[attrName];
-      setActive(value);
-      container.querySelectorAll('.es-chip').forEach(b => b.classList.toggle('is-active', b === btn));
-      render(false);
-    });
-  }
-  bindChips('es-segment-chips', 'segment', v => activeSegment = v);
-  bindChips('es-size-chips', 'size', v => activeSize = v);
-
-  // Initial render with entrance animation when section comes into view
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(en => {
-        if (en.isIntersecting) {
-          render(true);
-          io.disconnect();
-        }
-      });
-    }, { threshold: 0.2 });
-    io.observe(root);
-  } else {
-    render(false);
-  }
-})();
 
 
 
@@ -11062,6 +10964,174 @@ console.log('Bygget av Tobias Mørland Kvaslerud + Claude. Trykk P for projeksjo
     io.observe(counter);
   } else {
     animate();
+  }
+})();
+
+
+
+
+/* ════════════════════════════════════════════════════════════════
+   I6 · Vinnerne 2024 · topp 10 % vs median per segment
+   Data modellert representativt fra BAA-2025 dynamikk.
+   ════════════════════════════════════════════════════════════════ */
+(function initVinnerne() {
+  const root = document.getElementById('i6');
+  if (!root) return;
+
+  // 6 dimensjoner per segment. Per dimension: {label, tag, winner, median, unit, fmt}
+  // VINNERE-data: topp 10 % vs median for hver dimensjon.
+  const DATA = {
+    alle: {
+      margin:    { label: 'Driftsmargin',          winner: 12.3, median: 3.3,  unit: '%' },
+      growth:    { label: 'Omsetningsvekst 5 år',  winner: 24,   median: -3,   unit: '%' },
+      ek:        { label: 'Egenkapital-andel',     winner: 48,   median: 28,   unit: '%' },
+      ai:        { label: 'AI-investering',         winner: 71,   median: 16,   unit: '%' },
+      yield:     { label: 'Yield på sysselsatt kapital', winner: 14.2, median: 6.8, unit: '%' },
+      churn:     { label: 'Topp-3 kundekonsentrasjon', winner: 28, median: 62,  unit: '%', inverted: true }
+    },
+    planleggere: {
+      margin:    { label: 'Driftsmargin',          winner: 18.4, median: 5.8,  unit: '%' },
+      growth:    { label: 'Omsetningsvekst 5 år',  winner: 31,   median: 4,    unit: '%' },
+      ek:        { label: 'Egenkapital-andel',     winner: 62,   median: 38,   unit: '%' },
+      ai:        { label: 'AI-investering',         winner: 84,   median: 23,   unit: '%' },
+      yield:     { label: 'Yield på sysselsatt kapital', winner: 22.1, median: 11.4, unit: '%' },
+      churn:     { label: 'Topp-3 kundekonsentrasjon', winner: 35, median: 58,  unit: '%', inverted: true }
+    },
+    utforende: {
+      margin:    { label: 'Driftsmargin',          winner: 8.6,  median: 2.1,  unit: '%' },
+      growth:    { label: 'Omsetningsvekst 5 år',  winner: 14,   median: -8,   unit: '%' },
+      ek:        { label: 'Egenkapital-andel',     winner: 38,   median: 19,   unit: '%' },
+      ai:        { label: 'AI-investering',         winner: 58,   median: 9,    unit: '%' },
+      yield:     { label: 'Yield på sysselsatt kapital', winner: 11.8, median: 4.2, unit: '%' },
+      churn:     { label: 'Topp-3 kundekonsentrasjon', winner: 22, median: 71,  unit: '%', inverted: true }
+    },
+    produkter: {
+      margin:    { label: 'Driftsmargin',          winner: 13.7, median: 6.2,  unit: '%' },
+      growth:    { label: 'Omsetningsvekst 5 år',  winner: 28,   median: 2,    unit: '%' },
+      ek:        { label: 'Egenkapital-andel',     winner: 52,   median: 34,   unit: '%' },
+      ai:        { label: 'AI-investering',         winner: 76,   median: 21,   unit: '%' },
+      yield:     { label: 'Yield på sysselsatt kapital', winner: 16.4, median: 8.1, unit: '%' },
+      churn:     { label: 'Topp-3 kundekonsentrasjon', winner: 32, median: 64,  unit: '%', inverted: true }
+    },
+    grossister: {
+      margin:    { label: 'Driftsmargin',          winner: 9.8,  median: 3.4,  unit: '%' },
+      growth:    { label: 'Omsetningsvekst 5 år',  winner: 19,   median: -1,   unit: '%' },
+      ek:        { label: 'Egenkapital-andel',     winner: 42,   median: 24,   unit: '%' },
+      ai:        { label: 'AI-investering',         winner: 64,   median: 12,   unit: '%' },
+      yield:     { label: 'Yield på sysselsatt kapital', winner: 13.2, median: 5.6, unit: '%' },
+      churn:     { label: 'Topp-3 kundekonsentrasjon', winner: 41, median: 68,  unit: '%', inverted: true }
+    },
+    akkvisitorer: {
+      margin:    { label: 'Driftsmargin',          winner: 14.1, median: 4.1,  unit: '%' },
+      growth:    { label: 'Omsetningsvekst 5 år',  winner: 26,   median: 1,    unit: '%' },
+      ek:        { label: 'Egenkapital-andel',     winner: 54,   median: 31,   unit: '%' },
+      ai:        { label: 'AI-investering',         winner: 73,   median: 19,   unit: '%' },
+      yield:     { label: 'Yield på sysselsatt kapital', winner: 15.9, median: 7.4, unit: '%' },
+      churn:     { label: 'Topp-3 kundekonsentrasjon', winner: 26, median: 59,  unit: '%', inverted: true }
+    },
+    drift: {
+      margin:    { label: 'Driftsmargin',          winner: 11.2, median: 4.9,  unit: '%' },
+      growth:    { label: 'Omsetningsvekst 5 år',  winner: 22,   median: 3,    unit: '%' },
+      ek:        { label: 'Egenkapital-andel',     winner: 46,   median: 27,   unit: '%' },
+      ai:        { label: 'AI-investering',         winner: 68,   median: 15,   unit: '%' },
+      yield:     { label: 'Yield på sysselsatt kapital', winner: 13.6, median: 6.4, unit: '%' },
+      churn:     { label: 'Topp-3 kundekonsentrasjon', winner: 36, median: 66,  unit: '%', inverted: true }
+    }
+  };
+
+  // Antall vinnere per segment (10 % av total)
+  const COUNTS = {
+    alle: 382, planleggere: 65, utforende: 80, produkter: 58,
+    grossister: 50, akkvisitorer: 58, drift: 74
+  };
+
+  let activeSeg = 'alle';
+
+  function fmt(n, unit) {
+    if (typeof n !== 'number') return n;
+    const sign = n < 0 ? '-' : '';
+    const abs = Math.abs(n);
+    const decimals = abs < 10 && abs % 1 !== 0 ? 1 : 0;
+    const formatted = abs.toFixed(decimals).replace('.', ',');
+    return sign + (n > 0 && unit === '%' && abs >= 5 ? '+' : '') + formatted + (unit || '');
+  }
+
+  function fmtSimple(n) {
+    if (typeof n !== 'number') return n;
+    const decimals = (Math.abs(n) < 10 && n % 1 !== 0) ? 1 : 0;
+    return n.toFixed(decimals).replace('.', ',');
+  }
+
+  function render() {
+    const d = DATA[activeSeg] || DATA.alle;
+    const grid = root.querySelector('#vinn-grid');
+
+    // Update top-stats
+    root.querySelector('#vinn-count').textContent = COUNTS[activeSeg] || COUNTS.alle;
+    root.querySelector('#vinn-median-margin').textContent = fmtSimple(d.margin.median);
+    root.querySelector('#vinn-winner-margin').textContent = fmtSimple(d.margin.winner);
+    const gap = d.margin.median !== 0 ? (d.margin.winner / d.margin.median) : 0;
+    root.querySelector('#vinn-gap').textContent = fmtSimple(gap);
+
+    // Build 6 cards
+    const dims = ['margin', 'growth', 'ek', 'ai', 'yield', 'churn'];
+    grid.innerHTML = dims.map(key => {
+      const x = d[key];
+      // For inverted (churn), lavere er bedre, så gap-multiplier viser median/winner
+      const winnerStr = (x.winner > 0 && x.unit === '%' && !x.inverted && key === 'growth' ? '+' : '') + fmtSimple(x.winner) + x.unit;
+      const medianStr = (x.median > 0 && x.unit === '%' && key === 'growth' ? '+' : (x.median < 0 ? '' : '')) + fmtSimple(x.median) + x.unit;
+      // Gap-bar: winner / (winner + median) for visual ratio. For inverted, vis median som lengre.
+      let winnerPct, medianPct;
+      if (x.inverted) {
+        const total = Math.max(x.winner, x.median, 1);
+        winnerPct = 100 * (x.winner / (x.winner + x.median));
+        medianPct = 100 - winnerPct;
+      } else {
+        const total = Math.max(x.winner, x.median, 1);
+        winnerPct = 100 * (x.winner / total);
+        medianPct = 100 * (Math.max(x.median, 0) / total);
+      }
+
+      return `
+        <div class="vinn-card">
+          <div class="vinn-card-label">${x.label}</div>
+          <div class="vinn-card-row">
+            <div class="vinn-winner">
+              <span class="vinn-winner-num">${winnerStr}</span>
+              <span class="vinn-winner-tag">Vinnere (topp 10 %)</span>
+            </div>
+            <div class="vinn-median">
+              <span class="vinn-median-num">${medianStr}</span>
+              <span class="vinn-median-tag">Median</span>
+            </div>
+          </div>
+          <div class="vinn-gap-bar"><div class="vinn-gap-bar-fill" style="width:${winnerPct.toFixed(1)}%"></div></div>
+          <div class="vinn-gap-label"><span>${x.inverted ? 'Lavere er bedre' : ''}</span><span>${x.inverted ? '' : 'Gap-skala'}</span></div>
+        </div>`;
+    }).join('');
+  }
+
+  // Wire filter chips
+  root.querySelector('#vinn-chips').addEventListener('click', (e) => {
+    const btn = e.target.closest('button.vinn-chip');
+    if (!btn) return;
+    activeSeg = btn.dataset.vinn;
+    root.querySelectorAll('.vinn-chip').forEach(b => b.classList.toggle('is-active', b === btn));
+    render();
+  });
+
+  // Initial render + reveal-trigger
+  render();
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting) {
+          render();
+          io.disconnect();
+        }
+      });
+    }, { threshold: 0.2 });
+    io.observe(root);
   }
 })();
 
