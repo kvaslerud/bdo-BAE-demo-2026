@@ -537,10 +537,12 @@ main > .section:first-of-type {
 /* ═══ BAE-CEO Trusselmatrise · CEO Stress Meter + komprimerte stressors ═══ */
 #section-trusselmatrise .trussel-header {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: 1fr;
   gap: 48px;
-  margin-bottom: 32px;
-  align-items: center;
+  margin-bottom: 40px;
+}
+#section-trusselmatrise .trussel-header-text {
+  max-width: 880px;
 }
 #section-trusselmatrise .trussel-header-text {
   max-width: 560px;
@@ -575,15 +577,15 @@ main > .section:first-of-type {
 #section-trusselmatrise .stress-meter {
   background: var(--bg-elevated);
   border: 0.5px solid var(--hairline);
-  padding: 20px 16px 16px;
+  padding: 56px 48px 40px;
   text-align: center;
-  max-width: 420px;
-  margin-left: auto;
+  max-width: 720px;
+  margin: 0 auto 40px;
 }
 #section-trusselmatrise .stress-gauge-svg {
   width: 100%;
   height: auto;
-  max-width: 320px;
+  max-width: 580px;
   display: block;
   margin: 0 auto;
 }
@@ -591,11 +593,11 @@ main > .section:first-of-type {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  gap: 12px;
-  margin-top: -16px;
+  gap: 16px;
+  margin-top: -8px;
   font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 0.14em;
+  font-size: 11px;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 #section-trusselmatrise .stress-meter-axis .axis-edge {
@@ -605,25 +607,25 @@ main > .section:first-of-type {
 #section-trusselmatrise .stress-meter-axis .axis-edge:last-child { text-align: right; }
 #section-trusselmatrise .stress-meter-axis .stress-meter-label {
   font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.16em;
+  font-size: 13px;
+  letter-spacing: 0.18em;
   color: var(--text-primary);
 }
 #section-trusselmatrise .stress-meter-value-row {
-  margin-top: 14px;
+  margin-top: 28px;
 }
 #section-trusselmatrise .stress-meter-value {
   display: inline-block;
-  padding: 6px 24px;
+  padding: 14px 44px;
   background: var(--bg-primary);
   border-radius: 999px;
   border: 0.5px solid var(--hairline-strong);
   font-family: 'Instrument Serif', var(--font-display), serif;
   font-style: italic;
-  font-size: 32px;
+  font-size: 56px;
   line-height: 1;
   color: var(--text-primary);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 #section-trusselmatrise .stress-meter-question {
   margin: 0 0 48px 0;
@@ -1665,7 +1667,9 @@ body.slide-mode > section.section:not(.is-current) .syn-close {
 .drill-ledger-bars {
   display: flex;
   justify-content: center;
-  gap: 2px;
+  align-items: center;
+  gap: 3px;
+  width: 100%;
 }
 .drill-ledger-bar {
   width: 8px;
@@ -5881,7 +5885,7 @@ body.presentation-mode #pres-badge { display: block; }
   <div class="container">
     <div class="section-header">
       <div class="section-num">
-        <span class="num-id">A1</span>
+        <span class="num-id">1</span>
         <span class="num-tag">Analyse · 01 av 06</span>
       </div>
       <div>
@@ -5938,7 +5942,7 @@ body.presentation-mode #pres-badge { display: block; }
   <div class="container">
     <div class="section-header">
       <div class="section-num">
-        <span class="num-id">A2</span>
+        <span class="num-id">2</span>
         <span class="num-tag">Analyse · 02 av 06</span>
       </div>
       <div>
@@ -6007,7 +6011,7 @@ body.presentation-mode #pres-badge { display: block; }
   <div class="container">
     <div class="section-header">
       <div class="section-num">
-        <span class="num-id">A3</span>
+        <span class="num-id">3</span>
         <span class="num-tag">Analyse · 03 av 06</span>
       </div>
       <div>
@@ -6137,11 +6141,11 @@ body.presentation-mode #pres-badge { display: block; }
   <div class="container">
     <div class="section-header">
       <div class="section-num">
-        <span class="num-id">A4</span>
+        <span class="num-id">4</span>
         <span class="num-tag">Analyse · 04 av 06 · Signatur</span>
       </div>
       <div>
-        <h2 class="section-title">25 år <em>uten produktivitetsvekst.</em> AI snur det nå.</h2>
+        <h2 class="section-title">Produktiviteten <em>faller.</em> AI snur det.</h2>
         <p class="section-dek">Mens Fastlands-Norge har vokst 32 prosent siden 2000, har produktiviteten i bygg og anlegg falt 13.</p>
       </div>
     </div>
@@ -6197,7 +6201,7 @@ body.presentation-mode #pres-badge { display: block; }
   <div class="container">
     <div class="section-header">
       <div class="section-num">
-        <span class="num-id">A5</span>
+        <span class="num-id">5</span>
         <span class="num-tag">Analyse · 05 av 06</span>
       </div>
       <div>
@@ -6294,7 +6298,7 @@ body.presentation-mode #pres-badge { display: block; }
   <div class="container">
     <div class="section-header">
       <div class="section-num">
-        <span class="num-id">A6</span>
+        <span class="num-id">6</span>
         <span class="num-tag">Analyse · 06 av 06</span>
       </div>
       <div>
@@ -6371,7 +6375,7 @@ body.presentation-mode #pres-badge { display: block; }
         <p class="lede">Kalibrert mot norsk bygg, anlegg og eiendom 2026. Reforankret i BAA-2025, SSB, Norges Bank og NHO Byggenæringen.</p>
       </div>
       <div class="stress-meter">
-        <svg class="stress-gauge-svg" viewBox="0 0 400 230" aria-hidden="true">
+        <svg class="stress-gauge-svg" viewBox="0 0 400 240" aria-hidden="true">
           <defs>
             <linearGradient id="stressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stop-color="rgba(245,245,240,0.06)"/>
@@ -6380,15 +6384,17 @@ body.presentation-mode #pres-badge { display: block; }
               <stop offset="82%" stop-color="rgba(232,26,59,0.55)"/>
               <stop offset="100%" stop-color="#e81a3b"/>
             </linearGradient>
+            <filter id="needleGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="1.2"/>
+            </filter>
           </defs>
-          <path d="M 40 200 A 160 160 0 0 1 360 200" stroke="rgba(245,245,240,0.04)" stroke-width="36" fill="none"/>
-          <path d="M 40 200 A 160 160 0 0 1 360 200" stroke="url(#stressGradient)" stroke-width="36" fill="none"/>
-          <g transform="rotate(-90 200 200)">
-            <line x1="200" y1="200" x2="200" y2="64" stroke="#F5F5F0" stroke-width="2.5" stroke-linecap="round"/>
-            <animateTransform attributeName="transform" type="rotate" from="-90 200 200" to="36.54 200 200" dur="1.6s" begin="0.4s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines="0.16 1 0.3 1"/>
+          <path d="M 40 200 A 160 160 0 0 1 360 200" stroke="rgba(245,245,240,0.04)" stroke-width="44" fill="none"/>
+          <path d="M 40 200 A 160 160 0 0 1 360 200" stroke="url(#stressGradient)" stroke-width="44" fill="none"/>
+          <g id="stress-needle-group" style="transform-origin: 200px 200px; transform: rotate(-90deg);">
+            <line x1="200" y1="200" x2="200" y2="62" stroke="#F5F5F0" stroke-width="3" stroke-linecap="round"/>
           </g>
-          <circle cx="200" cy="200" r="14" fill="#F5F5F0"/>
-          <circle cx="200" cy="200" r="9" fill="#0A0A0F"/>
+          <circle cx="200" cy="200" r="16" fill="#F5F5F0"/>
+          <circle cx="200" cy="200" r="10" fill="#0A0A0F"/>
         </svg>
         <div class="stress-meter-axis">
           <span class="axis-edge">NONE</span>
@@ -6796,7 +6802,7 @@ body.presentation-mode #pres-badge { display: block; }
 
     <div class="section-header">
       <div class="section-num">
-        <span class="num-id">I1</span>
+        <span class="num-id">8</span>
         <span class="num-tag">Interaktiv · Live</span>
       </div>
       <div>
@@ -6827,7 +6833,7 @@ body.presentation-mode #pres-badge { display: block; }
 
     <div class="section-header">
       <div class="section-num">
-        <span class="num-id">I2</span>
+        <span class="num-id">9</span>
         <span class="num-tag">Interaktiv · API · Live</span>
       </div>
       <div>
@@ -6899,7 +6905,7 @@ body.presentation-mode #pres-badge { display: block; }
   <div class="container">
     <div class="section-header">
       <div class="section-num">
-        <span class="num-id">I3</span>
+        <span class="num-id">10</span>
         <span class="num-tag">Interaktiv · Live</span>
       </div>
       <div>
@@ -6973,7 +6979,7 @@ body.presentation-mode #pres-badge { display: block; }
   <div class="container">
     <div class="section-header">
       <div class="section-num">
-        <span class="num-id">I4</span>
+        <span class="num-id">11</span>
         <span class="num-tag">Interaktiv · BDO-kart</span>
       </div>
       <div>
@@ -7216,7 +7222,7 @@ body.presentation-mode #pres-badge { display: block; }
   <div class="container">
     <div class="section-header">
       <div class="section-num">
-        <span class="num-id">I6</span>
+        <span class="num-id">13</span>
         <span class="num-tag">Interaktiv · Innsiktsdrill</span>
       </div>
       <div>
@@ -7321,7 +7327,7 @@ body.presentation-mode #pres-badge { display: block; }
   <div class="container">
     <div class="section-header">
       <div class="section-num">
-        <span class="num-id">I7</span>
+        <span class="num-id">14</span>
         <span class="num-tag">Interaktiv · Live timeline</span>
       </div>
       <div>
@@ -7460,7 +7466,7 @@ body.presentation-mode #pres-badge { display: block; }
   <div class="container">
     <div class="section-header">
       <div class="section-num">
-        <span class="num-id">Z</span>
+        <span class="num-id">16</span>
         <span class="num-tag">Landing</span>
       </div>
       <div></div>
@@ -8108,29 +8114,34 @@ function closeDrilldown() {
 }
 
 const TOOL_EFFECTS = {
-  'Placepoint': {savings: 4, quality: 3, risk: 3},
-  'Findable': {savings: 5, quality: 4, risk: 3},
-  'Prosper AI': {savings: 3, quality: 4, risk: 4},
-  'Claude Projects': {savings: 4, quality: 4, risk: 3},
-  'Claude Projects (DD-rom)': {savings: 4, quality: 4, risk: 3},
-  'Autodesk Forma': {savings: 4, quality: 5, risk: 3},
-  'Bluebeam Max': {savings: 3, quality: 5, risk: 4},
-  'Claude (TEK17/PBL trenet)': {savings: 3, quality: 4, risk: 5},
-  'Claude (TEK17/PBL)': {savings: 3, quality: 4, risk: 5},
-  'One Click LCA': {savings: 2, quality: 4, risk: 4},
-  'Buildots': {savings: 4, quality: 4, risk: 4},
-  'Buildots · OpenSpace.ai': {savings: 4, quality: 4, risk: 4},
+  // Akkvisisjon
+  'Placepoint': {savings: 5, quality: 3, risk: 2},
+  'Findable': {savings: 5, quality: 4, risk: 2},
+  'Prosper AI': {savings: 2, quality: 3, risk: 5},
+  'Claude Projects': {savings: 4, quality: 5, risk: 3},
+  'Claude Projects (DD-rom)': {savings: 4, quality: 5, risk: 3},
+  // Prosjektering
+  'Autodesk Forma': {savings: 3, quality: 5, risk: 2},
+  'Bluebeam Max': {savings: 2, quality: 5, risk: 4},
+  'Claude (TEK17/PBL trenet)': {savings: 2, quality: 4, risk: 5},
+  'Claude (TEK17/PBL)': {savings: 2, quality: 4, risk: 5},
+  'One Click LCA': {savings: 1, quality: 3, risk: 5},
+  // Utførelse
+  'Buildots': {savings: 4, quality: 3, risk: 5},
+  'Buildots · OpenSpace.ai': {savings: 4, quality: 3, risk: 5},
   'OpenSpace.ai': {savings: 3, quality: 4, risk: 3},
-  'Doxel AI': {savings: 5, quality: 4, risk: 4},
+  'Doxel AI': {savings: 5, quality: 3, risk: 4},
   'Doxel AI · ALICE Technologies': {savings: 5, quality: 4, risk: 4},
-  'ALICE Technologies': {savings: 5, quality: 4, risk: 4},
-  'proprty.ai': {savings: 4, quality: 4, risk: 3},
-  'proprty.ai · Energi-AI': {savings: 4, quality: 4, risk: 3},
-  'Energi-AI': {savings: 4, quality: 3, risk: 2},
-  'Claude CoWork': {savings: 3, quality: 4, risk: 3},
-  'Plot.ai': {savings: 3, quality: 4, risk: 3},
-  'Buildrz': {savings: 3, quality: 4, risk: 4},
-  'Buildrz / LCA': {savings: 3, quality: 4, risk: 4}
+  'ALICE Technologies': {savings: 5, quality: 3, risk: 3},
+  // Drift
+  'proprty.ai': {savings: 4, quality: 4, risk: 2},
+  'proprty.ai · Energi-AI': {savings: 5, quality: 3, risk: 2},
+  'Energi-AI': {savings: 5, quality: 2, risk: 1},
+  'Claude CoWork': {savings: 3, quality: 5, risk: 3},
+  // Kommersialisering
+  'Plot.ai': {savings: 2, quality: 4, risk: 3},
+  'Buildrz': {savings: 2, quality: 3, risk: 5},
+  'Buildrz / LCA': {savings: 2, quality: 4, risk: 5}
 };
 
 function effectFor(name) {
@@ -8169,9 +8180,9 @@ function renderDrilldown(id) {
         <div class="drill-tools-head">
           <span class="drill-tools-head-name">AI-verktøy</span>
           <span class="drill-tools-head-ledger">
-            <span class="drill-ledger-key">SPART</span>
-            <span class="drill-ledger-key">KVAL</span>
-            <span class="drill-ledger-key">RISK</span>
+            <span class="drill-ledger-key">Spart<br>tid/penger</span>
+            <span class="drill-ledger-key">Økt<br>kvalitet</span>
+            <span class="drill-ledger-key">Risiko-<br>mitigering</span>
           </span>
         </div>
         ${p.tools.map(t => {
@@ -8898,6 +8909,7 @@ function buildQuestions() {
                   aria-pressed="false" role="radio"
                   aria-label="Nivå ${o.v} av 5">${o.v}</button>
         `).join('')}
+        <span class="q-scale-edge q-scale-edge-high" title="${q.options[4].t}">${q.options[4].t.split('.')[0]}</span>
       </div>
     </div>
   `).join('');
@@ -11005,27 +11017,34 @@ console.log('Bygget av Tobias Mørland Kvaslerud + Claude. Trykk P for projeksjo
 /* ════════════════════════════════════════════════════════════════
    CEO Stress Meter · counter-animasjon (0 -> 70.3 synkron med naal)
    ════════════════════════════════════════════════════════════════ */
-(function initStressCounter() {
-  const el = document.getElementById('stress-meter-counter');
-  if (!el) return;
-  const target = parseFloat(el.dataset.target);
+(function initStressGauge() {
+  const counter = document.getElementById('stress-meter-counter');
+  const needle = document.getElementById('stress-needle-group');
+  if (!counter || !needle) return;
+  const target = parseFloat(counter.dataset.target);
+  // Naal-rotasjon: score 0 -> -90deg, score 100 -> 90deg. Lineaer.
+  const targetRot = (target - 50) * 1.8;
   let started = false;
 
-  function fmt(n) {
-    return n.toFixed(1).replace('.', ',');
-  }
+  function fmt(n) { return n.toFixed(1).replace('.', ','); }
 
   function animate() {
-    const dur = 1600; // ms, matcher SMIL-animasjon
-    const delay = 400;
+    const dur = 1800;
+    const delay = 250;
     const start = performance.now() + delay;
     function step(now) {
       const t = Math.max(0, Math.min(1, (now - start) / dur));
-      // Same ease som SMIL: cubic-bezier(0.16, 1, 0.3, 1) approx via easeOutCubic
+      // easeOutCubic for naturlig speedometer-feel
       const eased = 1 - Math.pow(1 - t, 3);
-      el.textContent = fmt(eased * target);
+      const currentRot = -90 + (targetRot + 90) * eased;
+      const currentVal = eased * target;
+      needle.style.transform = `rotate(${currentRot.toFixed(2)}deg)`;
+      counter.textContent = fmt(currentVal);
       if (t < 1) requestAnimationFrame(step);
-      else el.textContent = fmt(target);
+      else {
+        needle.style.transform = `rotate(${targetRot.toFixed(2)}deg)`;
+        counter.textContent = fmt(target);
+      }
     }
     requestAnimationFrame(step);
   }
@@ -11040,7 +11059,7 @@ console.log('Bygget av Tobias Mørland Kvaslerud + Claude. Trykk P for projeksjo
         }
       });
     }, { threshold: 0.3 });
-    io.observe(el);
+    io.observe(counter);
   } else {
     animate();
   }
