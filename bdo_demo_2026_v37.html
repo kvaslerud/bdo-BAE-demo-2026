@@ -1560,6 +1560,224 @@ body.slide-mode > section.section:not(.is-current) .syn-close {
 }
 
 
+
+/* I1 Verdikjede-velger · kompakt drilldown med AI-verktøy ledger */
+.drilldown-inner {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+.drill-summary {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.drill-title {
+  font-family: 'Instrument Serif', var(--font-display), serif;
+  font-style: italic;
+  font-size: 30px;
+  line-height: 1.1;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.drill-summary-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.10em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+.drill-summary-stat em {
+  font-family: 'Instrument Serif', var(--font-display), serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--accent);
+  margin-right: 6px;
+  text-transform: none;
+  letter-spacing: -0.01em;
+}
+.drill-tools-grid {
+  border-top: 0.5px solid var(--hairline-strong);
+  padding-top: 12px;
+}
+.drill-tools-head {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  align-items: center;
+  gap: 24px;
+  padding-bottom: 8px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+.drill-tools-head-name {
+  /* left col */
+}
+.drill-tools-head-ledger {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.drill-ledger-key {
+  text-align: center;
+}
+.drill-tool {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 24px;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 0.5px solid var(--hairline);
+}
+.drill-tool-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.drill-tool-name {
+  font-family: 'Instrument Serif', var(--font-display), serif;
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.2;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+.drill-tool-desc {
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+.drill-tool-ledger {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  align-items: center;
+}
+.drill-ledger-bars {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+}
+.drill-ledger-bar {
+  width: 8px;
+  height: 12px;
+  background: rgba(245, 245, 240, 0.08);
+  transition: background 200ms ease-out;
+}
+.drill-ledger-bar.is-on {
+  background: var(--accent);
+}
+
+@media (max-width: 800px) {
+  .drill-tools-head { grid-template-columns: 1fr 180px; gap: 12px; }
+  .drill-tool { grid-template-columns: 1fr 180px; gap: 12px; }
+  .drill-tool-ledger { gap: 4px; }
+  .drill-ledger-bar { width: 6px; height: 10px; }
+}
+@media (max-width: 600px) {
+  .drill-tools-head, .drill-tool { grid-template-columns: 1fr; gap: 8px; }
+  .drill-tool-ledger { justify-content: flex-start; max-width: 200px; }
+}
+
+
+
+/* I3 Spider · kompakt 1-5 skala per dimensjon */
+#i3 .spider-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: none;
+  overflow: visible;
+}
+#i3 .q-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  padding: 10px 0;
+  border-bottom: 0.5px solid var(--hairline);
+}
+#i3 .q-row-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+#i3 .q-row-head .q-num {
+  color: var(--text-tertiary);
+}
+#i3 .q-row-head .q-dimension {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+#i3 .q-row-scale {
+  display: grid;
+  grid-template-columns: minmax(60px, 1fr) repeat(5, 28px) minmax(60px, 1fr);
+  align-items: center;
+  gap: 6px;
+}
+#i3 .q-scale-edge {
+  font-family: var(--font-body);
+  font-size: 11.5px;
+  line-height: 1.3;
+  color: var(--text-secondary);
+}
+#i3 .q-scale-edge-low { text-align: right; padding-right: 4px; }
+#i3 .q-scale-edge-high { text-align: left; padding-left: 4px; }
+#i3 .q-btn {
+  width: 28px;
+  height: 28px;
+  background: transparent;
+  border: 0.5px solid var(--hairline-strong);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  cursor: pointer;
+  transition: background 180ms ease-out, border-color 180ms ease-out, color 180ms ease-out;
+  padding: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#i3 .q-btn:hover {
+  border-color: var(--hairline-interactive);
+  color: var(--text-primary);
+}
+#i3 .q-btn[aria-pressed="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Spider labels smaller + lowercase look */
+#i3 .spider-svg .axis-label {
+  font-size: 8.5px;
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 800px) {
+  #i3 .q-row-scale {
+    grid-template-columns: 1fr repeat(5, 24px) 1fr;
+    gap: 4px;
+  }
+  #i3 .q-btn { width: 24px; height: 24px; font-size: 10px; }
+  #i3 .q-scale-edge { font-size: 10.5px; }
+}
+
 /* ═══ HERO ═══ */
 
 .hero {
@@ -3184,11 +3402,11 @@ body.slide-mode > section.section:not(.is-current) .syn-close {
 .chat-empty {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
-  height: 100%;
-  min-height: 280px;
-  max-width: 560px;
+  min-height: 0;
+  max-width: 640px;
+  padding: 24px var(--space-6) 8px;
 }
 .chat-empty-eyebrow {
   font-family: var(--font-mono);
@@ -3417,12 +3635,19 @@ body.slide-mode > section.section:not(.is-current) .syn-close {
   font-family: var(--font-body);
   font-size: calc(15px * var(--scale));
   color: var(--text-primary);
-  padding: var(--space-2) 0;
-  border-bottom: 0.5px solid var(--hairline);
-  transition: border-color var(--hover-dur) var(--hover-ease);
+  padding: 12px 16px;
+  background: rgba(245, 245, 240, 0.05);
+  border: 0.5px solid var(--hairline-strong);
+  border-radius: 2px;
+  transition: border-color var(--hover-dur) var(--hover-ease), background var(--hover-dur) var(--hover-ease);
 }
-.chat-input::placeholder { color: var(--text-tertiary); }
-.chat-input:focus { border-color: var(--accent); }
+.chat-input::placeholder { color: var(--text-secondary); font-style: italic; }
+.chat-input:hover { background: rgba(245, 245, 240, 0.07); }
+.chat-input:focus {
+  border-color: var(--accent);
+  background: rgba(245, 245, 240, 0.09);
+  outline: none;
+}
 
 .chat-send {
   font-family: var(--font-mono);
@@ -6606,7 +6831,7 @@ body.presentation-mode #pres-badge { display: block; }
         <span class="num-tag">Interaktiv · API · Live</span>
       </div>
       <div>
-        <h2 class="section-title">CXO-chat. <em>Seks chips, fri tekst.</em> Anthropic-API.</h2>
+        <h2 class="section-title">Spør <em>Claude.</em> Seks CXO-spørsmål eller fritekst.</h2>
         <p class="section-dek">Spør Claude om en bransje-spesifikk problemstilling. Live-svar mot rapportens kunnskapsbase.</p>
       </div>
     </div>
@@ -6622,7 +6847,7 @@ body.presentation-mode #pres-badge { display: block; }
 
         <div class="chat-messages" id="chatMessages">
           <div class="chat-empty" id="chatEmpty">
-            <div class="chat-empty-eyebrow">Skriv ditt eget spørsmål, eller velg ett under</div>
+            <div class="chat-empty-eyebrow">Skriv ditt spørsmål, eller velg en av seks under</div>
             <div class="chat-empty-title">
               Hva ville et <em>CXO-team</em> i bygg, anlegg og eiendom <em>egentlig</em> spurt om?
             </div>
@@ -6678,7 +6903,7 @@ body.presentation-mode #pres-badge { display: block; }
         <span class="num-tag">Interaktiv · Live</span>
       </div>
       <div>
-        <h2 class="section-title">AI-modenhets-spider. <em>Åtte</em> spørsmål, live tegning.</h2>
+        <h2 class="section-title">AI-modenhet i <em>åtte dimensjoner.</em> Skala 1 til 5.</h2>
         <p class="section-dek">Selvtest mot åtte dimensjoner. Spider-grafen tegnes mens du svarer. Gjennomsnittet i norsk BAA lander på 35 til 55 prosent.</p>
       </div>
     </div>
@@ -7882,59 +8107,89 @@ function closeDrilldown() {
   drilldownWrapEl.classList.remove('open');
 }
 
+const TOOL_EFFECTS = {
+  'Placepoint': {savings: 4, quality: 3, risk: 3},
+  'Findable': {savings: 5, quality: 4, risk: 3},
+  'Prosper AI': {savings: 3, quality: 4, risk: 4},
+  'Claude Projects': {savings: 4, quality: 4, risk: 3},
+  'Claude Projects (DD-rom)': {savings: 4, quality: 4, risk: 3},
+  'Autodesk Forma': {savings: 4, quality: 5, risk: 3},
+  'Bluebeam Max': {savings: 3, quality: 5, risk: 4},
+  'Claude (TEK17/PBL trenet)': {savings: 3, quality: 4, risk: 5},
+  'Claude (TEK17/PBL)': {savings: 3, quality: 4, risk: 5},
+  'One Click LCA': {savings: 2, quality: 4, risk: 4},
+  'Buildots': {savings: 4, quality: 4, risk: 4},
+  'Buildots · OpenSpace.ai': {savings: 4, quality: 4, risk: 4},
+  'OpenSpace.ai': {savings: 3, quality: 4, risk: 3},
+  'Doxel AI': {savings: 5, quality: 4, risk: 4},
+  'Doxel AI · ALICE Technologies': {savings: 5, quality: 4, risk: 4},
+  'ALICE Technologies': {savings: 5, quality: 4, risk: 4},
+  'proprty.ai': {savings: 4, quality: 4, risk: 3},
+  'proprty.ai · Energi-AI': {savings: 4, quality: 4, risk: 3},
+  'Energi-AI': {savings: 4, quality: 3, risk: 2},
+  'Claude CoWork': {savings: 3, quality: 4, risk: 3},
+  'Plot.ai': {savings: 3, quality: 4, risk: 3},
+  'Buildrz': {savings: 3, quality: 4, risk: 4},
+  'Buildrz / LCA': {savings: 3, quality: 4, risk: 4}
+};
+
+function effectFor(name) {
+  if (TOOL_EFFECTS[name]) return TOOL_EFFECTS[name];
+  // Fallback for ukjente verktøy
+  return {savings: 3, quality: 3, risk: 3};
+}
+
+function ledgerBars(level) {
+  const cells = [];
+  for (let i = 1; i <= 5; i++) {
+    cells.push(`<span class="drill-ledger-bar${i <= level ? ' is-on' : ''}"></span>`);
+  }
+  return cells.join('');
+}
+
 function renderDrilldown(id) {
   const p = PHASES.find(x => x.id === id);
   if (!p) return;
   drilldownEl.innerHTML = `
     <div class="drilldown-inner">
-
       <div class="drill-header">
         <div class="drill-eyebrow"><span class="accent">FASE ${p.num}</span> · ${p.scope}</div>
         <button class="drill-close" id="drillClose" aria-label="Lukk drilldown">Lukk ×</button>
       </div>
 
-      <h3 class="drill-title">${p.title.replace(p.label, `<em>${p.label}</em>`)}</h3>
-
-      <p class="drill-text" style="margin-top: 0; max-width: 720px;">${p.dek}</p>
-
-      <div class="drill-grid">
-
-        <div class="drill-cell">
-          <div class="drill-cell-eyebrow">Tall som ankrer fasen</div>
-          <div class="drill-stat">
-            <div class="drill-stat-num">${p.stat.num}</div>
-            <div class="drill-stat-label">${p.stat.label}</div>
-            <div class="drill-stat-source">${p.stat.source}</div>
-          </div>
+      <div class="drill-summary">
+        <h3 class="drill-title">${p.title.replace(p.label, `<em>${p.label}</em>`)}</h3>
+        <div class="drill-summary-meta">
+          <span class="drill-summary-stat"><em>${p.stat.num}</em> ${p.stat.label.toLowerCase()}</span>
+          <span class="drill-summary-bdo"><span class="drill-bdo-tag">${p.bdo.tag}</span></span>
         </div>
-
-        <div class="drill-cell">
-          <div class="drill-cell-eyebrow">AI-mulighet</div>
-          <p class="drill-text">${p.aiMulighet}</p>
-        </div>
-
-        <div class="drill-cell">
-          <div class="drill-cell-eyebrow">BDO-tjeneste som matcher</div>
-          <div class="drill-bdo">
-            <span class="drill-bdo-tag">${p.bdo.tag}</span>
-            <p class="drill-text" style="font-size: 14px; margin-top: 8px;">${p.bdo.desc}</p>
-          </div>
-        </div>
-
-        <div class="drill-cell">
-          <div class="drill-cell-eyebrow">Konkrete AI-verktøy</div>
-          <div class="drill-tools">
-            ${p.tools.map(t => `
-              <div class="drill-tool">
-                <div class="drill-tool-name">${t.name}</div>
-                <div class="drill-tool-desc">${t.desc}</div>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-
       </div>
 
+      <div class="drill-tools-grid">
+        <div class="drill-tools-head">
+          <span class="drill-tools-head-name">AI-verktøy</span>
+          <span class="drill-tools-head-ledger">
+            <span class="drill-ledger-key">SPART</span>
+            <span class="drill-ledger-key">KVAL</span>
+            <span class="drill-ledger-key">RISK</span>
+          </span>
+        </div>
+        ${p.tools.map(t => {
+          const eff = effectFor(t.name);
+          return `
+          <div class="drill-tool">
+            <div class="drill-tool-main">
+              <div class="drill-tool-name">${t.name}</div>
+              <div class="drill-tool-desc">${t.desc}</div>
+            </div>
+            <div class="drill-tool-ledger">
+              <span class="drill-ledger-bars">${ledgerBars(eff.savings)}</span>
+              <span class="drill-ledger-bars">${ledgerBars(eff.quality)}</span>
+              <span class="drill-ledger-bars">${ledgerBars(eff.risk)}</span>
+            </div>
+          </div>`;
+        }).join('')}
+      </div>
     </div>
   `;
   document.getElementById('drillClose').addEventListener('click', closeDrilldown);
@@ -8043,7 +8298,7 @@ function appendClaudeMessage() {
   const div = document.createElement('div');
   div.className = 'message message-claude';
   div.innerHTML = `
-    <div class="message-tag"><span class="accent">CLAUDE</span> · sonnet 4</div>
+    <div class="message-tag"><span class="accent">CLAUDE</span> · MYTHOS</div>
     <div class="message-content">
       <div class="thinking" id="thinking-${Date.now()}">
         <span class="thinking-dot"></span>
@@ -8493,10 +8748,11 @@ const QUESTIONS = [
     fullLabel: 'Strategi og forankring',
     q: 'I hvilken grad er AI forankret i selskapets strategi og styringsmodell?',
     options: [
-      { v: 1, t: 'Diskutert, men ingen formell strategi.' },
-      { v: 2, t: 'Uformell ambisjon, ikke vedtatt.' },
-      { v: 3, t: 'Vedtatt strategi, kjent i ledergruppen.' },
-      { v: 4, t: 'Integrert i hovedstrategi, eid av CEO, årlig styreoppfølging.' },
+      { v: 1, t: 'Diskutert, men ingen formell strategi.', isEnd: true },
+      { v: 2, t: '' },
+      { v: 3, t: '' },
+      { v: 4, t: '' },
+      { v: 5, t: 'Integrert i hovedstrategi, eid av CEO, årlig styreoppfølging.', isEnd: true }
     ],
     sterk: 'Forankret. Test at den faktisk styrer beslutninger.',
     svak: 'Uten strategisk eierskap blir AI-tiltak personavhengig.',
@@ -8507,10 +8763,11 @@ const QUESTIONS = [
     fullLabel: 'Data og infrastruktur',
     q: 'Hvor godt er data i prosjekt-, ERP- og BIM-systemene tilgjengelig for analyse?',
     options: [
-      { v: 1, t: 'Digitalt, men ikke koblet på tvers.' },
-      { v: 2, t: 'Noe data koblet, krever manuell sammenstilling.' },
-      { v: 3, t: 'Hovedsystemer snakker sammen, enkel datavarehus-løsning.' },
-      { v: 4, t: 'Moderne dataplattform med real-time integrasjon.' },
+      { v: 1, t: 'Digitalt, men ikke koblet på tvers.', isEnd: true },
+      { v: 2, t: '' },
+      { v: 3, t: '' },
+      { v: 4, t: '' },
+      { v: 5, t: 'Moderne dataplattform med real-time integrasjon.', isEnd: true }
     ],
     sterk: 'Data er tilgjengelig. Sjeldnere enn folk innrømmer.',
     svak: 'Datasiloer er vanligste blokkering for AI som virker.',
@@ -8521,10 +8778,11 @@ const QUESTIONS = [
     fullLabel: 'Talent og kompetanse',
     q: 'Hvilken AI-kompetanse finnes internt i selskapet?',
     options: [
-      { v: 1, t: 'Ildsjeler bruker ChatGPT på eget initiativ.' },
-      { v: 2, t: 'Introkurs gjennomført, 1 til 2 personer med AI-ansvar.' },
-      { v: 3, t: 'Tverrfaglig team, ekstern partner.' },
-      { v: 4, t: 'Dedikert AI- eller data-team med definerte roller.' },
+      { v: 1, t: 'Ildsjeler bruker ChatGPT på eget initiativ.', isEnd: true },
+      { v: 2, t: '' },
+      { v: 3, t: '' },
+      { v: 4, t: '' },
+      { v: 5, t: 'Dedikert AI- eller data-team med definerte roller.', isEnd: true }
     ],
     sterk: 'Kompetansen finnes. Sørg for at den ikke sitter hos én person.',
     svak: 'Ildsjeler er bra. Avhengighet av ildsjeler er ikke.',
@@ -8535,10 +8793,11 @@ const QUESTIONS = [
     fullLabel: 'Bruk i kjernevirksomhet',
     q: 'I hvilken grad brukes AI i tilbuds-, prosjekterings- eller utførelsesarbeid?',
     options: [
-      { v: 1, t: 'Pilot på ett verktøy i ett prosjekt.' },
-      { v: 2, t: 'Ett til to verktøy i regelmessig bruk hos enkelte.' },
-      { v: 3, t: 'Bredt utrullet i én eller flere kjerneprosesser.' },
-      { v: 4, t: 'Integrert del av alle kjerneprosesser, målbare effekter.' },
+      { v: 1, t: 'Pilot på ett verktøy i ett prosjekt.', isEnd: true },
+      { v: 2, t: '' },
+      { v: 3, t: '' },
+      { v: 4, t: '' },
+      { v: 5, t: 'Integrert del av alle kjerneprosesser, målbare effekter.', isEnd: true }
     ],
     sterk: 'AI er i kjernen. Mål effektene før noen spør.',
     svak: 'Pilot uten kjerne-bruk er teater. Velg én prosess og gå dypt.',
@@ -8549,10 +8808,11 @@ const QUESTIONS = [
     fullLabel: 'Bruk i støttefunksjoner',
     q: 'I hvilken grad brukes AI i økonomi, HR, kommunikasjon eller juridisk?',
     options: [
-      { v: 1, t: 'Ad hoc Copilot- eller ChatGPT-bruk.' },
-      { v: 2, t: 'Microsoft 365 Copilot lisensiert, begrenset implementering.' },
-      { v: 3, t: 'Copilot rullet ut til alle relevante med opplæring.' },
-      { v: 4, t: 'Egne AI-agenter integrert med målte produktivitetsgevinster.' },
+      { v: 1, t: 'Ad hoc Copilot- eller ChatGPT-bruk.', isEnd: true },
+      { v: 2, t: '' },
+      { v: 3, t: '' },
+      { v: 4, t: '' },
+      { v: 5, t: 'Egne AI-agenter integrert med målte produktivitetsgevinster.', isEnd: true }
     ],
     sterk: 'Støttefunksjonene drar nytte. Lett gevinst, ikke undervurder.',
     svak: 'Copilot uten utrulling er en lisensiert myte.',
@@ -8563,10 +8823,11 @@ const QUESTIONS = [
     fullLabel: 'Governance og etikk',
     q: 'Hvilke retningslinjer og kontrollmekanismer har dere for ansvarlig AI-bruk?',
     options: [
-      { v: 1, t: 'Intern beskjed om sensitive data.' },
-      { v: 2, t: 'Skriftlig veileder, ingen formell governance.' },
-      { v: 3, t: 'AI-policy, godkjenningsprosess, utpekt ansvarlig.' },
-      { v: 4, t: 'Full governance, audit-trail, EU AI Act-compliance.' },
+      { v: 1, t: 'Intern beskjed om sensitive data.', isEnd: true },
+      { v: 2, t: '' },
+      { v: 3, t: '' },
+      { v: 4, t: '' },
+      { v: 5, t: 'Full governance, audit-trail, EU AI Act-compliance.', isEnd: true }
     ],
     sterk: 'Governance er på plass. Sikrer skalering uten skandaler.',
     svak: 'Uten governance vokser AI-bruk til en risikoflate ingen eier.',
@@ -8577,10 +8838,11 @@ const QUESTIONS = [
     fullLabel: 'Skalering og produksjon',
     q: 'Hvor langt har dere kommet med å sette AI-løsninger i drift utover pilot?',
     options: [
-      { v: 1, t: 'Testet, ingenting i drift.' },
-      { v: 2, t: 'Én til to løsninger i drift i begrenset skala.' },
-      { v: 3, t: 'Flere løsninger i bred drift med support.' },
-      { v: 4, t: 'MLOps, AI-løsninger som permanente produksjonssystemer.' },
+      { v: 1, t: 'Testet, ingenting i drift.', isEnd: true },
+      { v: 2, t: '' },
+      { v: 3, t: '' },
+      { v: 4, t: '' },
+      { v: 5, t: 'MLOps, AI-løsninger som permanente produksjonssystemer.', isEnd: true }
     ],
     sterk: 'Drift over pilot. Det er der reell verdi sitter.',
     svak: 'Pilot-til-produksjon-gapet er bransjens største kostnad.',
@@ -8591,10 +8853,11 @@ const QUESTIONS = [
     fullLabel: 'Effektmåling og ROI',
     q: 'I hvilken grad måler dere effekten av AI-investeringene?',
     options: [
-      { v: 1, t: 'Anekdotiske eksempler, ingen tall.' },
-      { v: 2, t: 'Målt effekt i ett pilotprosjekt.' },
-      { v: 3, t: 'Måler effekt på flere investeringer, regelmessig rapportering.' },
-      { v: 4, t: 'AI-ROI som del av ordinær KPI-rapportering på styrenivå.' },
+      { v: 1, t: 'Anekdotiske eksempler, ingen tall.', isEnd: true },
+      { v: 2, t: '' },
+      { v: 3, t: '' },
+      { v: 4, t: '' },
+      { v: 5, t: 'AI-ROI som del av ordinær KPI-rapportering på styrenivå.', isEnd: true }
     ],
     sterk: 'ROI måles. Da bygger dere argumentene for neste runde.',
     svak: 'Uten måling er AI-budsjettet et trospremiss, ikke en investering.',
@@ -8603,9 +8866,9 @@ const QUESTIONS = [
 
 // Tier-konfigurasjon
 const TIERS = [
-  { max: 35, key: 'early', label: 'Tidlig fase', sub: 'Du er i flokken.',
+  { max: 16, key: 'early', label: 'Tidlig fase', sub: 'Du er i flokken.',
     desc: 'Det meste av norsk mellommarked er her. Det er ingen skam. Men hver måned uten retning er en måned konkurrenter får forsprang. Start med ledelsesforankring og én skikkelig pilot.' },
-  { max: 55, key: 'moderate', label: 'Moderat modenhet', sub: 'Typisk for bransjen.',
+  { max: 28, key: 'moderate', label: 'Moderat modenhet', sub: 'Typisk for bransjen.',
     desc: 'Dere har piloter og noen verktøy i bruk. Gapet til neste nivå handler ikke om mer teknologi, men om governance, måling og skalering. Det er der internasjonale benchmark-tall faller fra hverandre.' },
   { max: 100, key: 'advanced', label: 'Avansert posisjon', sub: 'Sjelden i norsk BAA.',
     desc: 'Hvis dette er reelt, er dere blant de øverste 10 prosent. Hvis det er ønsketenkning, avdekker en ekstern revisjon det på 2 timer. BDO gjør det gjerne.' },
@@ -8622,20 +8885,18 @@ const STATE = {
 function buildQuestions() {
   const wrap = document.getElementById('spiderQuestions');
   wrap.innerHTML = QUESTIONS.map((q, i) => `
-    <div class="q-item" id="q-${q.id}" role="listitem">
-      <div class="q-head">
-        <span class="q-num">${String(i + 1).padStart(2, '0')} / 08</span>
+    <div class="q-row" id="q-${q.id}" role="listitem">
+      <div class="q-row-head">
+        <span class="q-num">${String(i + 1).padStart(2, '0')}</span>
         <span class="q-dimension">${q.fullLabel}</span>
       </div>
-      <div class="q-text">${q.q}</div>
-      <div class="q-options" role="radiogroup" aria-label="${q.fullLabel}">
+      <div class="q-row-scale" role="radiogroup" aria-label="${q.fullLabel}">
+        <span class="q-scale-edge q-scale-edge-low" title="${q.options[0].t}">${q.options[0].t.split('.')[0]}</span>
         ${q.options.map(o => `
-          <button class="q-opt" type="button"
+          <button class="q-btn" type="button"
                   data-q="${q.id}" data-v="${o.v}"
-                  aria-pressed="false" role="radio">
-            <span class="q-opt-level">Nivå ${o.v}</span>
-            <span class="q-opt-text">${o.t}</span>
-          </button>
+                  aria-pressed="false" role="radio"
+                  aria-label="Nivå ${o.v} av 5">${o.v}</button>
         `).join('')}
       </div>
     </div>
@@ -8677,8 +8938,8 @@ function setAnswer(qid, val) {
    8 akser, 4 ringer (nivå 1-4), polygon mellom svar-punkter
    ──────────────────────────────────────────────────────────── */
 const SPIDER = {
-  R: 80,                    // ytre radius (rim på nivå 4)
-  rings: 4,                 // nivå 1-4
+  R: 80,
+  rings: 5,
   cx: 0, cy: 0,
 };
 
