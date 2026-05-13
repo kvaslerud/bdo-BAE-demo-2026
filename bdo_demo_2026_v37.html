@@ -2200,7 +2200,7 @@ body.slide-mode > section.section:not(.is-current) .syn-close {
 }
 .a1-chart .line-omsetning {
   stroke: var(--text-primary);
-  stroke-width: 2.4;
+  stroke-width: 3;
   fill: none;
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
@@ -2208,7 +2208,7 @@ body.slide-mode > section.section:not(.is-current) .syn-close {
 }
 .a1-chart .line-margin {
   stroke: var(--accent);
-  stroke-width: 2.4;
+  stroke-width: 3;
   fill: none;
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
@@ -5254,24 +5254,22 @@ body.presentation-mode #pres-badge { display: block; }
 
 <nav class="stop-ladder" aria-label="Beslutningsspor" id="stop-ladder">
   <ol>
-    <li data-target="hero">I</li>
-    <li data-target="toc">II</li>
-    <li data-target="a1">III</li>
-    <li data-target="a2">IV</li>
-    <li data-target="a3">V</li>
-    <li data-target="a4">VI</li>
-    <li data-target="a5">VII</li>
-    <li data-target="a6">VIII</li>
-    <li data-target="section-trusselmatrise">IX</li>
-    <li data-target="i1">X</li>
-    <li data-target="i2">XI</li>
-    <li data-target="i3">XII</li>
-    <li data-target="i4">XIII</li>
-    <li data-target="i5">XIV</li>
-    <li data-target="i6">XV</li>
-    <li data-target="i7">XVI</li>
-    <li data-target="section-synthesis">XVII</li>
-    <li data-target="landing">XVIII</li>
+    <li data-target="a1">1</li>
+    <li data-target="a2">2</li>
+    <li data-target="a3">3</li>
+    <li data-target="a4">4</li>
+    <li data-target="a5">5</li>
+    <li data-target="a6">6</li>
+    <li data-target="section-trusselmatrise">7</li>
+    <li data-target="i1">8</li>
+    <li data-target="i2">9</li>
+    <li data-target="i3">10</li>
+    <li data-target="i4">11</li>
+    <li data-target="i5">12</li>
+    <li data-target="i6">13</li>
+    <li data-target="i7">14</li>
+    <li data-target="section-synthesis">15</li>
+    <li data-target="landing">16</li>
   </ol>
 </nav>
 
@@ -5289,8 +5287,8 @@ body.presentation-mode #pres-badge { display: block; }
     </div>
 
     <div class="hero-dominant">
-      <span class="stat-num" data-counter="-13" data-suffix="%">0</span>
-      <span class="stat-label">Produktivitet siden 2000</span>
+      <span class="stat-num" data-counter="-13" data-suffix=" %">0</span>
+      <span class="stat-label">Produktivitet bygg/anlegg siden 2000</span>
     </div>
 
     <h1 class="hero-title">
@@ -5340,7 +5338,7 @@ body.presentation-mode #pres-badge { display: block; }
         <span class="num-tag">Innhold</span>
       </div>
       <div>
-        <h2 class="section-title">Seksjoner som <em>lever.</em> Mini-previews aktive.</h2>
+        <h2 class="section-title">Tolv seksjoner. <em>Mini-previews lever.</em></h2>
         <p class="section-dek">Fire kort er ekte miniatyrer som puster, pulser og roterer. Resten er signaturer. Klikk for å hoppe.</p>
       </div>
     </div>
@@ -5349,40 +5347,10 @@ body.presentation-mode #pres-badge { display: block; }
       <div class="toc-grid" id="tocGrid">
 
         <!-- Kort 1: TOC self-reference (LIVE: pust 4,2s) -->
-        <a class="toc-card" href="#toc" data-type="toc" data-live="true" data-reveal="0">
+<!-- Kort 2: A1 - Todelt marked (omsetning opp / margin ned, to piler) -->
+        <a class="toc-card" href="#a1" data-type="analyse" data-reveal="0">
           <div class="toc-card-head">
             <div class="toc-card-num">01</div>
-            <div class="toc-card-live">Live · Pust</div>
-          </div>
-          <div class="toc-card-body"><div class="toc-card-title">Du er <em class="r">her.</em></div><div class="toc-card-tag">Innhold</div></div>
-          <div class="toc-card-sig">
-            <svg class="live-toc live-anim" viewBox="0 0 100 100" aria-hidden="true">
-              <!-- 14-celle mini-grid som speiler TOC selv -->
-              <!-- Rad 1: 5 celler (1 stor, 4 små) -->
-              <rect x="6" y="20" width="22" height="14" rx="1"/>
-              <rect x="32" y="20" width="11" height="14" rx="1"/>
-              <rect x="47" y="20" width="11" height="14" rx="1"/>
-              <rect x="62" y="20" width="11" height="14" rx="1"/>
-              <rect x="77" y="20" width="11" height="14" rx="1"/>
-              <!-- Rad 2: 5 celler -->
-              <rect x="6" y="38" width="11" height="14" rx="1"/>
-              <rect x="21" y="38" width="11" height="14" rx="1"/>
-              <rect x="36" y="38" width="11" height="14" rx="1"/>
-              <rect class="r-toc-self" x="51" y="38" width="22" height="14" rx="1"/>
-              <rect x="77" y="38" width="11" height="14" rx="1"/>
-              <!-- Rad 3: 4 celler -->
-              <rect x="6" y="56" width="22" height="14" rx="1"/>
-              <rect x="32" y="56" width="22" height="14" rx="1"/>
-              <rect x="62" y="56" width="11" height="14" rx="1"/>
-              <rect x="77" y="56" width="11" height="14" rx="1"/>
-            </svg>
-          </div>
-        </a>
-
-        <!-- Kort 2: A1 - Todelt marked (omsetning opp / margin ned, to piler) -->
-        <a class="toc-card" href="#a1" data-type="analyse" data-reveal="1">
-          <div class="toc-card-head">
-            <div class="toc-card-num">02</div>
           </div>
           <div class="toc-card-body"><div class="toc-card-title">Todelt marked.</div><div class="toc-card-tag">Analyse</div></div>
           <div class="toc-card-sig sig">
@@ -5400,9 +5368,9 @@ body.presentation-mode #pres-badge { display: block; }
         </a>
 
         <!-- Kort 3: A2 - Verdikjeden (6 prikker, 3 røde = trafikklys) -->
-        <a class="toc-card" href="#a2" data-type="analyse" data-reveal="2">
+        <a class="toc-card" href="#a2" data-type="analyse" data-reveal="1">
           <div class="toc-card-head">
-            <div class="toc-card-num">03</div>
+            <div class="toc-card-num">02</div>
           </div>
           <div class="toc-card-body"><div class="toc-card-title">Seks segmenter, <em>tre i rødt.</em></div><div class="toc-card-tag">Analyse</div></div>
           <div class="toc-card-sig sig">
@@ -5419,9 +5387,9 @@ body.presentation-mode #pres-badge { display: block; }
         </a>
 
         <!-- Kort 4: A3 - Konsolideringsbølgen (node-merger) -->
-        <a class="toc-card" href="#a3" data-type="analyse" data-reveal="3">
+        <a class="toc-card" href="#a3" data-type="analyse" data-reveal="2">
           <div class="toc-card-head">
-            <div class="toc-card-num">04</div>
+            <div class="toc-card-num">03</div>
           </div>
           <div class="toc-card-body"><div class="toc-card-title"><em>408</em> transaksjoner.</div><div class="toc-card-tag">Analyse</div></div>
           <div class="toc-card-sig sig">
@@ -5445,9 +5413,9 @@ body.presentation-mode #pres-badge { display: block; }
         </a>
 
         <!-- Kort 5: A4 - Produktivitet (-13%) - krasjet sparkline -->
-        <a class="toc-card" href="#a4" data-type="analyse" data-reveal="4">
+        <a class="toc-card" href="#a4" data-type="analyse" data-reveal="3">
           <div class="toc-card-head">
-            <div class="toc-card-num">05</div>
+            <div class="toc-card-num">04</div>
           </div>
           <div class="toc-card-body"><div class="toc-card-title"><em class="r">-13%.</em></div><div class="toc-card-tag">Analyse</div></div>
           <div class="toc-card-sig sig">
@@ -5460,9 +5428,9 @@ body.presentation-mode #pres-badge { display: block; }
         </a>
 
         <!-- Kort 6: A5 - Konkurser × Nyetablering (X-kryss) -->
-        <a class="toc-card" href="#a5" data-type="analyse" data-reveal="5">
+        <a class="toc-card" href="#a5" data-type="analyse" data-reveal="4">
           <div class="toc-card-head">
-            <div class="toc-card-num">06</div>
+            <div class="toc-card-num">05</div>
           </div>
           <div class="toc-card-body"><div class="toc-card-title">To kurver krysser.</div><div class="toc-card-tag">Analyse</div></div>
           <div class="toc-card-sig sig">
@@ -5478,9 +5446,9 @@ body.presentation-mode #pres-badge { display: block; }
         </a>
 
         <!-- Kort 7: A6 - Drivere mot 2050 (Venn med 3 sirkler) -->
-        <a class="toc-card" href="#a6" data-type="analyse" data-reveal="6">
+        <a class="toc-card" href="#a6" data-type="analyse" data-reveal="5">
           <div class="toc-card-head">
-            <div class="toc-card-num">07</div>
+            <div class="toc-card-num">06</div>
           </div>
           <div class="toc-card-body"><div class="toc-card-title"><em>2050.</em></div><div class="toc-card-tag">Analyse</div></div>
           <div class="toc-card-sig sig">
@@ -5496,9 +5464,9 @@ body.presentation-mode #pres-badge { display: block; }
         </a>
 
         <!-- Kort 8: I1 - Verdikjede (LIVE: fase-rotasjon 5,3s) -->
-        <a class="toc-card" href="#i1" data-type="interaktiv" data-live="true" data-reveal="7">
+        <a class="toc-card" href="#i1" data-type="interaktiv" data-live="true" data-reveal="6">
           <div class="toc-card-head">
-            <div class="toc-card-num">08</div>
+            <div class="toc-card-num">07</div>
             <div class="toc-card-live">Live · Rotasjon</div>
           </div>
           <div class="toc-card-body"><div class="toc-card-title">Verdikjede-velger.</div><div class="toc-card-tag">Interaktiv</div></div>
@@ -5523,9 +5491,9 @@ body.presentation-mode #pres-badge { display: block; }
         </a>
 
         <!-- Kort 9: I2 - CXO-chat (LIVE: typing 3,7s) -->
-        <a class="toc-card" href="#i2" data-type="interaktiv" data-live="true" data-reveal="8">
+        <a class="toc-card" href="#i2" data-type="interaktiv" data-live="true" data-reveal="7">
           <div class="toc-card-head">
-            <div class="toc-card-num">09</div>
+            <div class="toc-card-num">08</div>
             <div class="toc-card-live">Live · Typing</div>
           </div>
           <div class="toc-card-body"><div class="toc-card-title">CXO-chat. <em>Seks chips.</em></div><div class="toc-card-tag">Interaktiv</div></div>
@@ -5564,9 +5532,9 @@ body.presentation-mode #pres-badge { display: block; }
         </a>
 
         <!-- Kort 10: I3 - Spider (LIVE: hjerteslag 6,5s) -->
-        <a class="toc-card" href="#i3" data-type="interaktiv" data-live="true" data-reveal="9">
+        <a class="toc-card" href="#i3" data-type="interaktiv" data-live="true" data-reveal="8">
           <div class="toc-card-head">
-            <div class="toc-card-num">10</div>
+            <div class="toc-card-num">09</div>
             <div class="toc-card-live">Live · Pulse</div>
           </div>
           <div class="toc-card-body"><div class="toc-card-title">Modenhets-spider.</div><div class="toc-card-tag">Interaktiv</div></div>
@@ -5600,9 +5568,9 @@ body.presentation-mode #pres-badge { display: block; }
         </a>
 
         <!-- Kort 11: I4 - AI gjennom verdikjeden (2x2 grid) -->
-        <a class="toc-card" href="#i4" data-type="interaktiv" data-reveal="10">
+        <a class="toc-card" href="#i4" data-type="interaktiv" data-reveal="9">
           <div class="toc-card-head">
-            <div class="toc-card-num">11</div>
+            <div class="toc-card-num">10</div>
           </div>
           <div class="toc-card-body"><div class="toc-card-title">BDOs kart.</div><div class="toc-card-tag">Interaktiv</div></div>
           <div class="toc-card-sig sig">
@@ -5622,9 +5590,9 @@ body.presentation-mode #pres-badge { display: block; }
         </a>
 
         <!-- Kort 12: I5 - Live BAA-dashboard (scatter-sky) -->
-        <a class="toc-card" href="#i5" data-type="interaktiv" data-reveal="11">
+        <a class="toc-card" href="#i5" data-type="interaktiv" data-reveal="10">
           <div class="toc-card-head">
-            <div class="toc-card-num">12</div>
+            <div class="toc-card-num">11</div>
           </div>
           <div class="toc-card-body"><div class="toc-card-title"><em>200+</em> selskaper.</div><div class="toc-card-tag">Interaktiv</div></div>
           <div class="toc-card-sig sig">
@@ -5656,9 +5624,9 @@ body.presentation-mode #pres-badge { display: block; }
         </a>
 
         <!-- Kort 13: Z - Landing (to divergerende piler) -->
-        <a class="toc-card" href="#landing" data-type="landing" data-reveal="12">
+        <a class="toc-card" href="#landing" data-type="landing" data-reveal="11">
           <div class="toc-card-head">
-            <div class="toc-card-num">13</div>
+            <div class="toc-card-num">12</div>
           </div>
           <div class="toc-card-body"><div class="toc-card-title">Vi leverer <em class="r">kapabilitet.</em></div><div class="toc-card-tag">Landing</div></div>
           <div class="toc-card-sig sig">
@@ -5733,16 +5701,10 @@ body.presentation-mode #pres-badge { display: block; }
             </g>
 
             <!-- Skille-linje på 2019-baseline -->
-            <text x="40" y="190" class="axis-label" style="font-size:11px">Indeks 100 = 2019</text>
+            <g class="a1-indeks-label"><rect x="36" y="246" width="120" height="20" rx="2" fill="#0A0A0F" stroke="rgba(245,245,240,0.08)" stroke-width="0.5"/><text x="44" y="260" class="axis-label" style="font-size:10px; opacity: 0.7">INDEKS 100 = 2019</text></g>
           </svg>
         </div>
 
-      </div>
-
-      <div class="source-line">
-        <span>Kilde: BAA-2025, SSB produksjonsindeks Q1 2026. Indekseringer 2019 = 100.</span>
-        <span class="progress"><span class="current">02</span> / 14 · BESLUTNINGSSPOR</span>
-        <span class="seg-tag">A1 · Todelt marked</span>
       </div>
     </div>
   </div>
@@ -5755,7 +5717,7 @@ body.presentation-mode #pres-badge { display: block; }
         <span class="num-tag">Analyse · 02 av 06</span>
       </div>
       <div>
-        <h2 class="section-title">Verdikjeden i kollaps. Seks segmenter, <em>tre</em> i rødt.</h2>
+        <h2 class="section-title">Verdikjeden <em>kollapser.</em> Tre av seks segmenter i rødt.</h2>
         <p class="section-dek">Marginene fordeler seg ujevnt. De som bygger og distribuerer presses hardest. De som planlegger og drifter holder hodet over vannet.</p>
       </div>
     </div>
@@ -5813,12 +5775,6 @@ body.presentation-mode #pres-badge { display: block; }
           Tre segmenter ligger under bransjesnitt eller i tap. Det er ikke en konjunktur. Det er en strukturell omfordeling av hvem som bærer risikoen, og hvem som henter verdien.
         </div>
       </div>
-
-      <div class="source-line">
-        <span>Kilde: BAA-2025, BDO. Segmentvise drifts­marginer 2024.</span>
-        <span class="progress"><span class="current">03</span> / 14 · BESLUTNINGSSPOR</span>
-        <span class="seg-tag">A2 · Verdikjeden i kollaps</span>
-      </div>
     </div>
   </div>
 </section>
@@ -5830,7 +5786,7 @@ body.presentation-mode #pres-badge { display: block; }
         <span class="num-tag">Analyse · 03 av 06</span>
       </div>
       <div>
-        <h2 class="section-title">Konsolideringsbølgen. <em>408</em> transaksjoner. <em>125</em> norske oppkjøp.</h2>
+        <h2 class="section-title">Kapitalen <em>vasker.</em> 408 transaksjoner. 125 norske oppkjøp.</h2>
         <p class="section-dek">Antall norske oppkjøp er tredoblet på fire år. Plattform-konsolidering driver volumet. Private equity gikk fra 25 til 40 prosent av deals.</p>
       </div>
     </div>
@@ -5949,12 +5905,6 @@ body.presentation-mode #pres-badge { display: block; }
         </div>
 
       </div>
-
-      <div class="source-line">
-        <span>Kilde: BAA-2025 (Mergermarket-data) + Argentum/NVCA. Consigli/AECOM-deal: PropTech Connect nov 2025.</span>
-        <span class="progress"><span class="current">04</span> / 14 · BESLUTNINGSSPOR</span>
-        <span class="seg-tag">A3 · Konsolidering</span>
-      </div>
     </div>
   </div>
 </section>
@@ -5966,7 +5916,7 @@ body.presentation-mode #pres-badge { display: block; }
         <span class="num-tag">Analyse · 04 av 06 · Signatur</span>
       </div>
       <div>
-        <h2 class="section-title">Produktivitetskrisen er <em>en grafs lengde</em>.</h2>
+        <h2 class="section-title">25 år <em>uten produktivitetsvekst.</em> AI snur det nå.</h2>
         <p class="section-dek">Mens Fastlands-Norge har vokst 32 prosent siden 2000, har produktiviteten i bygg og anlegg falt 13.</p>
       </div>
     </div>
@@ -6015,12 +5965,6 @@ body.presentation-mode #pres-badge { display: block; }
           </svg>
         </div>
       </div>
-
-      <div class="source-line">
-        <span>Kilde: SSB nasjonal­regnskap. BVP per timeverk, faste priser, indeksert 2000=100.</span>
-        <span class="progress"><span class="current">05</span> / 14 · BESLUTNINGSSPOR</span>
-        <span class="seg-tag">A4 · Produktivitet</span>
-      </div>
     </div>
   </div>
 </section>
@@ -6032,7 +5976,7 @@ body.presentation-mode #pres-badge { display: block; }
         <span class="num-tag">Analyse · 05 av 06</span>
       </div>
       <div>
-        <h2 class="section-title">Konkurser og <em>nyetableringer</em>. To kurver krysser snart.</h2>
+        <h2 class="section-title">Konkurser <em>øker.</em> Etableringer faller. Linjene krysset i 2023.</h2>
         <p class="section-dek">Konkursene har doblet seg på fire år. 1 104 i byggenæringen i 2025. Nær 5 000 bedrifter forsvunnet på tre år.</p>
       </div>
     </div>
@@ -6118,12 +6062,6 @@ body.presentation-mode #pres-badge { display: block; }
         </div>
 
       </div>
-
-      <div class="source-line">
-        <span>Kilde: SSB konkursstatistikk + Brønnøysund + Bygghåndverk Norge (jan 2026) + Aftenbladet (mai 2026). NACE 41-43.</span>
-        <span class="progress"><span class="current">06</span> / 14 · BESLUTNINGSSPOR</span>
-        <span class="seg-tag">A5 · Konkurser og etableringer</span>
-      </div>
     </div>
   </div>
 </section>
@@ -6191,19 +6129,13 @@ body.presentation-mode #pres-badge { display: block; }
         </div>
 
       </div>
-
-      <div class="source-line">
-        <span>Kilde: SSB, Statnett, Forsvars­departementet, Samferdsels­departementet, EU-kommisjonen, Boligprodusentene (feb/apr 2026).</span>
-        <span class="progress"><span class="current">07</span> / 14 · BESLUTNINGSSPOR</span>
-        <span class="seg-tag">A6 · Drivere mot 2050</span>
-      </div>
     </div>
   </div>
 </section>
 
 <!-- ════════════════════════════════════════════════════════════════
      BAE-CEO Trusselmatrise (10 stressors, tre arketyper)
-     BAE-versjon av BCGs CEO Insomnia Index (april 2026)
+     BAE-versjon for 2026
      ════════════════════════════════════════════════════════════════ -->
 <section class="section" id="section-trusselmatrise" data-type="analyse">
   <div class="container">
@@ -6211,7 +6143,7 @@ body.presentation-mode #pres-badge { display: block; }
       <div class="trussel-header-text">
         <p class="kicker">CEO STRESS METER · 10 STRESSORS</p>
         <h2 class="display">Hva holder BAE-lederen våken</h2>
-        <p class="lede">Kalibrert mot norsk bygg, anlegg og eiendom 2026. Inspirert av BCGs CEO Insomnia Index (april 2026), men reforankret i BAA-2025, SSB, Norges Bank og NHO Byggenæringen.</p>
+        <p class="lede">Kalibrert mot norsk bygg, anlegg og eiendom 2026. Reforankret i BAA-2025, SSB, Norges Bank og NHO Byggenæringen.</p>
       </div>
       <div class="stress-meter">
         <svg class="stress-gauge-svg" viewBox="0 0 400 230" aria-hidden="true">
@@ -6239,7 +6171,7 @@ body.presentation-mode #pres-badge { display: block; }
           <span class="axis-edge">EXTREME</span>
         </div>
         <div class="stress-meter-value-row">
-          <span class="stress-meter-value">70.3</span>
+          <span class="stress-meter-value"><span id="stress-meter-counter" data-target="70.3">0,0</span></span>
         </div>
       </div>
     </header>
@@ -6276,7 +6208,7 @@ body.presentation-mode #pres-badge { display: block; }
               <dt>Norsk evidens [A]</dt>
               <dd>Boligprodusentenes Forening meldte 17 % lavere salg og 20 % lavere igangsetting i Q1 2026 mot året før. Siste tolvmåneders igangsetting lå 44 % under beregnet boligbehov. SSB registrerte 20 184 igangsettingstillatelser i 2025 og 19 498 fullførte boliger, laveste siden post-finanskrisen.</dd>
               <dt>Internasjonal evidens [B]</dt>
-              <dd>McKinsey Global Institute, housing supply 2025: vedvarende underleveranse på utviklede markeder driver pris- og finansieringsrisiko opp.</dd>
+              <dd>Internasjonal benchmark 2025: vedvarende underleveranse på utviklede markeder driver pris- og finansieringsrisiko opp.</dd>
               <dt>Mekanisme</dt>
               <dd>Kapasitet kuttet før etterspørselen er tilbake gir marginfall, permitteringer og tap av nøkkelkompetanse.</dd>
               <dt>CEO-sitat</dt>
@@ -6308,7 +6240,7 @@ body.presentation-mode #pres-badge { display: block; }
               <dt>Norsk evidens [A]</dt>
               <dd>BAA-2025: driftsmargin 3,3 % i 2024, 25 % av selskapene med negativ EBIT. Tariff byggfag 2026: 4,4 % ramme. SSB byggekostnadsindeks materialer +4,9 % des 2023 til des 2024. Ingen volumøkning kan kompensere for prising som ikke dekker disse løftene.</dd>
               <dt>Internasjonal evidens [B]</dt>
-              <dd>PwC 28th Annual Global CEO Survey 2025: 70 % av industriledere oppgir prising som største marginsensitive variabel under kostnadspress. Deloitte 2026 E&amp;C Outlook: fastpris-eksponering uten reprising-mekanisme er topp-3 lederbekymring globalt.</dd>
+              <dd>Global industrileder-undersøkelse 2025: 70 % oppgir prising som største marginsensitive variabel under kostnadspress. Fastpris-eksponering uten reprising-mekanisme er topp-3 lederbekymring.</dd>
               <dt>Mekanisme</dt>
               <dd>I et marked der kostnader øker raskere enn enhver enkeltleder kan dekke ved volum, er prising den eneste skalerbare marginleveren.</dd>
               <dt>CEO-sitat</dt>
@@ -6342,7 +6274,7 @@ body.presentation-mode #pres-badge { display: block; }
               <dt>Norsk evidens [A]</dt>
               <dd>BAA-2025 (BDO/Dalsegg, 4 000+ selskaper): driftsmargin 3,3 %, laveste på fem år. SSB byggekostnadsindeks bolig +3,8 % des 2023 til des 2024, materialer +4,9 %. Tariff byggfag 2026: økonomisk ramme 4,4 %.</dd>
               <dt>Internasjonal evidens [B]</dt>
-              <dd>Deloitte 2026 Engineering and Construction Industry Outlook: fastpris-eksponering og risiko-skyving er topp-3 lederbekymring i E&amp;C globalt.</dd>
+              <dd>Internasjonal E&amp;C-bransjeanalyse 2026: fastpris-eksponering og risiko-skyving er topp-3 lederbekymring globalt.</dd>
               <dt>Mekanisme</dt>
               <dd>Når 3,3 % snittmargin er normalen, blir reprising-disiplin det som skiller overlevende fra ofre.</dd>
               <dt>CEO-sitat</dt>
@@ -6410,7 +6342,7 @@ body.presentation-mode #pres-badge { display: block; }
               <dt>Norsk evidens [A]</dt>
               <dd>BAA-2025: konkursene i 2025 rammet i økende grad mellomstore og etablerte selskaper med komplekse leverandørkjeder, med forsinkelser, permitteringer og økonomiske konsekvenser. Bygg og anlegg sto for nær en tredjedel av alle norske konkurser i 2024.</dd>
               <dt>Internasjonal evidens [B]</dt>
-              <dd>WEF Infrastructure Outlook 2025: forsyningskjedebrudd er nå strukturelt og krever aktive solvensgjennomganger blant tier 1- og tier 2-leverandører.</dd>
+              <dd>Internasjonal infrastruktur-analyse 2025: forsyningskjedebrudd er nå strukturelt og krever aktive solvensgjennomganger blant tier 1- og tier 2-leverandører.</dd>
               <dt>Mekanisme</dt>
               <dd>Når én nøkkelleverandør faller ut, forsvinner ikke bare fremdrift. Du mister garantiansvar, montasjelogikk og lokal relasjonskapital.</dd>
               <dt>CEO-sitat</dt>
@@ -6444,7 +6376,7 @@ body.presentation-mode #pres-badge { display: block; }
               <dt>Norsk evidens [A]</dt>
               <dd>Statsbygg bruker prosjektspesifikke EPD-er i som-bygget-regnskap. BAA-2025: 16 % har investert i AI, 11 % har AI-retningslinjer. Findable klassifiserer 4 200 dokumenter på 3 timer mot uker manuelt. Statsbygg trent 30 superbrukere på generativ KI i 2025.</dd>
               <dt>Internasjonal evidens [B]</dt>
-              <dd>McKinsey Reinventing Construction (oppdatering 2025): digitalisering av prosjekteringsfasen forklarer 30 % av variansen i prosjektresultat. Procore Agent Builder åpnet beta oktober 2025 for bygg-spesifikke bounded agents.</dd>
+              <dd>Bransje-studie 2025: digitalisering av prosjekteringsfasen forklarer 30 % av variansen i prosjektresultat. Bygg-spesifikke AI-agenter er nå tilgjengelig i åpen beta.</dd>
               <dt>Mekanisme</dt>
               <dd>Datakvalitet i prosjekteringen avgjør hva som kan dokumenteres, anbudskvalifiseres og refinansieres. Når det svikter er det ikke et IT-problem, det er et margin-problem.</dd>
               <dt>CEO-sitat</dt>
@@ -6478,7 +6410,7 @@ body.presentation-mode #pres-badge { display: block; }
               <dt>Norsk evidens [A]</dt>
               <dd>Norges Bank Finansiell Stabilitet 2025: konkurser innen eiendomsutvikling har steget markert. Halvparten av bankene rapporterte økt risiko for brudd på lånevilkår og mislighold. Noe økte tap ventet neste år. BAA-2025: høye kapitalkostnader er kjerneproblem i 2025-markedet.</dd>
               <dt>Internasjonal evidens [B]</dt>
-              <dd>Deloitte 2026 E&amp;C Outlook: finansiell smidighet, gjeldsstyring og likviditet er sentralt for håndtering av markedsvolatilitet.</dd>
+              <dd>Internasjonal E&amp;C-bransjeanalyse 2026: finansiell smidighet, gjeldsstyring og likviditet er sentralt for håndtering av markedsvolatilitet.</dd>
               <dt>Mekanisme</dt>
               <dd>Når salg, byggelån og egenkapitalplan ikke lenger henger sammen, blir styrets første spørsmål hvem som skal rydde opp.</dd>
               <dt>CEO-sitat</dt>
@@ -6512,7 +6444,7 @@ body.presentation-mode #pres-badge { display: block; }
               <dt>Norsk evidens [A]</dt>
               <dd>BAA-2025: produktiviteten i bygg og anlegg har falt 13 % siden 2000, mens resten av fastlandsøkonomien har vokst. Bare 16 % har investert i AI. SSB: bruttoprodukt i bygg og anlegg falt 2,1 % fra 2024 til 2025. Produksjonsindeks samlet −6,1 % fra 2022 til 2025.</dd>
               <dt>Internasjonal evidens [B]</dt>
-              <dd>McKinsey Reinventing Construction (oppdatering 2025): konstruksjon henger 30 til 50 prosentpoeng etter manufacturing i produktivitetsutvikling siden 1995.</dd>
+              <dd>Bransje-studie 2025: konstruksjon henger 30 til 50 prosentpoeng etter manufacturing i produktivitetsutvikling siden 1995.</dd>
               <dt>Mekanisme</dt>
               <dd>Når dokumentasjon og samordning øker raskere enn produksjonen, blir merarbeid til overhead i stedet for verdi.</dd>
               <dt>CEO-sitat</dt>
@@ -6544,7 +6476,7 @@ body.presentation-mode #pres-badge { display: block; }
               <dt>Norsk evidens [A]</dt>
               <dd>Direktoratet for byggkvalitet krever klimagassregnskap ved oppføring og hovedombygging av boligblokker og yrkesbygg. DFØ: klima- og miljøhensyn vektes normalt minimum 30 % i offentlige anskaffelser. Rundt 77 % av anskaffelsene i 2025 fulgte hovedregelen eller stilte miljøkrav.</dd>
               <dt>Internasjonal evidens [B]</dt>
-              <dd>WEF Infrastructure Outlook 2025: bærekraftsdokumentasjon er nå konkurransekraft, ikke compliance.</dd>
+              <dd>Internasjonal infrastruktur-analyse 2025: bærekraftsdokumentasjon er nå konkurransekraft, ikke compliance.</dd>
               <dt>Mekanisme</dt>
               <dd>Hvis dataene er svake, taper du først på kvalifisering og finansiering, deretter på pris.</dd>
               <dt>CEO-sitat</dt>
@@ -6578,7 +6510,7 @@ body.presentation-mode #pres-badge { display: block; }
               <dt>Norsk evidens [A]</dt>
               <dd>NHO Byggenæringen: 64 % har udekket kompetansebehov. 64 % mangler særlig håndverksfag. 52 % mangler ingeniør- og tekniske fag. Desember 2025: byggenæringen har allerede mistet over 17 000 fagfolk. SSB: 21 500 utenlandske pendlere i bygg og anlegg i Q4 2025, 57 % av pendlerne fra nye EU-land etter 2004 var polske lønnstakere.</dd>
               <dt>Internasjonal evidens [B]</dt>
-              <dd>McKinsey Reinventing Construction (2025): talent og kompetanse er øverst på risiko-listen for E&amp;C globalt.</dd>
+              <dd>Bransje-studie 2025: talent og kompetanse er øverst på risiko-listen for E&amp;C globalt.</dd>
               <dt>Mekanisme</dt>
               <dd>Når aktiviteten tar seg opp, kommer ordrene fortere tilbake enn erfarne folk gjør.</dd>
               <dt>CEO-sitat</dt>
@@ -6615,7 +6547,7 @@ body.presentation-mode #pres-badge { display: block; }
 
     <aside class="stakeholder-rangering">
       <h3>Stakeholders rangert (BAE-versjon)</h3>
-      <p class="stakeholder-lede">I norsk BAE er kunder og byggherrer den tøffeste relasjonen, ikke styret slik BCG fant globalt. Aktivist-press betyr her primært naboer, lokale aksjoner og miljøinnsigelser, ikke shareholder activists.</p>
+      <p class="stakeholder-lede">I norsk BAE er kunder og byggherrer den tøffeste relasjonen, ikke styret slik internasjonale studier finner. Aktivist-press betyr her primært naboer, lokale aksjoner og miljøinnsigelser.</p>
       <div class="stakeholder-list">
         <div class="stakeholder-bar"><span class="label">Kunder og byggherrer</span><span class="value">74</span><span class="bar"><span class="bar-fill" style="width:74%"></span></span></div>
         <div class="stakeholder-bar"><span class="label">Finansiering og bank</span><span class="value">70</span><span class="bar"><span class="bar-fill" style="width:70%"></span></span></div>
@@ -6626,13 +6558,6 @@ body.presentation-mode #pres-badge { display: block; }
         <div class="stakeholder-bar"><span class="label">Presse og lokalsamfunn</span><span class="value">41</span><span class="bar"><span class="bar-fill" style="width:41%"></span></span></div>
       </div>
     </aside>
-
-    <div class="source-line">
-      <span>Kilde: BAA-2025, SSB, Norges Bank Finansiell Stabilitet 2025, Boligprodusentenes Forening (Q1 2026), NHO Byggenæringen (des 2025), Direktoratet for byggkvalitet, DFØ, McKinsey, Deloitte, WEF, BCG, PwC, Procore.</span>
-      <span class="progress"><span class="current">08</span> / 14 · BESLUTNINGSSPOR</span>
-      <span class="seg-tag">TM · Trusselmatrise</span>
-    </div>
-
   </div>
 </section>
 
@@ -6692,17 +6617,17 @@ body.presentation-mode #pres-badge { display: block; }
 
         <div class="chat-meta">
           <span class="chat-meta-status">Live</span>
-          <span class="chat-meta-model">Claude Sonnet 4 · streamed</span>
+          <span class="chat-meta-model">Claude Mythos · streamed</span>
         </div>
 
         <div class="chat-messages" id="chatMessages">
           <div class="chat-empty" id="chatEmpty">
-            <div class="chat-empty-eyebrow">Velg en chip eller skriv ditt eget</div>
+            <div class="chat-empty-eyebrow">Skriv ditt eget spørsmål, eller velg ett under</div>
             <div class="chat-empty-title">
               Hva ville et <em>CXO-team</em> i bygg, anlegg og eiendom <em>egentlig</em> spurt om?
             </div>
             <div class="chat-empty-hint">
-              Seks reelle spørsmål, hentet fra KPMG CEO Outlook, Deloitte CFO Signals, McKinsey og PwC. Ett er optimalisert for det vi tror gir det mest interessante svaret. Den røde kanten markerer hvilket.
+              Seks reelle CXO-spørsmål. Ett er optimalisert for det vi tror gir det mest interessante svaret. Den røde kanten markerer hvilket.
             </div>
           </div>
         </div>
@@ -6732,7 +6657,7 @@ body.presentation-mode #pres-badge { display: block; }
   <div class="key-dialog-inner">
     <h3 class="key-dialog-title" id="keyDialogTitle">Anthropic API-nøkkel kreves</h3>
     <p class="key-dialog-text">
-      Denne demoen kaller Claude Sonnet 4 direkte fra browseren. Lim inn din API-nøkkel for å aktivere CXO-chatten. Nøkkelen lagres i sessionStorage og forsvinner når du lukker fanen.
+      Denne demoen kaller Claude Mythos direkte fra browseren. Lim inn din API-nøkkel for å aktivere CXO-chatten. Nøkkelen lagres i sessionStorage og forsvinner når du lukker fanen.
     </p>
     <input type="password" class="key-dialog-input" id="keyDialogInput" placeholder="sk-ant-api03-..." autocomplete="off">
     <div class="key-dialog-actions">
@@ -6827,7 +6752,7 @@ body.presentation-mode #pres-badge { display: block; }
         <span class="num-tag">Interaktiv · BDO-kart</span>
       </div>
       <div>
-        <h2 class="section-title">AI gjennom verdikjeden. <em>BDOs kart.</em></h2>
+        <h2 class="section-title">BDO leverer <em>AI</em> i hele verdikjeden.</h2>
         <p class="section-dek">Ikke verktøy-katalog. Hva BDO sitter med som ingen andre i norsk mellommarked har, fordelt på fire AI-kategorier.</p>
       </div>
     </div>
@@ -6888,12 +6813,6 @@ body.presentation-mode #pres-badge { display: block; }
           </ul>
         </div>
 
-      </div>
-
-      <div class="source-line">
-        <span>Kilde: BDO BAA 2025 · WIP-eiendom · WIP-prosjekt · 25 norske AI-leverandører kartlagt.</span>
-        <span class="progress"><span class="current">11</span> / 14 · BESLUTNINGSSPOR</span>
-        <span class="seg-tag">I4 · BDOs AI-kart</span>
       </div>
     </div>
   </div>
@@ -7160,13 +7079,6 @@ body.presentation-mode #pres-badge { display: block; }
       <div class="es-takeaway">
         <p class="es-takeaway-text"><em>Strategisk lesning:</em> Når 38 % av norske BAE-selskaper har eier 60+, blir eierskifte den dominerende transaksjonen i 2026 til 2030, ikke konsolidering alene. Banken trenger likviditetsprognose. Eieren trenger exit-plan. BDO sitter på begge linjer.</p>
       </div>
-
-      <div class="source-line">
-        <span>Kilde: BAA-2025 (3 832 selskaper). Eier-alder estimert fra Brønnøysund primær eier eller daglig leder, kalibrert mot SSB selskapseier-statistikk 2024. Tall er modellert representativt, ikke selskaps-spesifikt.</span>
-        <span class="progress"><span class="current">15</span> / 15 · INNSIKTSBONUS</span>
-        <span class="seg-tag">I6 · Eierskifte-radar</span>
-      </div>
-
     </div>
   </div>
 </section>
@@ -7271,13 +7183,6 @@ body.presentation-mode #pres-badge { display: block; }
       <div class="puls-takeaway">
         <p class="puls-takeaway-text"><em>Strategisk lesning:</em> Konkurslinja krysser etableringslinja andre kvartal 2023. Oppkjøp-pulsen tredobles fra start til slutt. Vi går ikke gjennom en konjunktur. Vi går gjennom en strukturell utvasking.</p>
       </div>
-
-      <div class="source-line">
-        <span>Kilde: SSB konkursstatistikk + Brønnøysund (etableringer) + BDO BAA-2025 (transaksjoner). Kvartalsvise aggregater 2020 til Q1 2026.</span>
-        <span class="progress"><span class="current">15</span> / 16 · INNSIKTSBONUS</span>
-        <span class="seg-tag">I7 · Bransje-pulsen</span>
-      </div>
-
     </div>
   </div>
 </section>
@@ -7316,12 +7221,6 @@ body.presentation-mode #pres-badge { display: block; }
 
     <div class="syn-close">
       <p class="syn-close-text"><em>Fire tall.</em> Én bransje. <em>Ett rådgivermandat.</em></p>
-    </div>
-
-    <div class="source-line">
-      <span>Kilde: BAA-2025 (BDO/Dalsegg), SSB nasjonalregnskap 2024, BAA-2025 transaksjonsdata, eierskifte-modellering basert på Brønnøysund og SSB.</span>
-      <span class="progress"><span class="current">16</span> / 16 · SLUTTPUNKT</span>
-      <span class="seg-tag">SYN · Synthesis</span>
     </div>
   </div>
 </section>
@@ -8707,7 +8606,7 @@ const TIERS = [
   { max: 35, key: 'early', label: 'Tidlig fase', sub: 'Du er i flokken.',
     desc: 'Det meste av norsk mellommarked er her. Det er ingen skam. Men hver måned uten retning er en måned konkurrenter får forsprang. Start med ledelsesforankring og én skikkelig pilot.' },
   { max: 55, key: 'moderate', label: 'Moderat modenhet', sub: 'Typisk for bransjen.',
-    desc: 'Dere har piloter og noen verktøy i bruk. Gapet til neste nivå handler ikke om mer teknologi, men om governance, måling og skalering. Det er der McKinsey-tallene faller fra hverandre.' },
+    desc: 'Dere har piloter og noen verktøy i bruk. Gapet til neste nivå handler ikke om mer teknologi, men om governance, måling og skalering. Det er der internasjonale benchmark-tall faller fra hverandre.' },
   { max: 100, key: 'advanced', label: 'Avansert posisjon', sub: 'Sjelden i norsk BAA.',
     desc: 'Hvis dette er reelt, er dere blant de øverste 10 prosent. Hvis det er ønsketenkning, avdekker en ekstern revisjon det på 2 timer. BDO gjør det gjerne.' },
 ];
@@ -10837,6 +10736,53 @@ console.log('Bygget av Tobias Mørland Kvaslerud + Claude. Trykk P for projeksjo
 
   // Initial: empty render
   render(-1);
+})();
+
+
+
+
+/* ════════════════════════════════════════════════════════════════
+   CEO Stress Meter · counter-animasjon (0 -> 70.3 synkron med naal)
+   ════════════════════════════════════════════════════════════════ */
+(function initStressCounter() {
+  const el = document.getElementById('stress-meter-counter');
+  if (!el) return;
+  const target = parseFloat(el.dataset.target);
+  let started = false;
+
+  function fmt(n) {
+    return n.toFixed(1).replace('.', ',');
+  }
+
+  function animate() {
+    const dur = 1600; // ms, matcher SMIL-animasjon
+    const delay = 400;
+    const start = performance.now() + delay;
+    function step(now) {
+      const t = Math.max(0, Math.min(1, (now - start) / dur));
+      // Same ease som SMIL: cubic-bezier(0.16, 1, 0.3, 1) approx via easeOutCubic
+      const eased = 1 - Math.pow(1 - t, 3);
+      el.textContent = fmt(eased * target);
+      if (t < 1) requestAnimationFrame(step);
+      else el.textContent = fmt(target);
+    }
+    requestAnimationFrame(step);
+  }
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting && !started) {
+          started = true;
+          animate();
+          io.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    io.observe(el);
+  } else {
+    animate();
+  }
 })();
 
 </script>
